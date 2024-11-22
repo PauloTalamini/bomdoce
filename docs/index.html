@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Despesas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.19/jspdf.plugin.autotable.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Link para Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <div class="header-mobile">
+        <!-- Botão com ícone de hambúrguer -->
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <i id="menu-icon" class="fas fa-bars"></i>
+        </button>
+        <!-- Botão de modo noturno -->
+        <button id="darkModeToggleMobile" aria-label="Alternar modo noturno">
+            <i class="fas fa-moon"></i> <!-- Ícone de lua -->
+        </button>
+
+        <!-- Menu Lateral -->
+        <div class="sidebar" id="sidebar">
+            <div class="logo-container">
+                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bemii.png?raw=true"
+                    alt="Logo Bemii">
+            </div>
+
+            <div class="logo-user">
+                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bemii.png?raw=true"
+                    alt="Logo Bemii">
+                <div class="user-info">
+                    <p class="greeting">Bem-vindo,</p>
+                    <p class="username">Nome do Usuário</p>
+                    <!-- Substitua 'Nome do Usuário' pelo nome real do usuário -->
+                </div>
+            </div>
+            <button id="open-modal-btn-mobile"><i class="fas fa-plus"></i> Gerar Lançamento</button>
+            <button id="open-modal-btn-conta-mobile""><i class="fas fa-id-card"></i> Incluir Conta</button>
+            <button id="open-modal-btn-cartao-mobile""><i class="fas fa-credit-card"></i> Incluir Cartão</button>
+            <div class="filters">
+                <div>
+                    <button id="filter-banks">
+                        <i class="fas fa-university"></i> Filtrar por Bancos
+                    </button>
+                    <div id="banks-dropdown" class="dropdown">
+                        <ul>
+                            <li><label><input type="checkbox" value="Banco1"> Banco do Brasil</label></li>
+                            <li><label><input type="checkbox" value="Banco2"> Banco Pan</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Banco Inter</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Banco Safra</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Banco Votorantim</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Banrisul</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Bradesco</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Banco BTG</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Banco C6</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Caixa Econômica</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Cresol</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Infinity Pay</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Itaú</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Mercado Pago</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Next</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Nubank</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Pag Seguro</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Paypal</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> PicPay</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Santander</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Sicoob</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Sicredi</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Outros</label></li>
+
+                            <!-- Adicione mais bancos conforme necessário -->
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button id="filter-expenses">
+                        <i class="fas fa-money-bill"></i> Filtrar por Lançamento
+                    </button>
+                    <div id="expenses-dropdown" class="dropdown">
+                        <ul>
+                            <li><label><input type="checkbox" value="Despesas"> Despesas</label></li>
+                            <li><label><input type="checkbox" value="Receitas"> Receitas</label></li>
+                            <!-- Adicione mais despesas conforme necessário -->
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button id="filter-categories">
+                        <i class="fas fa-tags"></i> Filtrar por Categorias
+                    </button>
+                    <div id="categories-dropdown" class="dropdown">
+                        <ul>
+                            <li><label><input type="checkbox" value="Alimentação"> Alimentação</label></li>
+                            <li><label><input type="checkbox" value="Benefícios"> Benefícios</label></li>
+                            <li><label><input type="checkbox" value="Dívidas e Obrigações Financeiras"> Dívidas e
+                                    Obrigações Financeiras</label></li>
+                            <li><label><input type="checkbox" value="Doações e Caridade"> Doações e Caridade</label>
+                            </li>
+                            <li><label><input type="checkbox" value="Educação"> Educação</label></li>
+                            <li><label><input type="checkbox" value="Impostos e Taxas"> Impostos e Taxas</label></li>
+                            <li><label><input type="checkbox" value="Investimentos"> Investimentos</label></li>
+                            <li><label><input type="checkbox" value="Lazer e Entretenimento"> Lazer e
+                                    Entretenimento</label></li>
+                            <li><label><input type="checkbox" value="Moradia"> Moradia</label></li>
+                            <li><label><input type="checkbox" value="Patrimônios"> Patrimônios</label></li>
+                            <li><label><input type="checkbox" value="Rendimentos"> Rendimentos</label></li>
+                            <li><label><input type="checkbox" value="Saúde"> Saúde</label></li>
+                            <li><label><input type="checkbox" value="Seguros"> Seguros</label></li>
+                            <li><label><input type="checkbox" value="Transporte"> Transporte</label></li>
+                            <li><label><input type="checkbox" value="Vestuário e Beleza"> Vestuário e Beleza</label>
+                            </li>
+                            <li><label><input type="checkbox" value="Outros"> Outros</label></li>
+
+                            <!-- Adicione mais categorias conforme necessário -->
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button id="filter-period">
+                        <i class="fas fa-calendar-alt"></i> Filtrar por Período
+                    </button>
+                    <div id="period-dropdown" class="dropdown">
+                        <label>Data de Início: <input type="date" id="start-date"></label>
+                        <label>Data de Fim: <input type="date" id="end-date"></label>
+                    </div>
+                </div>
+                <button id="clear-filters">
+                    <i class="fas fa-eraser"></i> Limpar Filtros
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="menu">
+            <div class="logo-container">
+                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bemii.png?raw=true"
+                    alt="Logo Bemii">
+                <!-- Botão de modo noturno -->
+                <button id="darkModeToggle" aria-label="Alternar modo noturno">
+                    <i class="fas fa-moon"></i> <!-- Ícone de lua -->
+                </button>
+            </div>
+
+
+            <div class="logo-user">
+                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bemii.png?raw=true"
+                    alt="Logo Bemii">
+                <div class="user-info">
+                    <p class="greeting">Bem-vindo,</p>
+                    <p class="username">Nome do Usuário</p>
+                    <!-- Substitua 'Nome do Usuário' pelo nome real do usuário -->
+                </div>
+            </div>
+
+            <button id="open-modal-btn"><i class="fas fa-plus"></i> Gerar Lançamento</button>
+            <button id="open-modal-btn-conta"><i class="fas fa-id-card"></i> Incluir Conta</button>
+            <button id="open-modal-btn-cartao"><i class="fas fa-credit-card"></i> Incluir Cartão</button>
+            <div class="filters">
+                <div>
+                    <button id="filter-banks">
+                        <i class="fas fa-university"></i> Filtrar por Bancos
+                    </button>
+                    <div id="banks-dropdown" class="dropdown">
+                        <ul>
+                            <li><label><input type="checkbox" value="Banco1"> Banco do Brasil</label></li>
+                            <li><label><input type="checkbox" value="Banco2"> Banco Pan</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Banco Inter</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Banco Safra</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Banco Votorantim</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Banrisul</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Bradesco</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Banco BTG</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Banco C6</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Caixa Econômica</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Cresol</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Infinity Pay</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Itaú</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Mercado Pago</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Next</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Nubank</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Pag Seguro</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Paypal</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> PicPay</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Santander</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Sicoob</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Sicredi</label></li>
+                            <li><label><input type="checkbox" value="Banco3"> Outros</label></li>
+
+                            <!-- Adicione mais bancos conforme necessário -->
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button id="filter-expenses">
+                        <i class="fas fa-money-bill"></i> Filtrar por Lançamento
+                    </button>
+                    <div id="expenses-dropdown" class="dropdown">
+                        <ul>
+                            <li><label><input type="checkbox" value="Despesas"> Despesas</label></li>
+                            <li><label><input type="checkbox" value="Receitas"> Receitas</label></li>
+                            <!-- Adicione mais despesas conforme necessário -->
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button id="filter-categories">
+                        <i class="fas fa-tags"></i> Filtrar por Categorias
+                    </button>
+                    <div id="categories-dropdown" class="dropdown">
+                        <ul>
+                            <li><label><input type="checkbox" value="Alimentação"> Alimentação</label></li>
+                            <li><label><input type="checkbox" value="Benefícios"> Benefícios</label></li>
+                            <li><label><input type="checkbox" value="Dívidas e Obrigações Financeiras"> Dívidas e
+                                    Obrigações Financeiras</label></li>
+                            <li><label><input type="checkbox" value="Doações e Caridade"> Doações e Caridade</label>
+                            </li>
+                            <li><label><input type="checkbox" value="Educação"> Educação</label></li>
+                            <li><label><input type="checkbox" value="Impostos e Taxas"> Impostos e Taxas</label></li>
+                            <li><label><input type="checkbox" value="Investimentos"> Investimentos</label></li>
+                            <li><label><input type="checkbox" value="Lazer e Entretenimento"> Lazer e
+                                    Entretenimento</label></li>
+                            <li><label><input type="checkbox" value="Moradia"> Moradia</label></li>
+                            <li><label><input type="checkbox" value="Patrimônios"> Patrimônios</label></li>
+                            <li><label><input type="checkbox" value="Rendimentos"> Rendimentos</label></li>
+                            <li><label><input type="checkbox" value="Saúde"> Saúde</label></li>
+                            <li><label><input type="checkbox" value="Seguros"> Seguros</label></li>
+                            <li><label><input type="checkbox" value="Transporte"> Transporte</label></li>
+                            <li><label><input type="checkbox" value="Vestuário e Beleza"> Vestuário e Beleza</label>
+                            </li>
+                            <li><label><input type="checkbox" value="Outros"> Outros</label></li>
+
+                            <!-- Adicione mais categorias conforme necessário -->
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button id="filter-period">
+                        <i class="fas fa-calendar-alt"></i> Filtrar por Período
+                    </button>
+                    <div id="period-dropdown" class="dropdown">
+                        <label>Data de Início: <input type="date" id="start-date"></label>
+                        <label>Data de Fim: <input type="date" id="end-date"></label>
+                    </div>
+                </div>
+                <button id="clear-filters">
+                    <i class="fas fa-eraser"></i> Limpar Filtros
+                </button>
+            </div>
+            
+
+        </div>
+        <div class="bloco-de-despesas">
+            <div class="bancos-bloco">
+                <div class="minhas-contas"><i class="fas fa-credit-card"></i><span>Minhas Contas</span>
+                    <hr>
+                </div>
+                <div class="meus-cartões"><i class="fas fa-id-card"></i><span>Meus Cartões</span></div>
+            </div>
+            <div class="despesas-e-receitas">
+                <div class="large" id="total-revenue">RECEITAS: R$ 0.00</div>
+                <div class="large" id="total-expenses">DESPESAS: R$ 0.00</div>
+                <div class="large" id="total-balance">SALDO: R$ 0.00</div>
+                <div class="large" id="total-account-balance">SALDO CONTAS: R$ 0.00</div>
+                <div class="large" id="total-card-limit">LIMITE CARTÕES: R$ 0.00</div>
+            </div>
+        </div>
+        <div class="grafico-bloco">
+            <div class="grafico-item"><span>Top 5 entradas por categorias</span> <canvas id="entradasGraph"></canvas>
+            </div>
+            <div class="grafico-item"><span>5 principais Despesas</span> <canvas id="despesasGraph"></canvas></div>
+            <div class="grafico-item"><span>Despesas Mensais Entrada x Saída</span> <canvas
+                    id="entradaSaidaGraph"></canvas></div>
+            <div class="grafico-item"><span>Despesas por Categorias</span> <canvas id="categoriasGraph"></canvas></div>
+        </div>
+        <div class="lancamentos">
+            <div class="export">
+                <button id="export-excel">Exportar para Excel</button>
+                <button id="export-pdf">Exportar para PDF</button>
+            </div>
+            <div class="receitas-bloco">
+                <h3>RECEITAS</h3>
+                <table class="tabela" id="receitas-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Categoria</th>
+                            <th>Tipo</th>
+                            <th>Valor</th>
+                            <th>Data</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="despesas-bloco">
+                <h3>DESPESAS</h3>
+                <table class="tabela" id="despesas-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Categoria</th>
+                            <th>Tipo</th>
+                            <th>Valor</th>
+                            <th>Data</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <!-- Coluna 1: Termos -->
+                <div class="terms">
+                    <p>Conteúdo:</p>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+
+                <!-- Coluna 2: Contatos -->
+                <div class="contact-info">
+                    <p>Contatos:</p>
+                    <a href="https://wa.me/seu_numero" target="_blank"><i class="fab fa-whatsapp"></i> (035)
+                        997378247</a>
+                    <a href="mailto:seu_email@example.com"><i class="fas fa-envelope"></i> bemiicontato2gmail.com</a>
+                </div>
+
+                <!-- Coluna 3: Redes Sociais -->
+                <div class="social-media">
+                    <p>Siga-nos:</p>
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <p>&copy; 2024 - Sua Empresa. Todos os direitos reservados.</p>
+        </footer>
+
+
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('myModal')">×</span>
+            <h1>Gerar Lançamento</h1>
+            <div class="form-container">
+                <form id="transaction-form">
+                    <label for="type">Tipo:</label>
+                    <select id="type" required>
+                        <option value="revenue">Selecione o Tipo de Lançamento</option>
+                        <option value="revenue">Receita</option>
+                        <option value="expense">Despesa</option>
+                    </select>
+
+                    <!-- Campo de descrição com seleção de subcategorias -->
+                    <label for="description">Descrição:</label>
+                    <select id="description" onchange="updateDescription(this)">
+                        <option value="">Selecione uma Descrição</option>
+                        <option value="Acessórios">Acessórios</option>
+                        <option value="Aluguel">Aluguel</option>
+                        <option value="Aplicativos de transporte (Uber, 99, etc.)">Aplicativos de transporte (Uber, 99,
+                            etc.)</option>
+                        <option value="Assinaturas de streaming (Netflix, Spotify, etc.)">Assinaturas de streaming
+                            (Netflix, Spotify, etc.)</option>
+                        <option value="Atividades recreativas">Atividades recreativas</option>
+                        <option value="Barbearia">Barbearia</option>
+                        <option value="Bônus e Comissões">Bônus e Comissões</option>
+                        <option value="Caridade">Caridade</option>
+                        <option value="Cartão de crédito">Cartão de crédito</option>
+                        <option value="Combustível">Combustível</option>
+                        <option value="Consultas médicas">Consultas médicas</option>
+                        <option value="Contas de água">Contas de água</option>
+                        <option value="Cursos e treinamentos">Cursos e treinamentos</option>
+                        <option value="Dividendos de Investimentos">Dividendos de Investimentos</option>
+                        <option value="Emprestimos">Emprestimos</option>
+                        <option value="Estacionamentos">Estacionamentos</option>
+                        <option value="Estética">Estética</option>
+                        <option value="Exames médicos">Exames médicos</option>
+                        <option value="Financiamentos">Financiamentos</option>
+                        <option value="Gás">Gás</option>
+                        <option value="Hipoteca">Hipoteca</option>
+                        <option value="Imposto de renda">Imposto de renda</option>
+                        <option value="Impostos e Taxas">Impostos e Taxas</option>
+                        <option value="Internet">Internet</option>
+                        <option value="IPTU (Imposto Predial e Territorial Urbano)">IPTU (Imposto Predial e Territorial
+                            Urbano)</option>
+                        <option value="IPVA (Imposto sobre a Propriedade de Veículos Automotores)">IPVA (Imposto sobre a
+                            Propriedade de Veículos Automotores)</option>
+                        <option value="Juros">Juros</option>
+                        <option value="Juros de Poupança">Juros de Poupança</option>
+                        <option value="Lanchonete">Lanchonete</option>
+                        <option value="Livros">Livros</option>
+                        <option value="Luz">Luz</option>
+                        <option value="Manutenção do veículo">Manutenção do veículo</option>
+                        <option value="Manutenção e reparos">Manutenção e reparos</option>
+                        <option value="Material escolar">Material escolar</option>
+                        <option value="Medicamentos">Medicamentos</option>
+                        <option value="Mensalidades escolares">Mensalidades escolares</option>
+                        <option value="Mensalidades universitárias">Mensalidades universitárias</option>
+                        <option value="Multas">Multas</option>
+                        <option value="Parcelamentos">Parcelamentos</option>
+                        <option value="Pedágios">Pedágios</option>
+                        <option value="Planos de saúde">Planos de saúde</option>
+                        <option value="Produtos de beleza">Produtos de beleza</option>
+                        <option value="Rendimentos de Freelance">Rendimentos de Freelance</option>
+                        <option value="Restaurantes">Restaurantes</option>
+                        <option value="Roupas">Roupas</option>
+                        <option value="Salão de beleza">Salão de beleza</option>
+                        <option value="Salário">Salário</option>
+                        <option value="Seguro automotivo">Seguro automotivo</option>
+                        <option value="Seguro de saúde">Seguro de saúde</option>
+                        <option value="Seguro de vida">Seguro de vida</option>
+                        <option value="Seguro residencial">Seguro residencial</option>
+                        <option value="Trabalho Autônomo">Trabalho Autônomo</option>
+                        <option value="Transporte público (ônibus, metrô, etc.)">Transporte público (ônibus, metrô,
+                            etc.)</option>
+                        <option value="Tratamentos">Tratamentos</option>
+                        <option value="Venda de Produtos">Venda de Produtos</option>
+                        <option value="Vendas de Investimentos">Vendas de Investimentos</option>
+                        <option value="Viagens">Viagens</option>
+                        <option value="Viagens">Outros</option>
+                    </select>
+
+
+
+                    <label for="category">Categoria:</label>
+                    <select id="category" required>
+                        <option value="">Selecione uma Categoria</option>
+                        <option value="Alimentação">Alimentação</option>
+                        <option value="Benefícios">Benefícios</option>
+                        <option value="Dívidas e Obrigações Financeiras">Dívidas e Obrigações Financeiras</option>
+                        <option value="Doações e Caridade">Doações e Caridade</option>
+                        <option value="Educação">Educação</option>
+                        <option value="Impostos e Taxas">Impostos e Taxas</option>
+                        <option value="Investimentos">Investimentos</option>
+                        <option value="Lazer e Entretenimento">Lazer e Entretenimento</option>
+                        <option value="Moradia">Moradia</option>
+                        <option value="Patrimônios">Patrimônios</option>
+                        <option value="Rendimentos">Rendimentos</option>
+                        <option value="Saúde">Saúde</option>
+                        <option value="Seguros">Seguros</option>
+                        <option value="Transporte">Transporte</option>
+                        <option value="Vestuário e Beleza">Vestuário e Beleza</option>
+                        <option value="Seguros">outros</option>
+                    </select>
+                    <label for="amount">Valor:</label>
+                    <input type="number" id="amount" required placeholder="Valor" step="0.01">
+                    <label for="date">Data:</label>
+                    <input type="date" id="date" required>
+                    <button type="submit">Adicionar Lançamento</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModalConta" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('myModalConta')">×</span>
+            <h1>Incluir Conta</h1>
+            <div class="form-container">
+                // Substitua o form existente em myModalConta por este
+                <form id="account-form" onsubmit="addAccount(event)">
+                    <label for="account-name">Nome da Conta:</label>
+                    <select id="account-name" required>
+                        <option value="">Selecione um nome</option>
+                        <option value="Banco do Brasil"><i class="fas fa-university"></i> Banco do Brasil</option>
+                        <option value="Banco Pan">Banco Pan</option>
+                        <option value="Banco Inter">Banco Inter</option>
+                        <option value="Banco Safra">Banco Safra</option>
+                        <option value="Banco Votorantim">Banco Votorantim</option>
+                        <option value="Banrisul">Banrisul</option>
+                        <option value="Bradesco">Bradesco</option>
+                        <option value="Banco BTG">Banco BTG</option>
+                        <option value="Banco C6">Banco C6</option>
+                        <option value="Caixa Econômica">Caixa Econômica</option>
+                        <option value="Cresol">Cresol</option>
+                        <option value="Infinity Pay">Infinity Pay</option>
+                        <option value="Itaú">Itaú</option>
+                        <option value="Mercado Pago">Mercado Pago</option>
+                        <option value="Next">Next</option>
+                        <option value="Nubank">Nubank</option>
+                        <option value="Pag Seguro">Pag Seguro</option>
+                        <option value="Paypal">Paypal</option>
+                        <option value="PicPay">PicPay</option>
+                        <option value="Santander">Santander</option>
+                        <option value="Sicoob">Sicoob</option>
+                        <option value="Sicredi">Sicredi</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                    <label for="bank-logo-account">Banco:</label>
+                    <select id="bank-logo-account" required>
+                        <option value="">Selecione um banco</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true">
+                            Banco do Brasil</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco%20pan.jpeg?raw=true">
+                            Banco Pan</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-inter.jpeg?raw=true">
+                            Banco Inter</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-safra.jpeg?raw=true">
+                            Banco Safra</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-votorantim.jpeg?raw=true">
+                            Banco Votorantim</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banrisul.jpeg?raw=true">
+                            Banrisul</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bradesco.jpeg?raw=true">
+                            Bradesco</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/btg.jpeg?raw=true">
+                            Banco BTG</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/c6.jpeg?raw=true">
+                            Banco C6</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/caixa.jpeg?raw=true">
+                            Caixa Econômica</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/cresol.jpeg?raw=true">
+                            Cresol</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/infinity-pay.jpeg?raw=true">
+                            Infinity Pay</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/itau.jpeg?raw=true">
+                            Itaú</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/mercado-pago.jpeg?raw=true">
+                            Mercado Pago</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/next.jpeg?raw=true">
+                            Next</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/nubank.jpeg?raw=true">
+                            Nubank</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/pagseguro.jpeg?raw=true">
+                            Pag Seguro</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/paypal.jpeg?raw=true">
+                            Paypal</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/picpay.jpeg?raw=true">
+                            PicPay</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/santander.jpeg?raw=true">
+                            Santander</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicoob.jpeg?raw=true">
+                            Sicoob</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicredi.jpeg?raw=true">
+                            Sicredi</option>
+                        <!-- Adicione mais bancos conforme necessário -->
+                    </select>
+                    <label for="account-balance">Saldo Inicial:</label>
+                    <input type="number" id="account-balance" required placeholder="Saldo" step="0.01">
+                    <button type="submit">Adicionar Conta</button>
+                </form>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModalCartao" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('myModalCartao')">×</span>
+            <h1>Incluir Cartão</h1>
+            <div class="form-container">
+                // Substitua o form existente em myModalCartao por este
+                <form id="card-form" onsubmit="addCard(event)">
+                    <label for="card-name">Nome do Cartão:</label>
+                    <select id="card-name" required>
+                        <option value="">Selecione um nome</option>
+                        <option value="Banco do Brasil">Banco do Brasil</option>
+                        <option value="Banco Pan">Banco Pan</option>
+                        <option value="Banco Inter">Banco Inter</option>
+                        <option value="Banco Safra">Banco Safra</option>
+                        <option value="Banco Votorantim">Banco Votorantim</option>
+                        <option value="Banrisul">Banrisul</option>
+                        <option value="Bradesco">Bradesco</option>
+                        <option value="Banco BTG">Banco BTG</option>
+                        <option value="Banco C6">Banco C6</option>
+                        <option value="Caixa Econômica">Caixa Econômica</option>
+                        <option value="Cresol">Cresol</option>
+                        <option value="Infinity Pay">Infinity Pay</option>
+                        <option value="Itaú">Itaú</option>
+                        <option value="Mercado Pago">Mercado Pago</option>
+                        <option value="Next">Next</option>
+                        <option value="Nubank">Nubank</option>
+                        <option value="Pag Seguro">Pag Seguro</option>
+                        <option value="Paypal">Paypal</option>
+                        <option value="PicPay">PicPay</option>
+                        <option value="Santander">Santander</option>
+                        <option value="Sicoob">Sicoob</option>
+                        <option value="Sicredi">Sicredi</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                    <label for="bank-logo-card">Banco:</label>
+                    <select id="bank-logo-card" required>
+                        <option value="">Selecione um banco</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true">
+                            Banco do Brasil</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco%20pan.jpeg?raw=true">
+                            Banco Pan</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-inter.jpeg?raw=true">
+                            Banco Inter</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-safra.jpeg?raw=true">
+                            Banco Safra</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-votorantim.jpeg?raw=true">
+                            Banco Votorantim</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banrisul.jpeg?raw=true">
+                            Banrisul</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bradesco.jpeg?raw=true">
+                            Bradesco</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/btg.jpeg?raw=true">
+                            Banco BTG</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/c6.jpeg?raw=true">
+                            Banco C6</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/caixa.jpeg?raw=true">
+                            Caixa Econômica</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/cresol.jpeg?raw=true">
+                            Cresol</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/infinity-pay.jpeg?raw=true">
+                            Infinity Pay</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/itau.jpeg?raw=true">
+                            Itaú</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/mercado-pago.jpeg?raw=true">
+                            Mercado Pago</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/next.jpeg?raw=true">
+                            Next</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/nubank.jpeg?raw=true">
+                            Nubank</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/pagseguro.jpeg?raw=true">
+                            Pag Seguro</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/paypal.jpeg?raw=true">
+                            Paypal</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/picpay.jpeg?raw=true">
+                            PicPay</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/santander.jpeg?raw=true">
+                            Santander</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicoob.jpeg?raw=true">
+                            Sicoob</option>
+                        <option
+                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicredi.jpeg?raw=true">
+                            Sicredi</option>
+                        <!-- Adicione mais bancos conforme necessário -->
+                    </select>
+                    <label for="card-limit">Limite do Cartão:</label>
+                    <input type="number" id="card-limit" required placeholder="Limite" step="0.01">
+                    <button type="submit">Adicionar Cartão</button>
+                </form>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-menu">
+        <a href="#home" class="menu-item">
+            <span class="icon">🏠</span>
+            <span class="label">Home</span>
+        </a>
+        <a href="#search" class="menu-item">
+            <span class="icon">🔍</span>
+            <span class="label">Buscar</span>
+        </a>
+        <a href="#profile" class="menu-item">
+            <span class="icon">👤</span>
+            <span class="label">Perfil</span>
+        </a>
+        <a href="#settings" class="menu-item">
+            <span class="icon">⚙️</span>
+            <span class="label">Configurações</span>
+        </a>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
