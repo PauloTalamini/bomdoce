@@ -23,6 +23,10 @@ document.getElementById('open-modal-btn-conta-mobile').onclick = function () {
     openModal('myModalConta');
 }
 
+document.getElementById('open-modal-btn-cartao').onclick = function () {
+    openModal('myModalCartao');
+}
+
 document.getElementById('open-modal-btn-cartao-mobile').onclick = function () {
     openModal('myModalCartao');
 }
