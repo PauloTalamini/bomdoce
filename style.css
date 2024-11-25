@@ -76,7 +76,7 @@ body.dark-mode {
 .menu-toggle {
     position: fixed;
     top: 20px;
-    left: 20px;
+    left: 8px;
     background: none;
     border: none;
     cursor: pointer;
@@ -233,10 +233,14 @@ body.dark-mode {
     .container {
         grid-template-columns: 1fr;
         padding-top: 90px !important;
+        grid-gap: 0 !important;
+    }
+
+    .grafico-bloco {
+        display: none !important;
     }
 
     .bloco-de-despesas,
-    .grafico-bloco,
     .lancamentos,
     .menu,
     .receitas-bloco,
