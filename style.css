@@ -263,6 +263,21 @@ body.dark-mode {
         font-size: 1em;
         padding: 10px;
     }
+
+    .bancos-bloco {
+        height: auto;
+        grid-template-columns: auto!important;
+        max-height: 400px !important;
+    }
+
+    .minhas-contas {
+        height: 160px;
+    }
+
+    .meus-cartões {
+        height: 160px;
+    }    
+
 }
 
 @media (max-width: 480px) {
@@ -1017,6 +1032,7 @@ body.dark-mode {
     color: #fff;
 }
 
+
 body.dark-mode .menu,
 body.dark-mode .sidebar,
 body.dark-mode .receitas-bloco,
@@ -1038,7 +1054,7 @@ body.dark-mode footer,
 body.dark-mode footer p,
 body.dark-mode footer a {
     color: #fff;
-
+}
     body.dark-mode .tabela th {
         background-color: #444;
         color: #fff;
