@@ -341,10 +341,12 @@ body.dark-mode {
 
     #total-balance {
         grid-column: 1 / -1;
-        /* Faz com que o bloco ocupe toda a linha */
     }
 
-
+    .large {
+        font-size: 1em!important;
+        height: 70px!important;
+    }
 }
 
 @media only screen and (min-width: 769px) {
