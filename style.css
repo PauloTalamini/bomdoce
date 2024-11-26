@@ -97,7 +97,7 @@ body.dark-mode {
 
 
 /* Ajuste para esconder o menu lateral no desktop */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .sidebar {
         display: none;
     }
@@ -841,6 +841,69 @@ h1 {
     display: flex;
     flex-direction: column;
 }
+
+.period-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.period-filter i {
+    font-size: 1rem;
+}
+
+.months-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    scrollbar-width: none;
+}
+
+.months-container::-webkit-scrollbar {
+    display: none;
+}
+
+.month {
+    flex: 0 0 auto;
+    padding: 10px 20px;
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    scroll-snap-align: center;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.month.active {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+.month:hover {
+    background-color: #555;
+}
+
+.scroll-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.scroll-btn:hover {
+    transform: scale(1.2);
+}
+
 
 .dropdown {
     border: 1px solid #ccc;
