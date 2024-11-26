@@ -245,7 +245,7 @@ body.dark-mode {
     .receitas-bloco,
     .despesas-bloco,
     .bancos-bloco {
-        grid-column: 1 / -1;
+        grid-column: 1 / -1 !important;
         width: 100%;
     }
 
@@ -597,7 +597,7 @@ body>div.container>div.bloco-de-despesas>div:nth-child(5) {
 
 .large {
     grid-column: span 1;
-    font-size: 1.5em;
+    font-size: 1em;
     display: flex;
     justify-content: center;
     align-items: center;
