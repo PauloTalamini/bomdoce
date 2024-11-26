@@ -28,7 +28,7 @@ body.dark-mode {
     margin: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between !important;
     position: fixed;
     top: 0; 
     left: 0;
@@ -74,16 +74,16 @@ body.dark-mode {
 
 /* Estilo para o botão do menu (hambúrguer) */
 .menu-toggle {
-    position: fixed;
-    top: 20px;
-    left: 8px;
+    position: unset;
+    margin: 0;
+    padding: 0;
     background: none;
     border: none;
     cursor: pointer;
     z-index: 1000;
     font-size: 30px;
     color: #1e1e1e;
-    display: block;
+    display: flex;
 }
 
 /* Ícone do menu em estado normal e de "X" */
@@ -847,7 +847,7 @@ h1 {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin: 15px 0;
+    margin: 15px 5%;
     overflow: hidden;
 }
 
