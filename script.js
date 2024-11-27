@@ -7,11 +7,16 @@ const totalBalanceElement = document.getElementById('total-balance');
 const receitasTableBody = document.querySelector('#receitas-table tbody');
 const despesasTableBody = document.querySelector('#despesas-table tbody');
 
+
 document.getElementById('open-modal-btn').onclick = function () {
     openModal('myModal');
 }
 
 document.getElementById('open-modal-btn-mobile').onclick = function () {
+    openModal('myModal');
+}
+
+document.getElementById('open-modal-btn-mobile-menu-inferior').onclick = function () {
     openModal('myModal');
 }
 

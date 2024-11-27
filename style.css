@@ -160,6 +160,11 @@ body.dark-mode {
             background-color: #555;
             transform: scale(1.1);
         }
+
+        .dropdown {
+            width: 80%!important;
+            margin-left: 10%!important;
+        }
 }
 
 
@@ -853,6 +858,7 @@ h1 {
 
 .period-filter i {
     font-size: 1rem;
+    color: #1e1e1e;
 }
 
 .months-container {
@@ -860,7 +866,7 @@ h1 {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 15px;
-    scrollbar-width: none;
+    scrollbar-width: none;  
 }
 
 .months-container::-webkit-scrollbar {
@@ -906,10 +912,11 @@ h1 {
 
 
 .dropdown {
-    border: 1px solid #ccc;
     padding: 10px;
-    background: white;
-    color: #444;
+    background: #1e1e1e;
+    color: #ffffff;
+    width: 206px;
+    margin-left: 25px;
     position: absolute;
     text-align: left;
     max-height: 0;
@@ -918,6 +925,22 @@ h1 {
     overflow: hidden;
     transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
     pointer-events: none;
+    font-size: 0.8rem;
+}
+
+#period-dropdown {
+    height: 120px;
+    display: flex!important;
+    flex-direction: column;
+    grid-gap: 15px;
+}
+
+#start-date {
+    width: 100%;
+}
+
+#end-date  {
+    width: 100%;
 }
 
 .filters div:hover .dropdown {
@@ -1096,6 +1119,9 @@ body.dark-mode {
     color: #fff;
 }
 
+body.dark-mode .period-filter i {
+color: #fff;
+}
 
 body.dark-mode .menu,
 body.dark-mode .sidebar,
@@ -1127,3 +1153,5 @@ body.dark-mode footer a {
     body.dark-mode .large {
         background-color: orange;
     }
+
+    
