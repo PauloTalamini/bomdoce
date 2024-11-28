@@ -1,3 +1,28 @@
+@media (max-width: 768px) {
+    .bloco-de-despesas, .grafico-bloco {
+        display: none;
+    }
+
+    .bloco-de-despesas.active, .grafico-bloco.active {
+        display: block;
+    }
+
+    body > div.container > div.grafico-bloco {
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .grafico-bloco {
+        flex-direction: column;
+        height: auto!important;
+       }
+    }
+
+
+
+
 /* Estilo para o modo noturno */
 body.dark-mode {
     background-color: #121212;
@@ -238,10 +263,6 @@ body.dark-mode {
         grid-template-columns: 1fr;
         padding-top: 90px !important;
         grid-gap: 0 !important;
-    }
-
-    .grafico-bloco {
-        display: none !important;
     }
 
     .bloco-de-despesas,

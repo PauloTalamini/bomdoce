@@ -616,6 +616,20 @@ function toggleMenu() {
 }
 
 
+// Gráfico mobile
+document.querySelector('.toggle-graph').addEventListener('click', function (event) {
+    event.preventDefault(); // Previne o comportamento padrão do link
+
+    // Seleciona as seções
+    const blocoDespesas = document.querySelector('.bloco-de-despesas');
+    const graficoBloco = document.querySelector('.grafico-bloco');
+
+    // Alterna a visibilidade
+    blocoDespesas.style.display = 'none'; // Oculta o bloco de despesas
+    graficoBloco.style.display = 'flex'; // Mostra o bloco de gráficos
+});
+
+
 
 
 
