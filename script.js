@@ -109,7 +109,14 @@ function updateTables(transactions) {
 
     totalBalance = totalRevenue - totalExpenses;
     totalBalanceElement.textContent = `TOTAL: R$ ${totalBalance.toFixed(2)}`;
+
+    // Atualizar gráficos
+    updateEntradasGraph(transactions);
+    updateDespesasGraph(transactions);
+    updateEntradaSaidaGraph(transactions);
+    updateCategoriasGraph(transactions);
 }
+
 
 function removeTransaction(index) {
     let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
@@ -646,6 +653,125 @@ document.querySelector('.toggle-table').addEventListener('click', function (even
     lancamentos.style.display = 'flex'; // Mostra a seção de lançamentos
 });
 
+//Gráfico Top 5 Entradas por Categorias
+
+function updateEntradasGraph(transactions) {
+    const entradasPorCategoria = transactions
+        .filter(t => t.type === 'revenue')
+        .reduce((acc, curr) => {
+            acc[curr.category] = (acc[curr.category] || 0) + curr.amount;
+            return acc;
+        }, {});
+
+    const categorias = Object.keys(entradasPorCategoria);
+    const valores = Object.values(entradasPorCategoria);
+
+    const sorted = categorias.map((c, i) => ({ categoria: c, valor: valores[i] }))
+        .sort((a, b) => b.valor - a.valor)
+        .slice(0, 5);
+
+    const ctx = document.getElementById('entradasGraph').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: sorted.map(e => e.categoria),
+            datasets: [{
+                label: 'Entradas por Categoria',
+                data: sorted.map(e => e.valor),
+                backgroundColor: '#4caf50',
+            }]
+        },
+        options: { responsive: true }
+    });
+}
+
+//Gráfico Top 5 Despesas
+function updateDespesasGraph(transactions) {
+    const despesasPorCategoria = transactions
+        .filter(t => t.type === 'expense')
+        .reduce((acc, curr) => {
+            acc[curr.category] = (acc[curr.category] || 0) + curr.amount;
+            return acc;
+        }, {});
+
+    const categorias = Object.keys(despesasPorCategoria);
+    const valores = Object.values(despesasPorCategoria);
+
+    const sorted = categorias.map((c, i) => ({ categoria: c, valor: valores[i] }))
+        .sort((a, b) => b.valor - a.valor)
+        .slice(0, 5);
+
+    const ctx = document.getElementById('despesasGraph').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: sorted.map(e => e.categoria),
+            datasets: [{
+                label: 'Despesas por Categoria',
+                data: sorted.map(e => e.valor),
+                backgroundColor: '#f44336',
+            }]
+        },
+        options: { responsive: true }
+    });
+}
+
+
+
+//Gráfico Despesas Mensais Entrada x Saída
+function updateEntradaSaidaGraph(transactions) {
+    const monthlyData = transactions.reduce((acc, curr) => {
+        const month = new Date(curr.date).toISOString().slice(0, 7); // YYYY-MM
+        if (!acc[month]) acc[month] = { entradas: 0, despesas: 0 };
+        if (curr.type === 'revenue') acc[month].entradas += curr.amount;
+        if (curr.type === 'expense') acc[month].despesas += curr.amount;
+        return acc;
+    }, {});
+
+    const months = Object.keys(monthlyData).sort();
+    const entradas = months.map(m => monthlyData[m].entradas);
+    const despesas = months.map(m => monthlyData[m].despesas);
+
+    const ctx = document.getElementById('entradaSaidaGraph').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: months,
+            datasets: [
+                { label: 'Entradas', data: entradas, borderColor: '#f44336',backgroundColor:'#ffffff', fill: false },
+                { label: 'Despesas', data: despesas, borderColor: '#f44336',backgroundColor:'#ffffff', fill: false }
+            ]
+        },
+        options: { responsive: true }
+    });
+}
+
+
+//Gráfico Sobre Categorias
+function updateCategoriasGraph(transactions) {
+    const despesasPorCategoria = transactions
+        .filter(t => t.type === 'expense')
+        .reduce((acc, curr) => {
+            acc[curr.category] = (acc[curr.category] || 0) + curr.amount;
+            return acc;
+        }, {});
+
+    const categorias = Object.keys(despesasPorCategoria);
+    const valores = Object.values(despesasPorCategoria);
+
+    const ctx = document.getElementById('categoriasGraph').getContext('2d');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: categorias,
+            datasets: [{
+                data: valores,
+                backgroundColor: ['#f44336', '#ff9800', '#4caf50', '#2196f3', '#9c27b0'],
+            }]
+        },
+        options: { responsive: true }
+    });
+}
 
 
 
