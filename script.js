@@ -653,8 +653,9 @@ document.querySelector('.toggle-table').addEventListener('click', function (even
     lancamentos.style.display = 'flex'; // Mostra a seção de lançamentos
 });
 
-//Gráfico Top 5 Entradas por Categorias
 
+
+//Gráfico Top 5 Entradas por Categorias
 function updateEntradasGraph(transactions) {
     const entradasPorCategoria = transactions
         .filter(t => t.type === 'revenue')
@@ -681,9 +682,18 @@ function updateEntradasGraph(transactions) {
                 backgroundColor: '#4caf50',
             }]
         },
-        options: { responsive: true }
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false // Oculta a legenda
+                }
+            }
+        }
     });
 }
+
+
 
 //Gráfico Top 5 Despesas
 function updateDespesasGraph(transactions) {
@@ -712,9 +722,17 @@ function updateDespesasGraph(transactions) {
                 backgroundColor: '#f44336',
             }]
         },
-        options: { responsive: true }
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false // Oculta a legenda
+                }
+            }
+        }
     });
 }
+
 
 
 
@@ -738,13 +756,21 @@ function updateEntradaSaidaGraph(transactions) {
         data: {
             labels: months,
             datasets: [
-                { label: 'Entradas', data: entradas, borderColor: '#f44336',backgroundColor:'#ffffff', fill: false },
-                { label: 'Despesas', data: despesas, borderColor: '#f44336',backgroundColor:'#ffffff', fill: false }
+                { label: 'Entradas', data: entradas, borderColor: '#4caf50', backgroundColor: '#ffffff', fill: false },
+                { label: 'Despesas', data: despesas, borderColor: '#f44336', backgroundColor: '#ffffff', fill: false }
             ]
         },
-        options: { responsive: true }
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false // Oculta a legenda
+                }
+            }
+        }
     });
 }
+
 
 
 //Gráfico Sobre Categorias
@@ -769,9 +795,25 @@ function updateCategoriasGraph(transactions) {
                 backgroundColor: ['#f44336', '#ff9800', '#4caf50', '#2196f3', '#9c27b0'],
             }]
         },
-        options: { responsive: true }
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true, // Exibe a legenda
+                    position: 'bottom', // Coloca a legenda no rodapé
+                    labels: {
+                        font: {
+                            size: 12, // Define o tamanho da fonte da legenda
+                            family: 'Arial', // Fonte da legenda
+                        }
+                    }
+                }
+            }
+        }
     });
 }
+
+
 
 
 

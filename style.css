@@ -1199,5 +1199,9 @@ body.dark-mode footer a {
     body.dark-mode .large {
         background-color: orange;
     }
-
+    #categoriasGraph {
+        width: 150px!important;
+        height: 150px!important;
+        max-width: 100%!important;
+    }
     
