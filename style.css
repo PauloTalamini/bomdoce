@@ -1,14 +1,18 @@
 @media (max-width: 768px) {
-    .bloco-de-despesas, .grafico-bloco {
+    .bloco-de-despesas, .grafico-bloco, .lancamentos {
         display: none;
     }
 
-    .bloco-de-despesas.active, .grafico-bloco.active {
+    .bloco-de-despesas.active, .grafico-bloco.active, .lancamentos.active {
         display: block;
     }
 
     body > div.container > div.grafico-bloco {
         display: none;
+    }
+
+    body > div.container > div.lancamentos {
+        display: none; 
     }
 
 }
@@ -18,6 +22,24 @@
         flex-direction: column;
         height: auto!important;
        }
+    .lancamentos {
+        flex-direction: column;    grid-column: 1 / 9;
+        display: inline-flex;
+        height: 600px!important;
+        max-height: 600px!important;
+        margin-top: 0px!important;
+        justify-content: flex-start!important;
+    }
+
+    .export {
+        margin-top: 0!important;
+        margin-bottom: 0!important;
+    }
+
+    #export-excel {
+        margin-bottom: 0!important;   
+    }
+
     }
 
 
@@ -346,11 +368,6 @@ body.dark-mode {
 .logo-user {
     margin: 0 20px 30px 20px;
 }
-
-    .lancamentos {
-        display: none !important;
-    }
-
 
     footer {
         display: none !important;

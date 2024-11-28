@@ -623,11 +623,33 @@ document.querySelector('.toggle-graph').addEventListener('click', function (even
     // Seleciona as seções
     const blocoDespesas = document.querySelector('.bloco-de-despesas');
     const graficoBloco = document.querySelector('.grafico-bloco');
+    const lancamentos = document.querySelector('.lancamentos');
 
-    // Alterna a visibilidade
+    // Alterna a visibilidade das seções
     blocoDespesas.style.display = 'none'; // Oculta o bloco de despesas
     graficoBloco.style.display = 'flex'; // Mostra o bloco de gráficos
+    lancamentos.style.display = 'none'; // Oculta a seção de lançamentos
 });
+
+// Tabelas mobile
+document.querySelector('.toggle-table').addEventListener('click', function (event) {
+    event.preventDefault(); // Previne o comportamento padrão do link
+
+    // Seleciona as seções
+    const blocoDespesas = document.querySelector('.bloco-de-despesas');
+    const graficoBloco = document.querySelector('.grafico-bloco');
+    const lancamentos = document.querySelector('.lancamentos');
+
+    // Alterna a visibilidade das seções
+    blocoDespesas.style.display = 'none'; // Oculta o bloco de despesas
+    graficoBloco.style.display = 'none'; // Oculta o bloco de gráficos
+    lancamentos.style.display = 'flex'; // Mostra a seção de lançamentos
+});
+
+
+
+
+
 
 
 
