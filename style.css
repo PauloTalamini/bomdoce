@@ -975,6 +975,25 @@ h1 {
     grid-gap: 15px;
 }
 
+#categories-dropdown i {
+    margin-right: 8px;
+    margin-left: 5px;
+    font-size: 10px;
+}
+
+#expenses-dropdown i {
+    margin-right: 8px;
+    margin-left: 5px;
+    font-size: 10px;  
+}
+
+
+
+label {
+    display: flex;
+    align-items: center;
+}
+
 #start-date {
     width: 100%;
 }
