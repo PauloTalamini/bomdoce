@@ -552,7 +552,7 @@ body>div.container>div.bloco-de-despesas>div:nth-child(5) {
 
 
 .menu button {
-    background-color: #1e1e1e;
+    background-color: #1e1e1e!important;
     border: none;
     color: #f0f0f0;
     padding: 10px;
