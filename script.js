@@ -655,7 +655,10 @@ document.querySelector('.toggle-table').addEventListener('click', function (even
 
 
 
-//Gráfico Top 5 Entradas por Categorias
+// Variáveis globais para armazenar instâncias dos gráficos
+let entradasChart, despesasChart, entradaSaidaChart, categoriasChart;
+
+// Gráfico Top 5 Entradas por Categorias
 function updateEntradasGraph(transactions) {
     const entradasPorCategoria = transactions
         .filter(t => t.type === 'revenue')
@@ -672,7 +675,9 @@ function updateEntradasGraph(transactions) {
         .slice(0, 5);
 
     const ctx = document.getElementById('entradasGraph').getContext('2d');
-    new Chart(ctx, {
+
+    if (entradasChart) entradasChart.destroy(); // Destrói o gráfico existente
+    entradasChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: sorted.map(e => e.categoria),
@@ -685,17 +690,13 @@ function updateEntradasGraph(transactions) {
         options: {
             responsive: true,
             plugins: {
-                legend: {
-                    display: false // Oculta a legenda
-                }
+                legend: { display: false }
             }
         }
     });
 }
 
-
-
-//Gráfico Top 5 Despesas
+// Gráfico Top 5 Despesas
 function updateDespesasGraph(transactions) {
     const despesasPorCategoria = transactions
         .filter(t => t.type === 'expense')
@@ -712,7 +713,9 @@ function updateDespesasGraph(transactions) {
         .slice(0, 5);
 
     const ctx = document.getElementById('despesasGraph').getContext('2d');
-    new Chart(ctx, {
+
+    if (despesasChart) despesasChart.destroy(); // Destrói o gráfico existente
+    despesasChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: sorted.map(e => e.categoria),
@@ -725,18 +728,13 @@ function updateDespesasGraph(transactions) {
         options: {
             responsive: true,
             plugins: {
-                legend: {
-                    display: false // Oculta a legenda
-                }
+                legend: { display: false }
             }
         }
     });
 }
 
-
-
-
-//Gráfico Despesas Mensais Entrada x Saída
+// Gráfico Despesas Mensais Entrada x Saída
 function updateEntradaSaidaGraph(transactions) {
     const monthlyData = transactions.reduce((acc, curr) => {
         const month = new Date(curr.date).toISOString().slice(0, 7); // YYYY-MM
@@ -751,29 +749,27 @@ function updateEntradaSaidaGraph(transactions) {
     const despesas = months.map(m => monthlyData[m].despesas);
 
     const ctx = document.getElementById('entradaSaidaGraph').getContext('2d');
-    new Chart(ctx, {
+
+    if (entradaSaidaChart) entradaSaidaChart.destroy(); // Destrói o gráfico existente
+    entradaSaidaChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: months,
             datasets: [
-                { label: 'Entradas', data: entradas, borderColor: '#4caf50', backgroundColor: '#ffffff', fill: false },
-                { label: 'Despesas', data: despesas, borderColor: '#f44336', backgroundColor: '#ffffff', fill: false }
+                { label: 'Entradas', data: entradas, backgroundColor: '#4caf50' },
+                { label: 'Despesas', data: despesas, backgroundColor: '#f44336' }
             ]
         },
         options: {
             responsive: true,
             plugins: {
-                legend: {
-                    display: false // Oculta a legenda
-                }
+                legend: { display: false }
             }
         }
     });
 }
 
-
-
-//Gráfico Sobre Categorias
+// Gráfico Sobre Categorias
 function updateCategoriasGraph(transactions) {
     const despesasPorCategoria = transactions
         .filter(t => t.type === 'expense')
@@ -786,7 +782,9 @@ function updateCategoriasGraph(transactions) {
     const valores = Object.values(despesasPorCategoria);
 
     const ctx = document.getElementById('categoriasGraph').getContext('2d');
-    new Chart(ctx, {
+
+    if (categoriasChart) categoriasChart.destroy(); // Destrói o gráfico existente
+    categoriasChart = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: categorias,
@@ -799,27 +797,13 @@ function updateCategoriasGraph(transactions) {
             responsive: true,
             plugins: {
                 legend: {
-                    display: true, // Exibe a legenda
-                    position: 'bottom', // Coloca a legenda no rodapé
-                    labels: {
-                        font: {
-                            size: 12, // Define o tamanho da fonte da legenda
-                            family: 'Arial', // Fonte da legenda
-                        }
-                    }
+                    display: true,
+                    position: 'bottom',
+                    labels: { font: { size: 12, family: 'Arial' } }
                 }
             }
         }
     });
 }
-
-
-
-
-
-
-
-
-
 
 
