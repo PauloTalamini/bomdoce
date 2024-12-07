@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <title>Gerenciador de Despesas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
@@ -20,256 +20,145 @@
         <!-- Link para Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <div class="header-mobile">
-            <!-- Botão com ícone de hambúrguer -->
-            <button class="menu-toggle" onclick="toggleMenu()">
-                <i id="menu-icon" class="fas fa-bars"></i>
-            </button>
+        <!-- Botão com ícone de hambúrguer -->
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <i id="menu-icon" class="fas fa-bars"></i>
+        </button>
 
-            <div class="period-filter">
-                <button class="scroll-btn" id="prev-month"><i class="fas fa-chevron-left"></i></button>
-                <div class="months-container">
-                    <div class="month" data-month="2024-01">Janeiro</div>
-                    <div class="month" data-month="2024-02">Fevereiro</div>
-                    <div class="month" data-month="2024-03">Março</div>
-                    <div class="month" data-month="2024-04">Abril</div>
-                    <div class="month" data-month="2024-05">Maio</div>
-                    <div class="month" data-month="2024-06">Junho</div>
-                    <div class="month" data-month="2024-07">Julho</div>
-                    <div class="month" data-month="2024-08">Agosto</div>
-                    <div class="month" data-month="2024-09">Setembro</div>
-                    <div class="month" data-month="2023-10">Outubro</div>
-                    <div class="month" data-month="2023-11">Novembro</div>
-                    <div class="month" data-month="2023-12">Dezembro</div>
-                </div>
-                <button class="scroll-btn" id="next-month"><i class="fas fa-chevron-right"></i></button>
+        <div class="period-filter">
+            <button class="scroll-btn" id="prev-month"><i class="fas fa-chevron-left"></i></button>
+            <div class="months-container">
+                <div class="month" data-month="2024-01">Janeiro</div>
+                <div class="month" data-month="2024-02">Fevereiro</div>
+                <div class="month" data-month="2024-03">Março</div>
+                <div class="month" data-month="2024-04">Abril</div>
+                <div class="month" data-month="2024-05">Maio</div>
+                <div class="month" data-month="2024-06">Junho</div>
+                <div class="month" data-month="2024-07">Julho</div>
+                <div class="month" data-month="2024-08">Agosto</div>
+                <div class="month" data-month="2024-09">Setembro</div>
+                <div class="month" data-month="2023-10">Outubro</div>
+                <div class="month" data-month="2023-11">Novembro</div>
+                <div class="month" data-month="2023-12">Dezembro</div>
+            </div>
+            <button class="scroll-btn" id="next-month"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        
+        <!-- Botão de modo noturno -->
+        <button id="darkModeToggleMobile" aria-label="Alternar modo noturno">
+            <i class="fas fa-moon"></i> <!-- Ícone de lua -->
+        </button>
+
+        <!-- Menu Lateral -->
+        <div class="sidebar" id="sidebar">
+            <div class="logo-container">
+                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bemii.png?raw=true"
+                    alt="Logo Bemii">
             </div>
 
-
-            <!-- Botão de modo noturno -->
-            <button id="darkModeToggleMobile" aria-label="Alternar modo noturno">
-                <i class="fas fa-moon"></i> <!-- Ícone de lua -->
-            </button>
-
-            <!-- Menu Lateral -->
-            <div class="sidebar" id="sidebar">
-                <div class="logo-container">
-                    <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bemii.png?raw=true"
-                        alt="Logo Bemii">
+            <div class="logo-user">
+                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bemii.png?raw=true"
+                    alt="Logo Bemii">
+                <div class="user-info">
+                    <p class="greeting">Bem-vindo,</p>
+                    <p class="username">Nome do Usuário</p>
+                    <!-- Substitua 'Nome do Usuário' pelo nome real do usuário -->
                 </div>
-
-                <div class="logo-user">
-                    <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bemii.png?raw=true"
-                        alt="Logo Bemii">
-                    <div class="user-info">
-                        <p class="greeting">Bem-vindo,</p>
-                        <p class="username">Nome do Usuário</p>
-                        <!-- Substitua 'Nome do Usuário' pelo nome real do usuário -->
-                    </div>
-                </div>
-                <button id="open-modal-btn-mobile"><i class="fas fa-plus"></i> Gerar Lançamento</button>
-                <button id="open-modal-btn-conta-mobile""><i class=" fas fa-id-card"></i> Incluir Conta</button>
-                <button id="open-modal-btn-cartao-mobile""><i class=" fas fa-credit-card"></i> Incluir Cartão</button>
-                <div class="filters">
-                    <div>
-                        <button id="filter-banks">
-                            <i class="fas fa-university"></i> Filtrar por Bancos
-                        </button>
-                        <div id="banks-dropdown" class="dropdown">
-                            <ul>
-                                <li><label><input type="checkbox" value="Banco1"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true"
-                                            alt="Banco do Brasil"
-                                            style="width: 15px; height: 15px; margin-right: 5px;margin-left: 5px;border-radius: 50%;">
-                                        Banco do Brasil</label></li>
-                                <li><label><input type="checkbox" value="Banco1"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true"
-                                            alt="Banco do Brasil"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Banco do Brasil</label></li>
-                                <li><label><input type="checkbox" value="Banco2"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco%20pan.jpeg?raw=true"
-                                            alt="Banco Pan"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Banco Pan</label></li>
-                                <li><label><input type="checkbox" value="Banco3"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-inter.jpeg?raw=true"
-                                            alt="Banco Inter"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Banco Inter</label></li>
-                                <li><label><input type="checkbox" value="Banco4"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-safra.jpeg?raw=true"
-                                            alt="Banco Safra"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Banco Safra</label></li>
-                                <li><label><input type="checkbox" value="Banco5"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-votorantim.jpeg?raw=true"
-                                            alt="Banco Votorantim"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Banco Votorantim</label></li>
-                                <li><label><input type="checkbox" value="Banco6"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banrisul.jpeg?raw=true"
-                                            alt="Banrisul"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Banrisul</label></li>
-                                <li><label><input type="checkbox" value="Banco7"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bradesco.jpeg?raw=true"
-                                            alt="Bradesco"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Bradesco</label></li>
-                                <li><label><input type="checkbox" value="Banco8"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/btg.jpeg?raw=true"
-                                            alt="Banco BTG"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Banco BTG</label></li>
-                                <li><label><input type="checkbox" value="Banco9"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/c6.jpeg?raw=true"
-                                            alt="Banco C6"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Banco C6</label></li>
-                                <li><label><input type="checkbox" value="Banco10"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/caixa.jpeg?raw=true"
-                                            alt="Caixa Econômica"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Caixa Econômica</label></li>
-                                <li><label><input type="checkbox" value="Banco11"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/cresol.jpeg?raw=true"
-                                            alt="Cresol"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Cresol</label></li>
-                                <li><label><input type="checkbox" value="Banco12"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/infinity-pay.jpeg?raw=true"
-                                            alt="Infinity Pay"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Infinity Pay</label></li>
-                                <li><label><input type="checkbox" value="Banco13"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/itau.jpeg?raw=true"
-                                            alt="Itaú"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Itaú</label></li>
-                                <li><label><input type="checkbox" value="Banco14"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/mercado-pago.jpeg?raw=true"
-                                            alt="Mercado Pago"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Mercado Pago</label></li>
-                                <li><label><input type="checkbox" value="Banco15"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/next.jpeg?raw=true"
-                                            alt="Next"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Next</label></li>
-                                <li><label><input type="checkbox" value="Banco16"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/nubank.jpeg?raw=true"
-                                            alt="Nubank"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Nubank</label></li>
-                                <li><label><input type="checkbox" value="Banco17"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/pagseguro.jpeg?raw=true"
-                                            alt="Pag Seguro"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Pag Seguro</label></li>
-                                <li><label><input type="checkbox" value="Banco18"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/paypal.jpeg?raw=true"
-                                            alt="Paypal"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Paypal</label></li>
-                                <li><label><input type="checkbox" value="Banco19"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/picpay.jpeg?raw=true"
-                                            alt="PicPay"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        PicPay</label></li>
-                                <li><label><input type="checkbox" value="Banco20"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/santander.jpeg?raw=true"
-                                            alt="Santander"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Santander</label></li>
-                                <li><label><input type="checkbox" value="Banco21"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicoob.jpeg?raw=true"
-                                            alt="Sicoob"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Sicoob</label></li>
-                                <li><label><input type="checkbox" value="Banco22"><img
-                                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicredi.jpeg?raw=true"
-                                            alt="Sicredi"
-                                            style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                        Sicredi</label></li>
-                                <li><label><input type="checkbox" value="Banco23"><i class="fas fa-ellipsis-h"
-                                            style="margin-right: 5px;margin-left: 5px;"></i>Outros</label></li>
-
-                                <!-- Adicione mais bancos conforme necessário -->
-                            </ul>
-                        </div>
-                    </div>
-                    <div>
-                        <button id="filter-expenses">
-                            <i class="fas fa-money-bill"></i> Filtrar por Lançamento
-                        </button>
-                        <div id="expenses-dropdown" class="dropdown">
-                            <ul>
-                                <li><label><input type="checkbox" value="Despesas"><i
-                                            class="fas fa-arrow-down"></i>Despesas</label></li>
-                                <li><label><input type="checkbox" value="Receitas"><i
-                                            class="fas fa-arrow-up"></i>Receitas</label></li>
-                                <!-- Adicione mais despesas conforme necessário -->
-                            </ul>
-                        </div>
-                    </div>
-                    <div>
-                        <button id="filter-categories">
-                            <i class="fas fa-tags"></i> Filtrar por Categorias
-                        </button>
-                        <div id="categories-dropdown" class="dropdown">
-                            <ul>
-                                <li><label><input type="checkbox" value="Alimentação"><i
-                                            class="fas fa-utensils"></i>Alimentação</label></li>
-                                <li><label><input type="checkbox" value="Benefícios"><i
-                                            class="fas fa-gift"></i>Benefícios</label></li>
-                                <li><label><input type="checkbox" value="Dívidas e Obrigações Financeiras"><i
-                                            class="fas fa-file-invoice-dollar"></i>Obrig. Financeiras</label></li>
-                                <li><label><input type="checkbox" value="Doações e Caridade"><i
-                                            class="fas fa-hands-helping"></i>Doações e Caridade</label></li>
-                                <li><label><input type="checkbox" value="Educação"><i
-                                            class="fas fa-book"></i>Educação</label></li>
-                                <li><label><input type="checkbox" value="Impostos e Taxas"><i
-                                            class="fas fa-receipt"></i>Impostos e Taxas</label></li>
-                                <li><label><input type="checkbox" value="Investimentos"><i
-                                            class="fas fa-chart-line"></i>Investimentos</label></li>
-                                <li><label><input type="checkbox" value="Lazer e Entretenimento"><i
-                                            class="fas fa-film"></i>Lazer</label></li>
-                                <li><label><input type="checkbox" value="Moradia"><i
-                                            class="fas fa-home"></i>Moradia</label></li>
-                                <li><label><input type="checkbox" value="Patrimônios"><i
-                                            class="fas fa-landmark"></i>Patrimônios</label></li>
-                                <li><label><input type="checkbox" value="Rendimentos"><i
-                                            class="fas fa-coins"></i>Rendimentos</label></li>
-                                <li><label><input type="checkbox" value="Saúde"><i
-                                            class="fas fa-heartbeat"></i>Saúde</label></li>
-                                <li><label><input type="checkbox" value="Seguros"><i
-                                            class="fas fa-shield-alt"></i>Seguros</label></li>
-                                <li><label><input type="checkbox" value="Transporte"><i
-                                            class="fas fa-bus"></i>Transporte</label></li>
-                                <li><label><input type="checkbox" value="Vestuário e Beleza"><i
-                                            class="fas fa-tshirt"></i>Vestuário e Beleza</label></li>
-                                <li><label><input type="checkbox" value="Outros"><i
-                                            class="fas fa-ellipsis-h"></i>Outros</label></li>
-
-                                <!-- Adicione mais categorias conforme necessário -->
-                            </ul>
-                        </div>
-                    </div>
-                    <div>
-                        <button id="filter-period">
-                            <i class="fas fa-calendar-alt"></i> Filtrar por Período
-                        </button>
-                        <div id="period-dropdown" class="dropdown">
-                            <label>Data de Início: <input type="date" id="start-date"></label>
-                            <label>Data de Fim: <input type="date" id="end-date"></label>
-                        </div>
-                    </div>
-                    <button id="clear-filters">
-                        <i class="fas fa-eraser"></i> Limpar Filtros
+            </div>
+            <button id="open-modal-btn-mobile"><i class="fas fa-plus"></i> Gerar Lançamento</button>
+            <button id="open-modal-btn-conta-mobile""><i class="fas fa-id-card"></i> Incluir Conta</button>
+            <button id="open-modal-btn-cartao-mobile""><i class="fas fa-credit-card"></i> Incluir Cartão</button>
+            <div class="filters">
+                <div>
+                    <button id="filter-banks">
+                        <i class="fas fa-university"></i> Filtrar por Bancos
                     </button>
+                    <div id="banks-dropdown" class="dropdown">
+                        <ul>
+                            <li><label><input type="checkbox" value="Banco1"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true" alt="Banco do Brasil" style="width: 15px; height: 15px; margin-right: 5px;margin-left: 5px;border-radius: 50%;"> Banco do Brasil</label></li>
+                            <li><label><input type="checkbox" value="Banco1"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true" alt="Banco do Brasil" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco do Brasil</label></li>
+                            <li><label><input type="checkbox" value="Banco2"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco%20pan.jpeg?raw=true" alt="Banco Pan" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Pan</label></li>
+                            <li><label><input type="checkbox" value="Banco3"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-inter.jpeg?raw=true" alt="Banco Inter" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Inter</label></li>
+                            <li><label><input type="checkbox" value="Banco4"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-safra.jpeg?raw=true" alt="Banco Safra" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Safra</label></li>
+                            <li><label><input type="checkbox" value="Banco5"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-votorantim.jpeg?raw=true" alt="Banco Votorantim" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Votorantim</label></li>
+                            <li><label><input type="checkbox" value="Banco6"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banrisul.jpeg?raw=true" alt="Banrisul" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banrisul</label></li>
+                            <li><label><input type="checkbox" value="Banco7"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bradesco.jpeg?raw=true" alt="Bradesco" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Bradesco</label></li>
+                            <li><label><input type="checkbox" value="Banco8"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/btg.jpeg?raw=true" alt="Banco BTG" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco BTG</label></li>
+                            <li><label><input type="checkbox" value="Banco9"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/c6.jpeg?raw=true" alt="Banco C6" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco C6</label></li>
+                            <li><label><input type="checkbox" value="Banco10"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/caixa.jpeg?raw=true" alt="Caixa Econômica" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Caixa Econômica</label></li>
+                            <li><label><input type="checkbox" value="Banco11"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/cresol.jpeg?raw=true" alt="Cresol" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Cresol</label></li>
+                            <li><label><input type="checkbox" value="Banco12"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/infinity-pay.jpeg?raw=true" alt="Infinity Pay" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Infinity Pay</label></li>
+                            <li><label><input type="checkbox" value="Banco13"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/itau.jpeg?raw=true" alt="Itaú" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Itaú</label></li>
+                            <li><label><input type="checkbox" value="Banco14"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/mercado-pago.jpeg?raw=true" alt="Mercado Pago" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Mercado Pago</label></li>
+                            <li><label><input type="checkbox" value="Banco15"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/next.jpeg?raw=true" alt="Next" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Next</label></li>
+                            <li><label><input type="checkbox" value="Banco16"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/nubank.jpeg?raw=true" alt="Nubank" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Nubank</label></li>
+                            <li><label><input type="checkbox" value="Banco17"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/pagseguro.jpeg?raw=true" alt="Pag Seguro" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Pag Seguro</label></li>
+                            <li><label><input type="checkbox" value="Banco18"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/paypal.jpeg?raw=true" alt="Paypal" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Paypal</label></li>
+                            <li><label><input type="checkbox" value="Banco19"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/picpay.jpeg?raw=true" alt="PicPay" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> PicPay</label></li>
+                            <li><label><input type="checkbox" value="Banco20"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/santander.jpeg?raw=true" alt="Santander" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Santander</label></li>
+                            <li><label><input type="checkbox" value="Banco21"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicoob.jpeg?raw=true" alt="Sicoob" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Sicoob</label></li>
+                            <li><label><input type="checkbox" value="Banco22"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicredi.jpeg?raw=true" alt="Sicredi" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Sicredi</label></li>
+                            <li><label><input type="checkbox" value="Banco23"><i class="fas fa-ellipsis-h" style="margin-right: 5px;margin-left: 5px;"></i>Outros</label></li>
+
+                            <!-- Adicione mais bancos conforme necessário -->
+                        </ul>
+                    </div>
                 </div>
+                <div>
+                    <button id="filter-expenses">
+                        <i class="fas fa-money-bill"></i> Filtrar por Lançamento
+                    </button>
+                    <div id="expenses-dropdown" class="dropdown">
+                        <ul>
+                            <li><label><input type="checkbox" value="Despesas"><i class="fas fa-arrow-down"></i>Despesas</label></li>
+                            <li><label><input type="checkbox" value="Receitas"><i class="fas fa-arrow-up"></i>Receitas</label></li>
+                            <!-- Adicione mais despesas conforme necessário -->
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button id="filter-categories">
+                        <i class="fas fa-tags"></i> Filtrar por Categorias
+                    </button>
+                    <div id="categories-dropdown" class="dropdown">
+                        <ul>
+                            <li><label><input type="checkbox" value="Alimentação"><i class="fas fa-utensils"></i>Alimentação</label></li>
+                            <li><label><input type="checkbox" value="Benefícios"><i class="fas fa-gift"></i>Benefícios</label></li>
+                            <li><label><input type="checkbox" value="Dívidas e Obrigações Financeiras"><i class="fas fa-file-invoice-dollar"></i>Obrig. Financeiras</label></li>
+                            <li><label><input type="checkbox" value="Doações e Caridade"><i class="fas fa-hands-helping"></i>Doações e Caridade</label></li>
+                            <li><label><input type="checkbox" value="Educação"><i class="fas fa-book"></i>Educação</label></li>
+                            <li><label><input type="checkbox" value="Impostos e Taxas"><i class="fas fa-receipt"></i>Impostos e Taxas</label></li>
+                            <li><label><input type="checkbox" value="Investimentos"><i class="fas fa-chart-line"></i>Investimentos</label></li>
+                            <li><label><input type="checkbox" value="Lazer e Entretenimento"><i class="fas fa-film"></i>Lazer</label></li>
+                            <li><label><input type="checkbox" value="Moradia"><i class="fas fa-home"></i>Moradia</label></li>
+                            <li><label><input type="checkbox" value="Patrimônios"><i class="fas fa-landmark"></i>Patrimônios</label></li>
+                            <li><label><input type="checkbox" value="Rendimentos"><i class="fas fa-coins"></i>Rendimentos</label></li>
+                            <li><label><input type="checkbox" value="Saúde"><i class="fas fa-heartbeat"></i>Saúde</label></li>
+                            <li><label><input type="checkbox" value="Seguros"><i class="fas fa-shield-alt"></i>Seguros</label></li>
+                            <li><label><input type="checkbox" value="Transporte"><i class="fas fa-bus"></i>Transporte</label></li>
+                            <li><label><input type="checkbox" value="Vestuário e Beleza"><i class="fas fa-tshirt"></i>Vestuário e Beleza</label></li>
+                            <li><label><input type="checkbox" value="Outros"><i class="fas fa-ellipsis-h"></i>Outros</label></li>
+
+                            <!-- Adicione mais categorias conforme necessário -->
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <button id="filter-period">
+                        <i class="fas fa-calendar-alt"></i> Filtrar por Período
+                    </button>
+                    <div id="period-dropdown" class="dropdown">
+                        <label>Data de Início: <input type="date" id="start-date"></label>
+                        <label>Data de Fim: <input type="date" id="end-date"></label>
+                    </div>
+                </div>
+                <button id="clear-filters">
+                    <i class="fas fa-eraser"></i> Limpar Filtros
+                </button>
             </div>
         </div>
+    </div>
 
 
         <div class="menu">
@@ -303,123 +192,30 @@
                     </button>
                     <div id="banks-dropdown" class="dropdown">
                         <ul>
-                            <li><label><input type="checkbox" value="Banco1"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true"
-                                        alt="Banco do Brasil"
-                                        style="width: 15px; height: 15px; margin-right: 5px;margin-left: 5px;border-radius: 50%;">
-                                    Banco do Brasil</label></li>
-                            <li><label><input type="checkbox" value="Banco1"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true"
-                                        alt="Banco do Brasil"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Banco do Brasil</label></li>
-                            <li><label><input type="checkbox" value="Banco2"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco%20pan.jpeg?raw=true"
-                                        alt="Banco Pan"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Banco Pan</label></li>
-                            <li><label><input type="checkbox" value="Banco3"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-inter.jpeg?raw=true"
-                                        alt="Banco Inter"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Banco Inter</label></li>
-                            <li><label><input type="checkbox" value="Banco4"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-safra.jpeg?raw=true"
-                                        alt="Banco Safra"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Banco Safra</label></li>
-                            <li><label><input type="checkbox" value="Banco5"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-votorantim.jpeg?raw=true"
-                                        alt="Banco Votorantim"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Banco Votorantim</label></li>
-                            <li><label><input type="checkbox" value="Banco6"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banrisul.jpeg?raw=true"
-                                        alt="Banrisul"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Banrisul</label></li>
-                            <li><label><input type="checkbox" value="Banco7"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bradesco.jpeg?raw=true"
-                                        alt="Bradesco"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Bradesco</label></li>
-                            <li><label><input type="checkbox" value="Banco8"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/btg.jpeg?raw=true"
-                                        alt="Banco BTG"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Banco BTG</label></li>
-                            <li><label><input type="checkbox" value="Banco9"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/c6.jpeg?raw=true"
-                                        alt="Banco C6"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Banco C6</label></li>
-                            <li><label><input type="checkbox" value="Banco10"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/caixa.jpeg?raw=true"
-                                        alt="Caixa Econômica"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Caixa Econômica</label></li>
-                            <li><label><input type="checkbox" value="Banco11"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/cresol.jpeg?raw=true"
-                                        alt="Cresol"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Cresol</label></li>
-                            <li><label><input type="checkbox" value="Banco12"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/infinity-pay.jpeg?raw=true"
-                                        alt="Infinity Pay"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Infinity Pay</label></li>
-                            <li><label><input type="checkbox" value="Banco13"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/itau.jpeg?raw=true"
-                                        alt="Itaú"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Itaú</label></li>
-                            <li><label><input type="checkbox" value="Banco14"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/mercado-pago.jpeg?raw=true"
-                                        alt="Mercado Pago"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Mercado Pago</label></li>
-                            <li><label><input type="checkbox" value="Banco15"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/next.jpeg?raw=true"
-                                        alt="Next"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Next</label></li>
-                            <li><label><input type="checkbox" value="Banco16"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/nubank.jpeg?raw=true"
-                                        alt="Nubank"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Nubank</label></li>
-                            <li><label><input type="checkbox" value="Banco17"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/pagseguro.jpeg?raw=true"
-                                        alt="Pag Seguro"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Pag Seguro</label></li>
-                            <li><label><input type="checkbox" value="Banco18"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/paypal.jpeg?raw=true"
-                                        alt="Paypal"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Paypal</label></li>
-                            <li><label><input type="checkbox" value="Banco19"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/picpay.jpeg?raw=true"
-                                        alt="PicPay"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    PicPay</label></li>
-                            <li><label><input type="checkbox" value="Banco20"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/santander.jpeg?raw=true"
-                                        alt="Santander"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Santander</label></li>
-                            <li><label><input type="checkbox" value="Banco21"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicoob.jpeg?raw=true"
-                                        alt="Sicoob"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Sicoob</label></li>
-                            <li><label><input type="checkbox" value="Banco22"><img
-                                        src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicredi.jpeg?raw=true"
-                                        alt="Sicredi"
-                                        style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;">
-                                    Sicredi</label></li>
-                            <li><label><input type="checkbox" value="Banco23"><i class="fas fa-ellipsis-h"
-                                        style="margin-right: 5px;margin-left: 5px;"></i>Outros</label></li>
+                            <li><label><input type="checkbox" value="Banco1"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true" alt="Banco do Brasil" style="width: 15px; height: 15px; margin-right: 5px;margin-left: 5px;border-radius: 50%;"> Banco do Brasil</label></li>
+                            <li><label><input type="checkbox" value="Banco1"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true" alt="Banco do Brasil" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco do Brasil</label></li>
+                            <li><label><input type="checkbox" value="Banco2"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco%20pan.jpeg?raw=true" alt="Banco Pan" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Pan</label></li>
+                            <li><label><input type="checkbox" value="Banco3"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-inter.jpeg?raw=true" alt="Banco Inter" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Inter</label></li>
+                            <li><label><input type="checkbox" value="Banco4"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-safra.jpeg?raw=true" alt="Banco Safra" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Safra</label></li>
+                            <li><label><input type="checkbox" value="Banco5"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-votorantim.jpeg?raw=true" alt="Banco Votorantim" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Votorantim</label></li>
+                            <li><label><input type="checkbox" value="Banco6"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banrisul.jpeg?raw=true" alt="Banrisul" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banrisul</label></li>
+                            <li><label><input type="checkbox" value="Banco7"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bradesco.jpeg?raw=true" alt="Bradesco" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Bradesco</label></li>
+                            <li><label><input type="checkbox" value="Banco8"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/btg.jpeg?raw=true" alt="Banco BTG" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco BTG</label></li>
+                            <li><label><input type="checkbox" value="Banco9"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/c6.jpeg?raw=true" alt="Banco C6" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco C6</label></li>
+                            <li><label><input type="checkbox" value="Banco10"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/caixa.jpeg?raw=true" alt="Caixa Econômica" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Caixa Econômica</label></li>
+                            <li><label><input type="checkbox" value="Banco11"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/cresol.jpeg?raw=true" alt="Cresol" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Cresol</label></li>
+                            <li><label><input type="checkbox" value="Banco12"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/infinity-pay.jpeg?raw=true" alt="Infinity Pay" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Infinity Pay</label></li>
+                            <li><label><input type="checkbox" value="Banco13"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/itau.jpeg?raw=true" alt="Itaú" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Itaú</label></li>
+                            <li><label><input type="checkbox" value="Banco14"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/mercado-pago.jpeg?raw=true" alt="Mercado Pago" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Mercado Pago</label></li>
+                            <li><label><input type="checkbox" value="Banco15"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/next.jpeg?raw=true" alt="Next" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Next</label></li>
+                            <li><label><input type="checkbox" value="Banco16"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/nubank.jpeg?raw=true" alt="Nubank" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Nubank</label></li>
+                            <li><label><input type="checkbox" value="Banco17"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/pagseguro.jpeg?raw=true" alt="Pag Seguro" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Pag Seguro</label></li>
+                            <li><label><input type="checkbox" value="Banco18"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/paypal.jpeg?raw=true" alt="Paypal" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Paypal</label></li>
+                            <li><label><input type="checkbox" value="Banco19"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/picpay.jpeg?raw=true" alt="PicPay" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> PicPay</label></li>
+                            <li><label><input type="checkbox" value="Banco20"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/santander.jpeg?raw=true" alt="Santander" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Santander</label></li>
+                            <li><label><input type="checkbox" value="Banco21"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicoob.jpeg?raw=true" alt="Sicoob" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Sicoob</label></li>
+                            <li><label><input type="checkbox" value="Banco22"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicredi.jpeg?raw=true" alt="Sicredi" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Sicredi</label></li>
+                            <li><label><input type="checkbox" value="Banco23"><i class="fas fa-ellipsis-h" style="margin-right: 5px;margin-left: 5px;"></i>Outros</label></li>
 
 
                             <!-- Adicione mais bancos conforme necessário -->
@@ -432,10 +228,8 @@
                     </button>
                     <div id="expenses-dropdown" class="dropdown">
                         <ul>
-                            <li><label><input type="checkbox" value="Despesas"><i
-                                        class="fas fa-arrow-down"></i>Despesas</label></li>
-                            <li><label><input type="checkbox" value="Receitas"><i
-                                        class="fas fa-arrow-up"></i>Receitas</label></li>
+                            <li><label><input type="checkbox" value="Despesas"><i class="fas fa-arrow-down"></i>Despesas</label></li>
+                            <li><label><input type="checkbox" value="Receitas"><i class="fas fa-arrow-up"></i>Receitas</label></li>
                             <!-- Adicione mais despesas conforme necessário -->
                         </ul>
                     </div>
@@ -446,38 +240,22 @@
                     </button>
                     <div id="categories-dropdown" class="dropdown">
                         <ul>
-                            <li><label><input type="checkbox" value="Alimentação"><i
-                                        class="fas fa-utensils"></i>Alimentação</label></li>
-                            <li><label><input type="checkbox" value="Benefícios"><i
-                                        class="fas fa-gift"></i>Benefícios</label></li>
-                            <li><label><input type="checkbox" value="Dívidas e Obrigações Financeiras"><i
-                                        class="fas fa-file-invoice-dollar"></i>Obrig. Financeiras</label></li>
-                            <li><label><input type="checkbox" value="Doações e Caridade"><i
-                                        class="fas fa-hands-helping"></i>Doações e Caridade</label></li>
-                            <li><label><input type="checkbox" value="Educação"><i
-                                        class="fas fa-book"></i>Educação</label></li>
-                            <li><label><input type="checkbox" value="Impostos e Taxas"><i
-                                        class="fas fa-receipt"></i>Impostos e Taxas</label></li>
-                            <li><label><input type="checkbox" value="Investimentos"><i
-                                        class="fas fa-chart-line"></i>Investimentos</label></li>
-                            <li><label><input type="checkbox" value="Lazer e Entretenimento"><i
-                                        class="fas fa-film"></i>Lazer</label></li>
-                            <li><label><input type="checkbox" value="Moradia"><i class="fas fa-home"></i>Moradia</label>
-                            </li>
-                            <li><label><input type="checkbox" value="Patrimônios"><i
-                                        class="fas fa-landmark"></i>Patrimônios</label></li>
-                            <li><label><input type="checkbox" value="Rendimentos"><i
-                                        class="fas fa-coins"></i>Rendimentos</label></li>
-                            <li><label><input type="checkbox" value="Saúde"><i
-                                        class="fas fa-heartbeat"></i>Saúde</label></li>
-                            <li><label><input type="checkbox" value="Seguros"><i
-                                        class="fas fa-shield-alt"></i>Seguros</label></li>
-                            <li><label><input type="checkbox" value="Transporte"><i
-                                        class="fas fa-bus"></i>Transporte</label></li>
-                            <li><label><input type="checkbox" value="Vestuário e Beleza"><i
-                                        class="fas fa-tshirt"></i>Vestuário e Beleza</label></li>
-                            <li><label><input type="checkbox" value="Outros"><i
-                                        class="fas fa-ellipsis-h"></i>Outros</label></li>
+                            <li><label><input type="checkbox" value="Alimentação"><i class="fas fa-utensils"></i>Alimentação</label></li>
+                            <li><label><input type="checkbox" value="Benefícios"><i class="fas fa-gift"></i>Benefícios</label></li>
+                            <li><label><input type="checkbox" value="Dívidas e Obrigações Financeiras"><i class="fas fa-file-invoice-dollar"></i>Obrig. Financeiras</label></li>
+                            <li><label><input type="checkbox" value="Doações e Caridade"><i class="fas fa-hands-helping"></i>Doações e Caridade</label></li>
+                            <li><label><input type="checkbox" value="Educação"><i class="fas fa-book"></i>Educação</label></li>
+                            <li><label><input type="checkbox" value="Impostos e Taxas"><i class="fas fa-receipt"></i>Impostos e Taxas</label></li>
+                            <li><label><input type="checkbox" value="Investimentos"><i class="fas fa-chart-line"></i>Investimentos</label></li>
+                            <li><label><input type="checkbox" value="Lazer e Entretenimento"><i class="fas fa-film"></i>Lazer</label></li>
+                            <li><label><input type="checkbox" value="Moradia"><i class="fas fa-home"></i>Moradia</label></li>
+                            <li><label><input type="checkbox" value="Patrimônios"><i class="fas fa-landmark"></i>Patrimônios</label></li>
+                            <li><label><input type="checkbox" value="Rendimentos"><i class="fas fa-coins"></i>Rendimentos</label></li>
+                            <li><label><input type="checkbox" value="Saúde"><i class="fas fa-heartbeat"></i>Saúde</label></li>
+                            <li><label><input type="checkbox" value="Seguros"><i class="fas fa-shield-alt"></i>Seguros</label></li>
+                            <li><label><input type="checkbox" value="Transporte"><i class="fas fa-bus"></i>Transporte</label></li>
+                            <li><label><input type="checkbox" value="Vestuário e Beleza"><i class="fas fa-tshirt"></i>Vestuário e Beleza</label></li>
+                            <li><label><input type="checkbox" value="Outros"><i class="fas fa-ellipsis-h"></i>Outros</label></li>
 
                             <!-- Adicione mais categorias conforme necessário -->
                         </ul>
@@ -496,7 +274,7 @@
                     <i class="fas fa-eraser"></i> Limpar Filtros
                 </button>
             </div>
-
+            
 
         </div>
         <div class="bloco-de-despesas">
@@ -515,14 +293,12 @@
             </div>
         </div>
         <div class="grafico-bloco">
-            <div class="grafico-item"><span>Top 5 entradas por categorias</span> <canvas id="entradasGraph"></canvas>
-            </div>
+            <div class="grafico-item"><span>Top 5 entradas por categorias</span> <canvas id="entradasGraph"></canvas></div>
             <div class="grafico-item"><span>5 principais Despesas</span> <canvas id="despesasGraph"></canvas></div>
-            <div class="grafico-item"><span>Despesas Mensais Entrada x Saída</span> <canvas
-                    id="entradaSaidaGraph"></canvas></div>
+            <div class="grafico-item"><span>Despesas Mensais Entrada x Saída</span> <canvas id="entradaSaidaGraph"></canvas></div>
             <div class="grafico-item"><span>Despesas por Categorias</span> <canvas id="categoriasGraph"></canvas></div>
         </div>
-
+        
         <div class="lancamentos">
             <div class="export">
                 <button id="export-excel">Exportar para Excel</button>
@@ -941,23 +717,23 @@
 
     <div class="bottom-menu">
         <a href="https://paulotalamini.github.io/gestaodedespesaspessoal/" class="menu-item">
-            <span class="icon"><i class="fa-light fa-house"></i></span>
+            <span class="icon"><i class="fas fa-home"></i></span>
             <span class="label">Home</span>
         </a>
         <a href="#search" class="menu-item toggle-table">
-            <span class="icon"><i class="fa-light fa-list"></i></span>
+            <span class="icon"><i class="fas fa-list"></i></span>
             <span class="label">Lançamentos</span>
         </a>
         <a href="#search" id="open-modal-btn-mobile-menu-inferior" class="menu-item">
-            <span class="icon"><i class="fa-solid fa-plus"></i> </span>
+            <span class="icon"><i class="fas fa-plus"></i></span>
             <span class="label">Adicionar</span>
         </a>
         <a href="#profile" class="menu-item toggle-graph">
-            <span class="icon"><i class="fa-light fa-chart-column"></i></span>
+            <span class="icon"><i class="fas fa-chart-column"></i></span>
             <span class="label">Gráficos</span>
         </a>
         <a href="#settings" class="menu-item">
-            <span class="icon"><i class="fa-light fa-gear"></i></span>
+            <span class="icon"><i class="fas fa-gear"></i></span>
             <span class="label">Configuração</span>
         </a>
     </div>
@@ -966,7 +742,7 @@
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    
 </body>
 
 </html>
