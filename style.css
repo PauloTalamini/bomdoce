@@ -144,7 +144,8 @@ body.dark-mode {
 }
 
 .menu-item:hover {
-    background-color: #444;
+    scale: 1.1;
+    color: red;
 }
 
 /* Estilo para o botão do menu (hambúrguer) */
@@ -1230,6 +1231,12 @@ body.dark-mode .bottom-menu,
 body.dark-mode .menu-item {
     background-color: #1e1e1e;
     color: #fff;
+}
+
+
+body.dark-mode .menu-item:hover {
+    scale: 1.1;
+    color: red;
 }
 
 body.dark-mode .header-mobile {
