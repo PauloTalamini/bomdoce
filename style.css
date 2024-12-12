@@ -47,6 +47,11 @@
         margin-bottom: 0 !important;
     }
 
+    .tabela {
+        width: 100%;
+        margin-left: auto;
+    }
+
 }
 
 
@@ -107,7 +112,7 @@ body>div.container>div.header-mobile {
 .sidebar.open {
     left: 0;
     z-index: 999;
-
+    overflow-y: auto;
 }
 
 
@@ -310,6 +315,7 @@ body>div.container>div.header-mobile {
     .bancos-bloco {
         font-size: 1em;
         padding: 10px;
+        overflow-x: auto;
     }
 
     .bancos-bloco {
