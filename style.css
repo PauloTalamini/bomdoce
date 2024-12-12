@@ -406,6 +406,10 @@ body.dark-mode {
         margin-top: 20px!important;
     }
 
+    #sidebar > footer > p {
+        font-size: 0.7rem!important;
+    }
+
     .despesas-e-receitas {
         gap: 15px;
         display: grid;
