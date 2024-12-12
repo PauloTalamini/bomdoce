@@ -20,16 +20,19 @@
 @media (max-width: 768px) {
     .grafico-bloco {
         flex-direction: column;
-        height: auto!important;
+        height: 640px!important;
+        max-height: 640px!important;
         grid-column: auto !important;
+        overflow: overlay;
+        justify-content: flex-start!important;
        }
 
     .lancamentos {
         flex-direction: column;    
         grid-column: 1 / 9;
         display: inline-flex;
-        height: 600px!important;
-        max-height: 600px!important;
+        height: 640px!important;
+        max-height: 640px!important;
         margin-top: 0px!important;
         justify-content: flex-start!important;
     }
@@ -236,8 +239,23 @@ body.dark-mode {
         .dropdown {
             width: 80%!important;
             margin-left: 10%!important;
+            z-index: 100;
         }
-}
+
+        footer a {
+            color: #ffffff!important;
+        }
+        footer p {
+            color: #ffffff!important;
+        }
+
+        #sidebar > footer > p {
+            font-size: 0.7rem;
+            margin-bottom: 15px;
+        }
+
+
+}   
 
 
 .content {
@@ -258,18 +276,17 @@ body.dark-mode {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #333;
+    background-color: #ffffff;
     display: flex;
     justify-content: space-around;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
     z-index: 998;
 }
 
 .menu-item {
-    color: white;
+    color: #1e1e1e;
     text-align: center;
     text-decoration: none;
-    flex: 1;
+    flex: 1;    
     font-size: 14px;
 }
 
@@ -406,10 +423,6 @@ body.dark-mode {
         margin-top: 20px!important;
     }
 
-    #sidebar > footer > p {
-        font-size: 0.6rem!important;
-    }
-
     .despesas-e-receitas {
         gap: 15px;
         display: grid;
@@ -478,7 +491,7 @@ body {
     flex-direction: column;
     justify-content: flex-start !important;
     align-items: stretch;
-    height: 850px;
+    height: 900px;
     width: 296px;
 }
 
@@ -710,7 +723,7 @@ body>div.container>div.bloco-de-despesas>div:nth-child(5) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 20px;
-    height: 501px;
+    height: auto;
 }
 
 .grafico-item {
@@ -1213,6 +1226,11 @@ body.dark-mode {
     color: #fff;
 }
 
+body.dark-mode .bottom-menu,
+body.dark-mode .menu-item {
+    background-color: #1e1e1e;
+    color: #fff;
+}
 
 body.dark-mode .header-mobile {
     background-color: #1e1e1e!important;
@@ -1259,7 +1277,3 @@ body.dark-mode footer a {
         max-width: 100%!important;
     }
 
-body > div.container > div.grafico-bloco > div:nth-child(4) {
-    margin-bottom: 50px;
-}
-    
