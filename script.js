@@ -98,11 +98,11 @@ function updateTables(transactions) {
 
         if (transaction.type === 'expense') {
             totalExpenses += transaction.amount;
-            totalExpensesElement.innerHTML = `<span><i class="fas fa-file-invoice-dollar"></i>DESPESAS:</span> R$ ${totalExpenses.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            totalExpensesElement.innerHTML = `<span><i class="fas fa-file-invoice-dollar"></i>DESPESAS</span> R$ ${totalExpenses.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
             despesasTableBody.appendChild(newRow); // Adiciona a linha na tabela de despesas
         } else {
             totalRevenue += transaction.amount;
-            totalRevenueElement.innerHTML = `<span><i class="fas fa-hand-holding-usd"></i>RECEITAS:</span> R$ ${totalRevenue.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            totalRevenueElement.innerHTML = `<span><i class="fas fa-hand-holding-usd"></i>RECEITAS</span> R$ ${totalRevenue.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
             receitasTableBody.appendChild(newRow); // Adiciona a linha na tabela de receitas
         }
     });
