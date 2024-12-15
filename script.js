@@ -91,24 +91,24 @@ function updateTables(transactions) {
             <td>${transaction.description}</td>
             <td>${transaction.category}</td>
             <td>${transaction.type === 'expense' ? 'Despesa' : 'Receita'}</td>
-            <td>R$ ${transaction.amount.toFixed(2)}</td>
+            <td>R$ ${transaction.amount.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
             <td>${transaction.date}</td>
             <td><i class="fas fa-trash-alt" onclick="removeTransaction(${index})" style="cursor: pointer; color: red;font-weight: 400;font-size: 14px;justify-content: center;display: flex;"></i></td>
         `;
 
         if (transaction.type === 'expense') {
             totalExpenses += transaction.amount;
-            totalExpensesElement.textContent = `DESPESAS: R$ ${totalExpenses.toFixed(2)}`;
+            totalExpensesElement.innerHTML = `<span><i class="fas fa-file-invoice-dollar"></i>DESPESAS:</span> R$ ${totalExpenses.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
             despesasTableBody.appendChild(newRow); // Adiciona a linha na tabela de despesas
         } else {
             totalRevenue += transaction.amount;
-            totalRevenueElement.innerHTML = `RECEITAS: R$ ${totalRevenue.toFixed(2)}`;
+            totalRevenueElement.innerHTML = `<span><i class="fas fa-hand-holding-usd"></i>RECEITAS:</span> R$ ${totalRevenue.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
             receitasTableBody.appendChild(newRow); // Adiciona a linha na tabela de receitas
         }
     });
 
     totalBalance = totalRevenue - totalExpenses;
-    totalBalanceElement.innerHTML = `<span><i class="fas fa-calculator"></i>TOTAL</span> R$ ${totalBalance.toFixed(2)}`;
+    totalBalanceElement.innerHTML = `<span><i class="fas fa-calculator"></i>TOTAL</span> R$ ${totalBalance.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
     // Atualizar gráficos
     updateEntradasGraph(transactions);
@@ -281,7 +281,7 @@ function updateAccounts() {
         const accountElement = document.createElement('div');
         accountElement.innerHTML = `
                 <img src="${account.logo}" style="width:20px; margin-right:5px;vertical-align: middle;border-radius:50%;">
-                ${account.name} - Saldo: R$ ${account.balance.toFixed(2)} 
+                ${account.name} - Saldo: R$ ${account.balance.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}  
                 <i class="fas fa-trash-alt" onclick="removeAccount(${index})" style="cursor: pointer; color: red;font-weight: 400;vertical-align: middle;margin-left: 4%;
     margin-right: auto;"></i>
             `;
@@ -291,7 +291,7 @@ function updateAccounts() {
     });
 
     // Atualiza o valor total no bloco de Saldo Contas
-    document.querySelector('#total-account-balance').innerHTML = `<span><i class="fas fa-chart-line"></i>SALDO CONTAS</span> R$ ${totalAccountBalance.toFixed(2)}`;
+    document.querySelector('#total-account-balance').innerHTML = `<span><i class="fas fa-chart-line"></i>SALDO CONTAS</span> R$ ${totalAccountBalance.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
 function removeAccount(index) {
@@ -312,7 +312,7 @@ function updateCards() {
         const cardElement = document.createElement('div');
         cardElement.innerHTML = `
                 <img src="${card.logo}" style="width:20px; margin-right:5px;vertical-align: middle;border-radius:50%;">
-                ${card.name} - Limite: R$ ${card.limit.toFixed(2)} 
+                ${card.name} - Limite: R$ ${card.limit.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}  
                 <i class="fas fa-trash-alt" onclick="removeCard(${index})" style="cursor: pointer; color: red;font-weight: 400;vertical-align: middle;margin-left: 4%;
     margin-right: auto;"></i>
             `;
@@ -322,7 +322,7 @@ function updateCards() {
     });
 
     // Atualiza o valor total no bloco de Limite Cartões
-    document.querySelector('#total-card-limit').innerHTML = `<span><i class="fas fa-credit-card"></i></i>LIMITE CARTÕES</span> R$ ${totalCardLimit.toFixed(2)}`;
+    document.querySelector('#total-card-limit').innerHTML = `<span><i class="fas fa-credit-card"></i></i>LIMITE CARTÕES</span> R$ ${totalCardLimit.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
 function removeCard(index) {
@@ -805,5 +805,3 @@ function updateCategoriasGraph(transactions) {
         }
     });
 }
-
-
