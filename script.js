@@ -102,13 +102,13 @@ function updateTables(transactions) {
             despesasTableBody.appendChild(newRow); // Adiciona a linha na tabela de despesas
         } else {
             totalRevenue += transaction.amount;
-            totalRevenueElement.textContent = `RECEITAS: R$ ${totalRevenue.toFixed(2)}`;
+            totalRevenueElement.innerHTML = `RECEITAS: R$ ${totalRevenue.toFixed(2)}`;
             receitasTableBody.appendChild(newRow); // Adiciona a linha na tabela de receitas
         }
     });
 
     totalBalance = totalRevenue - totalExpenses;
-    totalBalanceElement.textContent = `TOTAL: R$ ${totalBalance.toFixed(2)}`;
+    totalBalanceElement.innerHTML = `<span><i class="fas fa-calculator"></i>TOTAL</span> R$ ${totalBalance.toFixed(2)}`;
 
     // Atualizar gráficos
     updateEntradasGraph(transactions);
@@ -273,7 +273,7 @@ window.onload = function () {
 function updateAccounts() {
     const accounts = JSON.parse(localStorage.getItem('accounts')) || [];
     const accountsContainer = document.querySelector('.minhas-contas');
-    accountsContainer.innerHTML = '<i class="fas fa-credit-card"></i><span>Minhas Contas</span>';
+    accountsContainer.innerHTML = '<i class="fas fa-id-card"></i><span>Minhas Contas</span>';
 
     let totalAccountBalance = 0; // Total de saldo das contas
 
@@ -291,7 +291,7 @@ function updateAccounts() {
     });
 
     // Atualiza o valor total no bloco de Saldo Contas
-    document.querySelector('#total-account-balance').textContent = `SALDO CONTAS: R$ ${totalAccountBalance.toFixed(2)}`;
+    document.querySelector('#total-account-balance').innerHTML = `<span><i class="fas fa-chart-line"></i>SALDO CONTAS</span> R$ ${totalAccountBalance.toFixed(2)}`;
 }
 
 function removeAccount(index) {
@@ -304,7 +304,7 @@ function removeAccount(index) {
 function updateCards() {
     const cards = JSON.parse(localStorage.getItem('cards')) || [];
     const cardsContainer = document.querySelector('.meus-cartões');
-    cardsContainer.innerHTML = '<i class="fas fa-id-card"></i><span>Meus Cartões</span>';
+    cardsContainer.innerHTML = '<i class="fas fa-credit-card"></i><span>Meus Cartões</span>';
 
     let totalCardLimit = 0; // Total de limite dos cartões
 
@@ -322,7 +322,7 @@ function updateCards() {
     });
 
     // Atualiza o valor total no bloco de Limite Cartões
-    document.querySelector('#total-card-limit').textContent = `LIMITE CARTÕES: R$ ${totalCardLimit.toFixed(2)}`;
+    document.querySelector('#total-card-limit').innerHTML = `<span><i class="fas fa-credit-card"></i></i>LIMITE CARTÕES</span> R$ ${totalCardLimit.toFixed(2)}`;
 }
 
 function removeCard(index) {
