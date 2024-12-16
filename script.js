@@ -805,3 +805,50 @@ function updateCategoriasGraph(transactions) {
         }
     });
 }
+
+// scroll-btn
+const prevBtn = document.getElementById('prev-month');
+const nextBtn = document.getElementById('next-month');
+const monthsContainer = document.querySelector('.months-container');
+
+const scrollAmount = () => monthsContainer.clientWidth;
+
+prevBtn.addEventListener('click', () => {
+    monthsContainer.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+});
+
+nextBtn.addEventListener('click', () => {
+    monthsContainer.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+});
+
+// Seleção dos elementos necessários
+const months = document.querySelectorAll('.month');
+
+// Função para filtrar os dados com base no mês selecionado
+function filterByMonth(selectedMonth) {
+    const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+    
+    // Filtrar transações pelo mês selecionado
+    const filteredTransactions = transactions.filter(transaction => {
+        const transactionDate = new Date(transaction.date);
+        const transactionMonth = `${transactionDate.getFullYear()}-${String(transactionDate.getMonth() + 1).padStart(2, '0')}`;
+        return transactionMonth === selectedMonth;
+    });
+
+    // Atualizar as tabelas com os dados filtrados
+    updateTables(filteredTransactions);
+}
+
+// Adicionando evento de clique aos meses
+months.forEach(month => {
+    month.addEventListener('click', () => {
+        // Remover a classe 'active' de todos os meses e adicionar ao mês selecionado
+        months.forEach(m => m.classList.remove('active'));
+        month.classList.add('active');
+
+        // Obter o mês selecionado e filtrar as tabelas
+        const selectedMonth = month.getAttribute('data-month');
+        filterByMonth(selectedMonth);
+    });
+});
+
