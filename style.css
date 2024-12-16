@@ -137,10 +137,9 @@ body.dark-mode {
 
 .menu-item {
     display: block;
-    padding: 15px;
+    padding: 10px;
     color: white;
     text-decoration: none;
-    font-size: 18px;
 }
 
 .menu-item:hover {
@@ -287,13 +286,12 @@ body.dark-mode {
     text-align: center;
     text-decoration: none;
     flex: 1;    
-    font-size: 14px;
+    font-size: 0.5rem;
 }
 
 .menu-item .icon {
     display: block;
-    font-size: 20px;
-    /* Tamanho do ícone */
+    font-size: 1rem;
 }
 
 .menu-item .label {
@@ -439,7 +437,7 @@ body.dark-mode {
 
     .large {
         font-size: 1.2em!important;
-        height: 100px!important;
+        height: 90px!important;
     }
 }
 
