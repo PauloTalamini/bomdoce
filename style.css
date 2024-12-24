@@ -435,9 +435,14 @@ body.dark-mode {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    body > div.container > div.bloco-de-despesas {
+        height: 640px !important;
+        max-height: 640px !important;
+    }
+
     .large {
         font-size: 1.2em!important;
-        height: 90px!important;
+        height: 130px!important;
     }
 }
 
@@ -847,6 +852,8 @@ h1 {
     color: #fff;
     font-size: 14px;
     font-weight: bold;
+    top: 5px !important;
+    position: relative;
 }
 
 /* Tabela CSS */
@@ -1289,10 +1296,13 @@ body.dark-mode footer a {
         background-color: orange;
     }
     #categoriasGraph {
-        width: 150px!important;
-        height: 150px!important;
         max-width: 100%!important;
     }
 
     
+    #total-balance {
+        display: none;
+    }
+    
+
     

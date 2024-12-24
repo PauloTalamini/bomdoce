@@ -90,7 +90,7 @@ function updateTables(transactions) {
         newRow.innerHTML = `
             <td>${transaction.description}</td>
             <td>${transaction.category}</td>
-            <td>${transaction.type === 'expense' ? 'Despesa' : 'Receita'}</td>
+            <td>${transaction.type === 'expense' ? 'Despesas' : 'Receitas'}</td>
             <td>R$ ${transaction.amount.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
             <td>${transaction.date}</td>
             <td><i class="fas fa-trash-alt" onclick="removeTransaction(${index})" style="cursor: pointer; color: red;font-weight: 400;font-size: 14px;justify-content: center;display: flex;"></i></td>
@@ -339,6 +339,9 @@ window.onload = function () {
     updateCards();       // Atualiza os cartões e soma os limites
 };
 
+//-----------------------------------------------------------------------------------------
+
+// Filtros de dropdowns
 document.getElementById('filter-banks').onclick = function () {
     toggleDropdown('banks-dropdown');
 };
@@ -355,41 +358,78 @@ document.getElementById('filter-period').onclick = function () {
     toggleDropdown('period-dropdown');
 };
 
+// Função para alternar a visibilidade dos dropdowns
 function toggleDropdown(dropdownId) {
     const dropdown = document.getElementById(dropdownId);
     dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
 }
 
+// Limpar todos os filtros
 document.getElementById('clear-filters').onclick = function () {
     clearFilters();
 };
 
+// Limpar todos os filtros e restaurar os elementos
 function clearFilters() {
-    // Limpa todos os checkboxes
+    // Limpa todos os checkboxes de filtros
     document.querySelectorAll('.dropdown input[type="checkbox"]').forEach(checkbox => {
         checkbox.checked = false;
     });
 
-    // Limpa as datas
+    // Limpa as datas de período
     document.getElementById('start-date').value = '';
     document.getElementById('end-date').value = '';
 
-    // Atualiza as tabelas para mostrar todos os itens
-    loadTransactions(); // Chama a função que recarrega as transações
+    // Aplica os filtros novamente
+    applyBankFilters();  // Aplica filtro para as contas e cartões
+    applyTransactionFilters();  // Aplica filtro para as transações
 }
 
-function applyFilters() {
+// Filtro para as contas e cartões (filtra com base nos bancos selecionados)
+function applyBankFilters() {
+    const selectedBanks = Array.from(document.querySelectorAll('#banks-dropdown input:checked')).map(cb => cb.value);
+
+    // Filtro para contas
+    const contas = document.querySelectorAll('.bancos-bloco .minhas-contas');
+    contas.forEach(conta => {
+        const bank = conta.querySelector('span').textContent; // O nome do banco está no <span>
+        if (selectedBanks.length === 0 || selectedBanks.includes(bank)) {
+            conta.style.display = 'block'; // Exibe a conta
+        } else {
+            conta.style.display = 'none'; // Oculta a conta
+        }
+    });
+
+    // Filtro para cartões
+    const cartoes = document.querySelectorAll('.bancos-bloco .meus-cartões');
+    cartoes.forEach(cartao => {
+        const bank = cartao.querySelector('span').textContent; // O nome do banco está no <span>
+        if (selectedBanks.length === 0 || selectedBanks.includes(bank)) {
+            cartao.style.display = 'block'; // Exibe o cartão
+        } else {
+            cartao.style.display = 'none'; // Oculta o cartão
+        }
+    });
+}
+
+// Filtro para as transações (filtra com base em despesas, categorias e período)
+function applyTransactionFilters() {
     const selectedBanks = Array.from(document.querySelectorAll('#banks-dropdown input:checked')).map(cb => cb.value);
     const selectedExpenses = Array.from(document.querySelectorAll('#expenses-dropdown input:checked')).map(cb => cb.value);
     const selectedCategories = Array.from(document.querySelectorAll('#categories-dropdown input:checked')).map(cb => cb.value);
     const startDate = document.getElementById('start-date').value;
     const endDate = document.getElementById('end-date').value;
 
-    // Lógica para filtrar as transações conforme as seleções
+    // Obtendo as transações do localStorage
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+
+    // Filtra as transações com base nos filtros selecionados
     const filteredTransactions = transactions.filter(transaction => {
         const isBankMatched = selectedBanks.length ? selectedBanks.includes(transaction.bank) : true;
-        const isExpenseMatched = selectedExpenses.length ? selectedExpenses.includes(transaction.expense) : true;
+        const isExpenseMatched = selectedExpenses.length 
+            ? (selectedExpenses.includes('Despesas') && transaction.type === 'expense') || 
+              (selectedExpenses.includes('Receitas') && transaction.type === 'revenue')
+            : true;
         const isCategoryMatched = selectedCategories.length ? selectedCategories.includes(transaction.category) : true;
         const isDateMatched = (!startDate || new Date(transaction.date) >= new Date(startDate)) &&
             (!endDate || new Date(transaction.date) <= new Date(endDate));
@@ -397,19 +437,38 @@ function applyFilters() {
         return isBankMatched && isExpenseMatched && isCategoryMatched && isDateMatched;
     });
 
-    updateTables(filteredTransactions); // Atualiza as tabelas com os itens filtrados
+    // Atualiza as tabelas com as transações filtradas
+    updateTables(filteredTransactions);
 }
 
-// Atualizar as tabelas após a seleção de filtros
-document.querySelectorAll('.dropdown input[type="checkbox"]').forEach(checkbox => {
-    checkbox.onchange = applyFilters;
+// Chama a função applyBankFilters quando há mudanças nos checkboxes de banco
+document.querySelectorAll('#banks-dropdown input[type="checkbox"]').forEach(checkbox => {
+    checkbox.onchange = function () {
+        applyBankFilters();  // Aplica filtro somente nas contas e cartões
+    };
 });
 
-document.getElementById('start-date').onchange = applyFilters;
-document.getElementById('end-date').onchange = applyFilters;
+// Chama a função applyTransactionFilters quando há mudanças nos outros filtros
+document.querySelectorAll('.dropdown input[type="checkbox"]').forEach(checkbox => {
+    checkbox.onchange = function () {
+        applyTransactionFilters();  // Aplica filtro somente nas transações
+    };
+});
+
+// Atualiza as tabelas de transações quando as datas são alteradas
+document.getElementById('start-date').onchange = applyTransactionFilters;
+document.getElementById('end-date').onchange = applyTransactionFilters;
+
+// Atualiza as tabelas para mostrar todas as transações (chamada inicial)
+function loadTransactions() {
+    const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+    updateTables(transactions);
+}
 
 
 
+
+//----------------------------------------------------------------------------------------------------------
 
 // Export
 document.getElementById('export-excel').onclick = function () {
@@ -674,7 +733,8 @@ function updateEntradasGraph(transactions) {
         .sort((a, b) => b.valor - a.valor)
         .slice(0, 5);
 
-    const ctx = document.getElementById('entradasGraph').getContext('2d');
+    const canvas = document.getElementById('entradasGraph');
+    const ctx = canvas.getContext('2d');
 
     if (entradasChart) entradasChart.destroy(); // Destrói o gráfico existente
     entradasChart = new Chart(ctx, {
@@ -684,19 +744,53 @@ function updateEntradasGraph(transactions) {
             datasets: [{
                 label: 'Entradas por Categoria',
                 data: sorted.map(e => e.valor),
-                backgroundColor: '#4caf50',
+                backgroundColor: '#FFF',
+                barPercentage: 0.8,
+                categoryPercentage: 0.8,
             }]
         },
         options: {
             responsive: true,
+            layout: {
+                padding: {
+                    top: 20, // Adiciona espaço interno no topo
+                },
+            },
             plugins: {
-                legend: { display: false }
-            }
-        }
+                legend: { display: false },
+                datalabels: {
+                    color: '#fff',
+                    anchor: 'end',
+                    align: 'top',
+                    formatter: value => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+                },
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false, // Remover as linhas de grade do eixo X
+                        drawBorder: false, // Remover a linha do eixo X
+                    },
+                },
+                y: {
+                    beginAtZero: true,
+                    max: Math.max(...sorted.map(e => e.valor)) * 1.2, // Adiciona 20% de folga no topo
+                    ticks: {
+                        display: false, // Remover os valores do eixo Y
+                    },
+                    grid: {
+                        display: false, // Remover as linhas de grade do eixo Y
+                        drawBorder: false, // Remover a linha do eixo Y
+                    }
+                },
+            },
+        },
+        plugins: [ChartDataLabels]
     });
 }
 
-// Gráfico Top 5 Despesas
+
+// Gráfico Top 5 Despesas por Categorias
 function updateDespesasGraph(transactions) {
     const despesasPorCategoria = transactions
         .filter(t => t.type === 'expense')
@@ -727,47 +821,113 @@ function updateDespesasGraph(transactions) {
         },
         options: {
             responsive: true,
+            layout: {
+                padding: {
+                    top: 20, // Adiciona espaço interno no topo
+                },
+            },
             plugins: {
-                legend: { display: false }
-            }
-        }
+                legend: { display: false },
+                datalabels: {
+                    color: '#fff',
+                    anchor: 'end',
+                    align: 'top',
+                    formatter: value => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+                },
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false, // Remover as linhas de grade do eixo X
+                        drawBorder: false, // Remover a linha do eixo X
+                    },
+                },
+                y: {
+                    beginAtZero: true,
+                    max: Math.max(...sorted.map(e => e.valor)) * 1.2, // Adiciona 20% de folga no topo
+                    ticks: {
+                        display: false, // Remover os valores do eixo Y
+                    },
+                    grid: {
+                        display: false, // Remover as linhas de grade do eixo Y
+                        drawBorder: false, // Remover a linha do eixo Y
+                    }
+                },
+            },
+        },
+        plugins: [ChartDataLabels]
     });
 }
 
 // Gráfico Despesas Mensais Entrada x Saída
-function updateEntradaSaidaGraph(transactions) {
-    const monthlyData = transactions.reduce((acc, curr) => {
-        const month = new Date(curr.date).toISOString().slice(0, 7); // YYYY-MM
-        if (!acc[month]) acc[month] = { entradas: 0, despesas: 0 };
-        if (curr.type === 'revenue') acc[month].entradas += curr.amount;
-        if (curr.type === 'expense') acc[month].despesas += curr.amount;
-        return acc;
-    }, {});
+    function updateEntradaSaidaGraph(transactions) {
+        const monthlyData = transactions.reduce((acc, curr) => {
+            const month = new Date(curr.date).toISOString().slice(0, 7); // YYYY-MM
+            if (!acc[month]) acc[month] = { entradas: 0, despesas: 0 };
+            if (curr.type === 'revenue') acc[month].entradas += curr.amount;
+            if (curr.type === 'expense') acc[month].despesas += curr.amount;
+            return acc;
+        }, {});
 
-    const months = Object.keys(monthlyData).sort();
-    const entradas = months.map(m => monthlyData[m].entradas);
-    const despesas = months.map(m => monthlyData[m].despesas);
+        const months = Object.keys(monthlyData).sort();
+        const entradas = months.map(m => monthlyData[m].entradas);
+        const despesas = months.map(m => monthlyData[m].despesas);
 
-    const ctx = document.getElementById('entradaSaidaGraph').getContext('2d');
+        const ctx = document.getElementById('entradaSaidaGraph').getContext('2d');
 
-    if (entradaSaidaChart) entradaSaidaChart.destroy(); // Destrói o gráfico existente
-    entradaSaidaChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: months,
-            datasets: [
-                { label: 'Entradas', data: entradas, backgroundColor: '#4caf50' },
-                { label: 'Despesas', data: despesas, backgroundColor: '#f44336' }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { display: false }
-            }
-        }
-    });
-}
+        if (entradaSaidaChart) entradaSaidaChart.destroy(); // Destrói o gráfico existente
+        entradaSaidaChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [
+                    { label: 'Entradas', data: entradas, backgroundColor: '#4caf50' },
+                    { label: 'Despesas', data: despesas, backgroundColor: '#f44336' }
+                ]
+            },
+            options: {
+                responsive: true,
+                layout: {
+                    padding: {
+                        top: 10, // Ajuste o espaço no topo
+                    }
+                },
+                plugins: {
+                    legend: { display: true },
+                    datalabels: {
+                        color: '#fff',
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: value => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false, // Remover as linhas de grade do eixo X
+                            drawBorder: false, // Remover a linha do eixo X
+                        },
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: Math.max(...entradas.concat(despesas)) * 1.2, // Aumenta o valor máximo do eixo Y para dar mais espaço
+                        ticks: {
+                            display: false, // Remover os valores do eixo Y
+                        },
+                        grid: {
+                            display: false, // Remover as linhas de grade do eixo Y
+                            drawBorder: false, // Remover a linha do eixo Y
+                        }
+                    }
+                },
+                barPercentage: 0.6, // Ajusta a largura das barras (diminuir valor aumenta o espaço entre elas)
+                categoryPercentage: 0.8, // Ajusta o espaço entre as categorias (barra e barra)
+                indexAxis: 'x', // Certifique-se de que o gráfico é horizontal (no caso de gráfico de barras verticais)
+            },
+            plugins: [ChartDataLabels]
+        });
+    }
+
 
 // Gráfico Sobre Categorias
 function updateCategoriasGraph(transactions) {
@@ -785,24 +945,60 @@ function updateCategoriasGraph(transactions) {
 
     if (categoriasChart) categoriasChart.destroy(); // Destrói o gráfico existente
     categoriasChart = new Chart(ctx, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: categorias,
             datasets: [{
                 data: valores,
-                backgroundColor: ['#f44336', '#ff9800', '#4caf50', '#2196f3', '#9c27b0'],
+                backgroundColor: ['#f44336'],
             }]
         },
         options: {
             responsive: true,
             plugins: {
                 legend: {
-                    display: true,
-                    position: 'bottom',
+                    display: false,
                     labels: { font: { size: 12, family: 'Arial' } }
+                },
+                datalabels: {
+                    color: '#fff',
+                    formatter: value => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+                    anchor: 'end',
+                    align: 'right',
                 }
-            }
-        }
+            },
+            scales: {
+                x: {
+                    // Configuração do eixo X (categorias)
+                    beginAtZero: true,
+                    grid: {
+                        display: false, // Desativa as linhas de grade no eixo X
+                    },
+                    ticks: {
+                        display: false, // Exibe os valores no eixo Y
+                    } 
+                },
+                y: {
+                    // Configuração do eixo Y (valores)
+                    beginAtZero: true,
+                    ticks: {
+                        display: true, // Exibe os valores no eixo Y
+                    },
+                    grid: {
+                        display: true, // Exibe as linhas de grade no eixo Y
+                    }
+                }
+            },
+            layout: {
+                padding: {
+                    top: 10, // Espaço no topo
+                    right: 100, // Espaço no lado direito
+                }
+            },
+            barPercentage: 0.8, // Ajuste da largura das barras (diminuir valor aumenta o espaço entre elas)
+            categoryPercentage: 0.8, // Ajusta o espaço entre as categorias
+            indexAxis: 'y',
+        },
+        plugins: [ChartDataLabels]
     });
 }
-
