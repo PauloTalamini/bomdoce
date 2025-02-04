@@ -1,753 +1,995 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <title>Gerenciador de Despesas</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.19/jspdf.plugin.autotable.min.js"></script>
-    
+    <title>Cardápio de Brigadeiros</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body>h1 {
+            display: flex;
+            justify-content: center;
+        }
+
+header {
+    background-color: #1e1e1e;
+    padding: 10px 20px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.home-icon i,
+.cart-icon i {
+    font-size: 24px;
+    color: white;
+}
+
+.logo img {
+    max-height: 50px;
+}
+
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-count {
+    position: absolute;
+    top: -18px;
+    right: -22px;
+    background-color: green;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 50%;
+    width: 10px;
+    height: 15px;
+    text-align: center;
+    border: 4px solid #1e1e1e;
+}
+/*----------------------------------*/
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Ajuste a altura conforme necessário */
+    overflow: hidden;
+}
+
+.banner-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Mostra o primeiro banner inicialmente */
+.banner-slide:first-child {
+    opacity: 1;
+}
+
+/* Oculta o banner mobile por padrão */
+.mobile {
+    display: none;
+}
+
+/* Quando a tela for menor que 768px (mobile), mostra o banner mobile e oculta o desktop */
+@media screen and (max-width: 768px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+}
+
+/*---------------------------------------------*/
+
+.menu-carousel {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 10px;
+    padding: 10px 0;
+}
+
+.swiper-slide {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.swiper-slide img {
+    width: 50px; /* Ajuste conforme necessário */
+    height: 50px;
+}
+
+.swiper-slide p {
+    font-size: 14px;
+    text-align: center;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    width: 10px; /* Reduz o tamanho */
+    height: 10px;
+    font-size: 10px;
+    opacity: 0.3; /* Deixa transparente */
+    color: rgba(255, 255, 255, 0.5); /* Define cor transparente */
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 20px; /* Tamanho do ícone da seta */
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    opacity: 0.7; /* Aumenta a visibilidade ao passar o mouse */
+}
 
 
+/*-----------------------------------------------------*/
+
+        .container {
+            width: 100%;
+            margin: auto;
+        }
+
+        body > div > h1 {
+            text-align: center;
+        }
+
+        .container-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+            
+
+        .card {
+            background-color: #2d2d2d;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 150px;
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+            height: 150px;
+        }
+
+        .card .info {
+            padding: 5px;
+        }
+
+        .card .nome-produto {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .card .preco {
+            font-size: 16px;
+            color: #ffffff;
+            margin-bottom: 0;
+        }
+
+        #quantidade {
+            font-size: 16px;
+            width: 35px;
+            height: 25px;
+            text-align: center;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+        }
+
+        #checkout>h3:nth-child(6) {
+            margin-top: 30px;
+        }
+
+        #sabores {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #produtoSelecionado>button {
+            margin-top: 20px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .button {
+            background-color: #2d2d2d;
+            color: white;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .itemCarrinho {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.imagemProduto {
+    height: 80px;
+}
+
+.imagemProduto img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.detalhesProduto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% - 100px);  /* Ajusta a largura do produto */
+    padding-left: 10px;
+}
+
+.produtoNomeEtrash {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.produtoNome {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.botaoLixeira {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+
+.saboresProduto {
+    font-size: 14px;
+    color: #555;
+    display: grid;
+}
+
+.quantidadeEValor {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.seletorQuantidade {
+    display: inline-flex;
+    align-items: center;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 50px;
+    border: 1px solid #555;
+    padding: 5px;
+    padding-inline: 0;
+    margin-left: 5px;
+}
+
+.seletorQuantidade button {
+    padding: 5px;
+    margin: 0 5px;
+    font-weight: 700;
+    color: white;
+    border-radius: 50%;
+    background-color: transparent;
+    font-size: 14px;
+    width: 18px;
+    height: 18px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+}
+
+.quantidade {
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.quantidadeProduto {
+    padding: 5px;
+    padding-inline: 10px;
+    background-color: #4CAF50;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 12px;
+    border-radius: 25px;
+}
+
+.valorTotal {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#carrinho > p {
+    display: flex;
+    justify-content: end;
+}
+
+
+.sabor-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o sabor e o seletor */
+}
+
+.sabor-nome {
+    font-size: 16px;
+    color: white;
+}
+
+.sabor-quantidade {
+    width: 50px; /* Ajuste o tamanho do seletor conforme necessário */
+}
+
+
+
+        #checkout>label:nth-child(3) {
+            vertical-align: middle
+        }
+
+        #checkout>label:nth-child(4) {
+            margin-left: 15px;
+            vertical-align: middle
+        }
+
+        #checkout>p {
+            margin-top: 2px;
+            font-style: italic;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        #enderecoEntrega {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #rua {
+            width: 100%;
+            height: 30px;
+            margin-top: 10px;
+        }
+
+        #numero {
+            width: 100%;
+            height: 30px;
+        }
+
+        #bairro {
+            width: 100%;
+            height: 30px;
+        }
+
+        .cart-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .pix-container {
+            display: flex;
+            align-items: center;
+            padding: 0 10px 10px 10px;
+        }
+
+        .pix-icon {
+            margin-right: 5px;
+            font-size: 10px;
+        }
+
+        .copy-container {
+            text-align: center;
+            margin-left: 15px;
+        }
+
+        .copy-icon {
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        .copy-text {
+            font-size: 8px;
+            color: #ccc;
+            margin-top: -2px;
+        }
+
+        .finalizar-btn {
+            background-color: #4CAF50;
+            font-size: 16px;
+            width: 100%;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 40px;
+            display: flex;
+        }
+
+        .finalizar-btn:disabled {
+            background-color: #555;
+        }
+    </style>
 </head>
 
 <body>
+    
     <div class="container">
-        <!-- Link para Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <div class="header-mobile">
-        <!-- Botão com ícone de hambúrguer -->
-        <button class="menu-toggle" onclick="toggleMenu()">
-            <i id="menu-icon" class="fas fa-bars"></i>
-        </button>
-
-
-
-        
-        <!-- Botão de modo noturno -->
-        <button id="darkModeToggleMobile" aria-label="Alternar modo noturno">
-            <i class="fas fa-moon"></i> <!-- Ícone de lua -->
-        </button>
-
-        <!-- Menu Lateral -->
-        <div class="sidebar" id="sidebar">
-            <div class="logo-container">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bemii.png?raw=true"
-                    alt="Logo Bemii">
-            </div>
-
-            <div class="logo-user">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bemii.png?raw=true"
-                    alt="Logo Bemii">
-                <div class="user-info">
-                    <p class="greeting">Bem-vindo,</p>
-                    <p class="username">Nome do Usuário</p>
-                    <!-- Substitua 'Nome do Usuário' pelo nome real do usuário -->
-                </div>
-            </div>
-            <button id="open-modal-btn-mobile"><i class="fas fa-plus"></i> Gerar Lançamento</button>
-            <button id="open-modal-btn-conta-mobile""><i class="fas fa-id-card"></i> Incluir Conta</button>
-            <button id="open-modal-btn-cartao-mobile""><i class="fas fa-credit-card"></i> Incluir Cartão</button>
-            <div class="filters">
-                <div>
-                    <button id="filter-banks">
-                        <i class="fas fa-university"></i> Filtrar por Bancos
-                    </button>
-                    <div id="banks-dropdown" class="dropdown">
-                        <ul>
-                            <li><label><input type="checkbox" value="Banco do Brasil"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true" alt="Banco do Brasil" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco do Brasil</label></li>
-                            <li><label><input type="checkbox" value="Banco Pan"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco%20pan.jpeg?raw=true" alt="Banco Pan" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Pan</label></li>
-                            <li><label><input type="checkbox" value="Banco Inter"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-inter.jpeg?raw=true" alt="Banco Inter" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Inter</label></li>
-                            <li><label><input type="checkbox" value="Banco Safra"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-safra.jpeg?raw=true" alt="Banco Safra" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Safra</label></li>
-                            <li><label><input type="checkbox" value="Banco Votorantim"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-votorantim.jpeg?raw=true" alt="Banco Votorantim" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Votorantim</label></li>
-                            <li><label><input type="checkbox" value="Banrisul"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banrisul.jpeg?raw=true" alt="Banrisul" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banrisul</label></li>
-                            <li><label><input type="checkbox" value="Bradesco"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bradesco.jpeg?raw=true" alt="Bradesco" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Bradesco</label></li>
-                            <li><label><input type="checkbox" value="Banco BTG"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/btg.jpeg?raw=true" alt="Banco BTG" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco BTG</label></li>
-                            <li><label><input type="checkbox" value="Banco C6"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/c6.jpeg?raw=true" alt="Banco C6" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco C6</label></li>
-                            <li><label><input type="checkbox" value="Caixa Econômica"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/caixa.jpeg?raw=true" alt="Caixa Econômica" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Caixa Econômica</label></li>
-                            <li><label><input type="checkbox" value="Cresol"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/cresol.jpeg?raw=true" alt="Cresol" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Cresol</label></li>
-                            <li><label><input type="checkbox" value="Infinity Pay"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/infinity-pay.jpeg?raw=true" alt="Infinity Pay" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Infinity Pay</label></li>
-                            <li><label><input type="checkbox" value="Itaú"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/itau.jpeg?raw=true" alt="Itaú" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Itaú</label></li>
-                            <li><label><input type="checkbox" value="Mercado Pago"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/mercado-pago.jpeg?raw=true" alt="Mercado Pago" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Mercado Pago</label></li>
-                            <li><label><input type="checkbox" value="Next"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/next.jpeg?raw=true" alt="Next" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Next</label></li>
-                            <li><label><input type="checkbox" value="Nubank"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/nubank.jpeg?raw=true" alt="Nubank" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Nubank</label></li>
-                            <li><label><input type="checkbox" value="Pag Seguro"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/pagseguro.jpeg?raw=true" alt="Pag Seguro" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Pag Seguro</label></li>
-                            <li><label><input type="checkbox" value="Paypal"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/paypal.jpeg?raw=true" alt="Paypal" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Paypal</label></li>
-                            <li><label><input type="checkbox" value="PicPay"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/picpay.jpeg?raw=true" alt="PicPay" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> PicPay</label></li>
-                            <li><label><input type="checkbox" value="Santander"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/santander.jpeg?raw=true" alt="Santander" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Santander</label></li>
-                            <li><label><input type="checkbox" value="Sicoob"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicoob.jpeg?raw=true" alt="Sicoob" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Sicoob</label></li>
-                            <li><label><input type="checkbox" value="Sicredi"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicredi.jpeg?raw=true" alt="Sicredi" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Sicredi</label></li>
-                            <li><label><input type="checkbox" value="Outros"><i class="fas fa-ellipsis-h" style="margin-right: 5px;margin-left: 5px;"></i>Outros</label></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <button id="filter-expenses">
-                        <i class="fas fa-money-bill"></i> Filtrar por Lançamento
-                    </button>
-                    <div id="expenses-dropdown" class="dropdown">
-                        <ul>
-                            <li><label><input type="checkbox" value="Despesas"><i class="fas fa-arrow-down"></i>Despesas</label></li>
-                            <li><label><input type="checkbox" value="Receitas"><i class="fas fa-arrow-up"></i>Receitas</label></li>
-                            <!-- Adicione mais despesas conforme necessário -->
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <button id="filter-categories">
-                        <i class="fas fa-tags"></i> Filtrar por Categorias
-                    </button>
-                    <div id="categories-dropdown" class="dropdown">
-                        <ul>
-                            <li><label><input type="checkbox" value="Alimentação"><i class="fas fa-utensils"></i>Alimentação</label></li>
-                            <li><label><input type="checkbox" value="Benefícios"><i class="fas fa-gift"></i>Benefícios</label></li>
-                            <li><label><input type="checkbox" value="Dívidas e Obrigações Financeiras"><i class="fas fa-file-invoice-dollar"></i>Obrig. Financeiras</label></li>
-                            <li><label><input type="checkbox" value="Doações e Caridade"><i class="fas fa-hands-helping"></i>Doações e Caridade</label></li>
-                            <li><label><input type="checkbox" value="Educação"><i class="fas fa-book"></i>Educação</label></li>
-                            <li><label><input type="checkbox" value="Impostos e Taxas"><i class="fas fa-receipt"></i>Impostos e Taxas</label></li>
-                            <li><label><input type="checkbox" value="Investimentos"><i class="fas fa-chart-line"></i>Investimentos</label></li>
-                            <li><label><input type="checkbox" value="Lazer"><i class="fas fa-film"></i>Lazer</label></li>
-                            <li><label><input type="checkbox" value="Moradia"><i class="fas fa-home"></i>Moradia</label></li>
-                            <li><label><input type="checkbox" value="Patrimônios"><i class="fas fa-landmark"></i>Patrimônios</label></li>
-                            <li><label><input type="checkbox" value="Rendimentos"><i class="fas fa-coins"></i>Rendimentos</label></li>
-                            <li><label><input type="checkbox" value="Saúde"><i class="fas fa-heartbeat"></i>Saúde</label></li>
-                            <li><label><input type="checkbox" value="Seguros"><i class="fas fa-shield-alt"></i>Seguros</label></li>
-                            <li><label><input type="checkbox" value="Transporte"><i class="fas fa-bus"></i>Transporte</label></li>
-                            <li><label><input type="checkbox" value="Vestuário e Beleza"><i class="fas fa-tshirt"></i>Vestuário e Beleza</label></li>
-                            <li><label><input type="checkbox" value="Outros"><i class="fas fa-ellipsis-h"></i>Outros</label></li>
-
-                            <!-- Adicione mais categorias conforme necessário -->
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <button id="filter-period">
-                        <i class="fas fa-calendar-alt"></i> Filtrar por Período
-                    </button>
-                    <div id="period-dropdown" class="dropdown">
-                        <label>Data de Início: <input type="date" id="start-date"></label>
-                        <label>Data de Fim: <input type="date" id="end-date"></label>
-                    </div>
-                </div>
-                <button id="clear-filters">
-                    <i class="fas fa-eraser"></i> Limpar Filtros
-                </button>
-            </div>
-
-            <footer>
-                <div class="footer-content">
-                    <!-- Coluna 1: Termos -->
-                    <div class="terms">
-                        <p>Conteúdo:</p>
-                        <a href="#">Política de Privacidade</a>
-                        <a href="#">Termos de Uso</a>
-                    </div>
-    
-                    <!-- Coluna 2: Contatos -->
-                    <div class="contact-info">
-                        <p>Contatos:</p>
-                        <a href="https://wa.me/seu_numero" target="_blank"><i class="fab fa-whatsapp"></i> (035)
-                            997378247</a>
-                        <a href="mailto:seu_email@example.com"><i class="fas fa-envelope"></i> bemiicontato2gmail.com</a>
-                    </div>
-    
-                    <!-- Coluna 3: Redes Sociais -->
-                    <div class="social-media">
-                        <p>Siga-nos:</p>
-                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <p>&copy; 2024 - Sua Empresa. Todos os direitos reservados.</p>
-            </footer>
-
+<header>
+    <div class="header-container">
+        <a href="index.html" class="home-icon">
+            <i class="fas fa-home"></i>
+        </a>
+        <div class="logo">
+            <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/1000079831%20(1).png?raw=true" alt="Logo da Loja">
+        </div>
+        <div class="cart-icon" onclick="abrirCarrinho()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count" class="cart-count">0</span>
         </div>
     </div>
+</header>
 
+<div class="banner-container desktop">
+    <div class="banner-slide">
+        <img src="https://cdn.awsli.com.br/2297/2297081/arquivos/camiseta-de-qualidade.png" alt="Banner Desktop 1">
+    </div>
+    <div class="banner-slide">
+        <img src="https://cdn.awsli.com.br/2297/2297081/arquivos/t-shirt-music-azul-preta.png" alt="Banner Desktop 2">
+    </div>
+</div>
 
-        <div class="menu">
-            <div class="logo-container">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bemii.png?raw=true"
-                    alt="Logo Bemii">
-                <!-- Botão de modo noturno -->
-                <button id="darkModeToggle" aria-label="Alternar modo noturno">
-                    <i class="fas fa-moon"></i> <!-- Ícone de lua -->
-                </button>
+<div class="banner-container mobile">
+    <div class="banner-slide">
+        <img src="https://cdn.awsli.com.br/2297/2297081/arquivos/t-shirt-music-mobile-azul-preta.png" alt="Banner Mobile 1">
+    </div>
+    <div class="banner-slide">
+        <img src="https://cdn.awsli.com.br/2297/2297081/arquivos/camiseta-de-qualidade-mobile.png" alt="Banner Mobile 2">
+    </div>
+</div>
+
+<div class="menu-carousel swiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><a href="#"><img src="icone1.png"><p>Acessórios</p></a></div>
+        <div class="swiper-slide"><a href="#"><img src="icone2.png"><p>Camisetas</p></a></div>
+        <div class="swiper-slide"><a href="#"><img src="icone3.png"><p>Coleção</p></a></div>
+        <div class="swiper-slide"><a href="#"><img src="icone4.png"><p>Polo</p></a></div>
+        <div class="swiper-slide"><a href="#"><img src="icone5.png"><p>Ofertas</p></a></div>
+        <div class="swiper-slide"><a href="#"><img src="icone6.png"><p>Jeans</p></a></div>
+        <div class="swiper-slide"><a href="#"><img src="icone7.png"><p>Calçados</p></a></div>
+        <div class="swiper-slide"><a href="#"><img src="icone8.png"><p>Casacos</p></a></div>
+        <div class="swiper-slide"><a href="#"><img src="icone9.png"><p>Acessórios</p></a></div>
+    </div>
+
+    <!-- Botões de navegação -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+        <div class="container-cards">
+        <div class="card" onclick="selecionarProduto('Caixa c/ 08 unidades')">
+            <img src="https://mycatalog.sfo3.digitaloceanspaces.com/uploads/679027874f19ba0007d5a15b/V7DEhNypnr-medium-eaefdbeebe.jpg" alt="Caixa c/ 08 unidades">
+            <div class="info">
+                <p class="nome-produto">CAIXA C/ 08 UNIDADES</p>
+                <span>Até 4 Sabores</span>
+                <p class="preco">R$14,00</p>
             </div>
-
-
-            <div class="logo-user">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bemii.png?raw=true"
-                    alt="Logo Bemii">
-                <div class="user-info">
-                    <p class="greeting">Bem-vindo,</p>
-                    <p class="username">Nome do Usuário</p>
-                    <!-- Substitua 'Nome do Usuário' pelo nome real do usuário -->
-                </div>
+        </div>
+        
+        <div class="card" onclick="selecionarProduto('Caixa c/ 12 unidades')">
+            <img src="https://mycatalog.sfo3.digitaloceanspaces.com/uploads/679027874f19ba0007d5a15b/V7DEhNypnr-medium-eaefdbeebe.jpg" alt="Caixa c/ 12 unidades">
+            <div class="info">
+                <p class="nome-produto">CAIXA C/ 12 UNIDADES</p>
+                <span>Até 6 Sabores</span>
+                <p class="preco">R$20,00</p>
             </div>
-
-            <button id="open-modal-btn"><i class="fas fa-plus"></i> Gerar Lançamento</button>
-            <button id="open-modal-btn-conta"><i class="fas fa-id-card"></i> Incluir Conta</button>
-            <button id="open-modal-btn-cartao"><i class="fas fa-credit-card"></i> Incluir Cartão</button>
-            <div class="filters">
-                <div>
-                    <button id="filter-banks">
-                        <i class="fas fa-university"></i> Filtrar por Bancos
-                    </button>
-                    <div id="banks-dropdown" class="dropdown">
-                        <ul>
-                            <li><label><input type="checkbox" value="Banco do Brasil"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true" alt="Banco do Brasil" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco do Brasil</label></li>
-                            <li><label><input type="checkbox" value="Banco Pan"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco%20pan.jpeg?raw=true" alt="Banco Pan" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Pan</label></li>
-                            <li><label><input type="checkbox" value="Banco Inter"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-inter.jpeg?raw=true" alt="Banco Inter" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Inter</label></li>
-                            <li><label><input type="checkbox" value="Banco Safra"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-safra.jpeg?raw=true" alt="Banco Safra" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Safra</label></li>
-                            <li><label><input type="checkbox" value="Banco Votorantim"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-votorantim.jpeg?raw=true" alt="Banco Votorantim" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco Votorantim</label></li>
-                            <li><label><input type="checkbox" value="Banrisul"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banrisul.jpeg?raw=true" alt="Banrisul" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banrisul</label></li>
-                            <li><label><input type="checkbox" value="Bradesco"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bradesco.jpeg?raw=true" alt="Bradesco" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Bradesco</label></li>
-                            <li><label><input type="checkbox" value="Banco BTG"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/btg.jpeg?raw=true" alt="Banco BTG" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco BTG</label></li>
-                            <li><label><input type="checkbox" value="Banco C6"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/c6.jpeg?raw=true" alt="Banco C6" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Banco C6</label></li>
-                            <li><label><input type="checkbox" value="Caixa Econômica"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/caixa.jpeg?raw=true" alt="Caixa Econômica" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Caixa Econômica</label></li>
-                            <li><label><input type="checkbox" value="Cresol"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/cresol.jpeg?raw=true" alt="Cresol" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Cresol</label></li>
-                            <li><label><input type="checkbox" value="Infinity Pay"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/infinity-pay.jpeg?raw=true" alt="Infinity Pay" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Infinity Pay</label></li>
-                            <li><label><input type="checkbox" value="Itaú"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/itau.jpeg?raw=true" alt="Itaú" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Itaú</label></li>
-                            <li><label><input type="checkbox" value="Mercado Pago"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/mercado-pago.jpeg?raw=true" alt="Mercado Pago" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Mercado Pago</label></li>
-                            <li><label><input type="checkbox" value="Next"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/next.jpeg?raw=true" alt="Next" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Next</label></li>
-                            <li><label><input type="checkbox" value="Nubank"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/nubank.jpeg?raw=true" alt="Nubank" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Nubank</label></li>
-                            <li><label><input type="checkbox" value="Pag Seguro"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/pagseguro.jpeg?raw=true" alt="Pag Seguro" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Pag Seguro</label></li>
-                            <li><label><input type="checkbox" value="Paypal"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/paypal.jpeg?raw=true" alt="Paypal" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Paypal</label></li>
-                            <li><label><input type="checkbox" value="PicPay"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/picpay.jpeg?raw=true" alt="PicPay" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> PicPay</label></li>
-                            <li><label><input type="checkbox" value="Santander"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/santander.jpeg?raw=true" alt="Santander" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Santander</label></li>
-                            <li><label><input type="checkbox" value="Sicoob"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicoob.jpeg?raw=true" alt="Sicoob" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Sicoob</label></li>
-                            <li><label><input type="checkbox" value="Sicredi"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicredi.jpeg?raw=true" alt="Sicredi" style="width: 15px; height: 15px; margin-right: 5px; margin-left: 5px;border-radius: 50%;"> Sicredi</label></li>
-                            <li><label><input type="checkbox" value="Outros"><i class="fas fa-ellipsis-h" style="margin-right: 5px;margin-left: 5px;"></i>Outros</label></li>
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <button id="filter-expenses">
-                        <i class="fas fa-money-bill"></i> Filtrar por Lançamento
-                    </button>
-                    <div id="expenses-dropdown" class="dropdown">
-                        <ul>
-                            <li><label><input type="checkbox" value="Despesas"><i class="fas fa-arrow-down"></i>Despesas</label></li>
-                            <li><label><input type="checkbox" value="Receitas"><i class="fas fa-arrow-up"></i>Receitas</label></li>
-                            <!-- Adicione mais despesas conforme necessário -->
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <button id="filter-categories">
-                        <i class="fas fa-tags"></i> Filtrar por Categorias
-                    </button>
-                    <div id="categories-dropdown" class="dropdown">
-                        <ul>
-                            <li><label><input type="checkbox" value="Alimentação"><i class="fas fa-utensils"></i>Alimentação</label></li>
-                            <li><label><input type="checkbox" value="Benefícios"><i class="fas fa-gift"></i>Benefícios</label></li>
-                            <li><label><input type="checkbox" value="Dívidas e Obrigações Financeiras"><i class="fas fa-file-invoice-dollar"></i>Obrig. Financeiras</label></li>
-                            <li><label><input type="checkbox" value="Doações e Caridade"><i class="fas fa-hands-helping"></i>Doações e Caridade</label></li>
-                            <li><label><input type="checkbox" value="Educação"><i class="fas fa-book"></i>Educação</label></li>
-                            <li><label><input type="checkbox" value="Impostos e Taxas"><i class="fas fa-receipt"></i>Impostos e Taxas</label></li>
-                            <li><label><input type="checkbox" value="Investimentos"><i class="fas fa-chart-line"></i>Investimentos</label></li>
-                            <li><label><input type="checkbox" value="Lazer"><i class="fas fa-film"></i>Lazer</label></li>
-                            <li><label><input type="checkbox" value="Moradia"><i class="fas fa-home"></i>Moradia</label></li>
-                            <li><label><input type="checkbox" value="Patrimônios"><i class="fas fa-landmark"></i>Patrimônios</label></li>
-                            <li><label><input type="checkbox" value="Rendimentos"><i class="fas fa-coins"></i>Rendimentos</label></li>
-                            <li><label><input type="checkbox" value="Saúde"><i class="fas fa-heartbeat"></i>Saúde</label></li>
-                            <li><label><input type="checkbox" value="Seguros"><i class="fas fa-shield-alt"></i>Seguros</label></li>
-                            <li><label><input type="checkbox" value="Transporte"><i class="fas fa-bus"></i>Transporte</label></li>
-                            <li><label><input type="checkbox" value="Vestuário e Beleza"><i class="fas fa-tshirt"></i>Vestuário e Beleza</label></li>
-                            <li><label><input type="checkbox" value="Outros"><i class="fas fa-ellipsis-h"></i>Outros</label></li>
-
-                            <!-- Adicione mais categorias conforme necessário -->
-                        </ul>
-                    </div>
-                </div>
-                <div>
-                    <button id="filter-period">
-                        <i class="fas fa-calendar-alt"></i> Filtrar por Período
-                    </button>
-                    <div id="period-dropdown" class="dropdown">
-                        <label>Data de Início: <input type="date" id="start-date"></label>
-                        <label>Data de Fim: <input type="date" id="end-date"></label>
-                    </div>
-                </div>
-                <button id="clear-filters">
-                    <i class="fas fa-eraser"></i> Limpar Filtros
-                </button>
+        </div>
+        
+        <div class="card" onclick="selecionarProduto('Caixa c/ 30 unidades')">
+            <img src="https://mycatalog.sfo3.digitaloceanspaces.com/uploads/679027874f19ba0007d5a15b/V7DEhNypnr-medium-eaefdbeebe.jpg" alt="Caixa c/ 30 unidades">
+            <div class="info">
+                <p class="nome-produto">CAIXA C/ 30 UNIDADES</p>
+                <span>Até 6 Sabores</span>
+                <p class="preco">R$30,00</p>
             </div>
+        </div>
+        
+        <div class="card" onclick="selecionarProduto('Caixa c/ 100 unidades')">
+            <img src="https://mycatalog.sfo3.digitaloceanspaces.com/uploads/679027874f19ba0007d5a15b/V7DEhNypnr-medium-eaefdbeebe.jpg" alt="Caixa c/ 100 unidades">
+            <div class="info">
+                <p class="nome-produto">CAIXA C/ 100 UNIDADES</p>
+                <span>Até 10 Sabores</span>
+                <p class="preco">R$160,00</p>
+            </div>
+        </div>
+    </div>
+        <div id="produtoSelecionado" class="hidden">
+            <h2 id="produtoNome"></h2>
+            <div class="quantidadeSabores">
+                <span>Sabores selecionados: <span id="quantidadeSabores">0 / 0</span></span>
+            </div>
+            <div id="sabores">
+                <label>
+                    <input type="checkbox" value="Chocolate" data-preco="2.00"> Chocolate
+                    </span>
+                </label>
+                <label>
+                    <input type="checkbox" value="Morango" data-preco="2.00"> Morango
+                    </span>
+                </label>
+                <label>
+                    <input type="checkbox" value="Nutella" data-preco="2.00"> Nutella
+                    </span>
+                </label>
+            </div>
+        
             
-
-        </div>
-        <div class="bloco-de-despesas">
-            <div class="bancos-bloco">
-                <div class="minhas-contas"><i class="fas fa-credit-card"></i><span>Minhas Contas</span>
-                    <hr>
-                </div>
-                <div class="meus-cartões"><i class="fas fa-id-card"></i><span>Meus Cartões</span></div>
-            </div>
-            <div class="despesas-e-receitas">
-                <div class="large" id="total-revenue">RECEITAS R$ 0.00</div>
-                <div class="large" id="total-expenses">DESPESAS R$ 0.00</div>
-                <div class="large" id="total-balance">SALDO: R$ 0.00</div>
-                <div class="large" id="total-account-balance">SALDO<wbr> CONTAS: R$ 0.00</div>
-                <div class="large" id="total-card-limit">LIMITE<wbr> CARTÕES: R$ 0.00</div>
-            </div>
-        </div>
-        <div class="grafico-bloco">
-            <div class="grafico-item"><span>Top 5 entradas por categorias</span> <canvas id="entradasGraph"></canvas></div>
-            <div class="grafico-item"><span>5 principais Despesas</span> <canvas id="despesasGraph"></canvas></div>
-            <div class="grafico-item"><span>Despesas Mensais Entrada x Saída</span> <canvas id="entradaSaidaGraph"></canvas></div>
-            <div class="grafico-item"><span>Despesas por Categorias</span> <canvas id="categoriasGraph"></canvas></div>
-        </div>
-        
-        <div class="lancamentos">
-            <div class="export">
-                <button id="export-excel">Exportar para Excel</button>
-                <button id="export-pdf">Exportar para PDF</button>
-            </div>
-            <div class="receitas-bloco">
-                <h3>RECEITAS</h3>
-                <table class="tabela" id="receitas-table">
-                    <thead>
-                        <tr>
-                            <th>Descrição</th>
-                            <th>Categoria</th>
-                            <th>Tipo</th>
-                            <th>Valor</th>
-                            <th>Data</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <div class="despesas-bloco">
-                <h3>DESPESAS</h3>
-                <table class="tabela" id="despesas-table">
-                    <thead>
-                        <tr>
-                            <th>Descrição</th>
-                            <th>Categoria</th>
-                            <th>Tipo</th>
-                            <th>Valor</th>
-                            <th>Data</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
+            <button class="button" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
         </div>
 
-        <footer>
-            <div class="footer-content">
-                <!-- Coluna 1: Termos -->
-                <div class="terms">
-                    <p>Conteúdo:</p>
-                    <a href="#">Política de Privacidade</a>
-                    <a href="#">Termos de Uso</a>
-                </div>
+        <div id="carrinho" class="hidden">
+            <h2>Carrinho <span class="cart-icon"></span></h2>
+            <div id="quantidadeTotalCarrinho"></div>
+            <div id="itensCarrinho"></div>
+            <p>Total: R$ <span id="totalCarrinho"></span></p>
+            <button class="button" onclick="mostrarCheckout()">Finalizar Compra</button>
+        </div>
+        </div>
 
-                <!-- Coluna 2: Contatos -->
-                <div class="contact-info">
-                    <p>Contatos:</p>
-                    <a href="https://wa.me/seu_numero" target="_blank"><i class="fab fa-whatsapp"></i> (035)
-                        997378247</a>
-                    <a href="mailto:seu_email@example.com"><i class="fas fa-envelope"></i> bemiicontato2gmail.com</a>
-                </div>
+        <div id="checkout" class="hidden">
+            <h2>Finalizar Pedido</h2>
+            <h3>Forma de Entrega:</h3>
+            <label><input type="radio" name="entrega" value="retirada" onclick="selecionarEntrega('retirada')"> Retirar
+                no Local</label>
+            <label><input type="radio" name="entrega" value="entrega" onclick="selecionarEntrega('entrega')">
+                Entrega</label>
 
-                <!-- Coluna 3: Redes Sociais -->
-                <div class="social-media">
-                    <p>Siga-nos:</p>
-                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <div id="enderecoEntrega" class="hidden">
+                <input type="text" id="rua" placeholder="Digite nome da rua">
+                <input type="text" id="numero" placeholder="Digite nº da casa">
+                <input type="text" id="bairro" placeholder="Digite o bairro">
+                <p>Taxa de Entrega: R$ <span id="taxaEntrega">5.00</span></p>
+            </div>
+
+            <h3>Forma de Pagamento:</h3>
+            <label><input type="checkbox" name="pagamento" value="Pix" onclick="habilitarFinalizar()"> Pix</label>
+            <div id="pixChave" class="pix-container">
+                <img src="https://cdn.awsli.com.br/2396/2396648/arquivos/pix_icon.svg" alt="Ícone Pix" class="pix-icon"
+                    width="15" height="15">
+                <span id="chavePix">123456789@pix.com.br</span>
+                <div class="copy-container">
+                    <i class="fa-solid fa-copy copy-icon" onclick="copiarChavePix()"></i>
+                    <div class="copy-text">Copiar</div>
                 </div>
             </div>
-            <p>&copy; 2024 - Sua Empresa. Todos os direitos reservados.</p>
-        </footer>
+            <label><input type="checkbox" name="pagamento" value="Pix" onclick="habilitarFinalizar()"> Pagamento na
+                entrega</label>
+            <p>Pix, Dinheiro, Cartão (Visa, Master, Elo)</p>
 
+            <button id="finalizarPedidoBtn" class="button finalizar-btn" onclick="enviarPedidoWhatsApp()"
+                disabled>Enviar Pedido</button>
+        </div>
 
-    </div>
-
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('myModal')">×</span>
-            <h1>Gerar Lançamento</h1>
-            <div class="form-container">
-                <form id="transaction-form">
-                    <label for="type">Tipo:</label>
-                    <select id="type" required>
-                        <option value="revenue">Selecione o Tipo de Lançamento</option>
-                        <option value="revenue">Receita</option>
-                        <option value="expense">Despesa</option>
-                    </select>
-
-                    <!-- Campo de descrição com seleção de subcategorias -->
-                    <label for="description">Descrição:</label>
-                    <select id="description" onchange="updateDescription(this)">
-                        <option value="">Selecione uma Descrição</option>
-                        <option value="Acessórios">Acessórios</option>
-                        <option value="Aluguel">Aluguel</option>
-                        <option value="Aplicativos de transporte (Uber, 99, etc.)">Aplicativos de transporte (Uber, 99,
-                            etc.)</option>
-                        <option value="Assinaturas de streaming (Netflix, Spotify, etc.)">Assinaturas de streaming
-                            (Netflix, Spotify, etc.)</option>
-                        <option value="Atividades recreativas">Atividades recreativas</option>
-                        <option value="Barbearia">Barbearia</option>
-                        <option value="Bônus e Comissões">Bônus e Comissões</option>
-                        <option value="Caridade">Caridade</option>
-                        <option value="Cartão de crédito">Cartão de crédito</option>
-                        <option value="Combustível">Combustível</option>
-                        <option value="Consultas médicas">Consultas médicas</option>
-                        <option value="Contas de água">Contas de água</option>
-                        <option value="Cursos e treinamentos">Cursos e treinamentos</option>
-                        <option value="Dividendos de Investimentos">Dividendos de Investimentos</option>
-                        <option value="Emprestimos">Emprestimos</option>
-                        <option value="Estacionamentos">Estacionamentos</option>
-                        <option value="Estética">Estética</option>
-                        <option value="Exames médicos">Exames médicos</option>
-                        <option value="Financiamentos">Financiamentos</option>
-                        <option value="Gás">Gás</option>
-                        <option value="Hipoteca">Hipoteca</option>
-                        <option value="Imposto de renda">Imposto de renda</option>
-                        <option value="Impostos e Taxas">Impostos e Taxas</option>
-                        <option value="Internet">Internet</option>
-                        <option value="IPTU (Imposto Predial e Territorial Urbano)">IPTU (Imposto Predial e Territorial
-                            Urbano)</option>
-                        <option value="IPVA (Imposto sobre a Propriedade de Veículos Automotores)">IPVA (Imposto sobre a
-                            Propriedade de Veículos Automotores)</option>
-                        <option value="Juros">Juros</option>
-                        <option value="Juros de Poupança">Juros de Poupança</option>
-                        <option value="Lanchonete">Lanchonete</option>
-                        <option value="Livros">Livros</option>
-                        <option value="Luz">Luz</option>
-                        <option value="Manutenção do veículo">Manutenção do veículo</option>
-                        <option value="Manutenção e reparos">Manutenção e reparos</option>
-                        <option value="Material escolar">Material escolar</option>
-                        <option value="Medicamentos">Medicamentos</option>
-                        <option value="Mensalidades escolares">Mensalidades escolares</option>
-                        <option value="Mensalidades universitárias">Mensalidades universitárias</option>
-                        <option value="Multas">Multas</option>
-                        <option value="Parcelamentos">Parcelamentos</option>
-                        <option value="Pedágios">Pedágios</option>
-                        <option value="Planos de saúde">Planos de saúde</option>
-                        <option value="Produtos de beleza">Produtos de beleza</option>
-                        <option value="Rendimentos de Freelance">Rendimentos de Freelance</option>
-                        <option value="Restaurantes">Restaurantes</option>
-                        <option value="Roupas">Roupas</option>
-                        <option value="Salão de beleza">Salão de beleza</option>
-                        <option value="Salário">Salário</option>
-                        <option value="Seguro automotivo">Seguro automotivo</option>
-                        <option value="Seguro de saúde">Seguro de saúde</option>
-                        <option value="Seguro de vida">Seguro de vida</option>
-                        <option value="Seguro residencial">Seguro residencial</option>
-                        <option value="Trabalho Autônomo">Trabalho Autônomo</option>
-                        <option value="Transporte público (ônibus, metrô, etc.)">Transporte público (ônibus, metrô,
-                            etc.)</option>
-                        <option value="Tratamentos">Tratamentos</option>
-                        <option value="Venda de Produtos">Venda de Produtos</option>
-                        <option value="Vendas de Investimentos">Vendas de Investimentos</option>
-                        <option value="Viagens">Viagens</option>
-                        <option value="Viagens">Outros</option>
-                    </select>
-
-
-
-                    <label for="category">Categoria:</label>
-                    <select id="category" required>
-                        <option value="">Selecione uma Categoria</option>
-                        <option value="Alimentação">Alimentação</option>
-                        <option value="Benefícios">Benefícios</option>
-                        <option value="Dívidas e Obrigações Financeiras">Obrigações Financeiras</option>
-                        <option value="Doações e Caridade">Doações e Caridade</option>
-                        <option value="Educação">Educação</option>
-                        <option value="Impostos e Taxas">Impostos e Taxas</option>
-                        <option value="Investimentos">Investimentos</option>
-                        <option value="Lazer">Lazer</option>
-                        <option value="Moradia">Moradia</option>
-                        <option value="Patrimônios">Patrimônios</option>
-                        <option value="Rendimentos">Rendimentos</option>
-                        <option value="Saúde">Saúde</option>
-                        <option value="Seguros">Seguros</option>
-                        <option value="Transporte">Transporte</option>
-                        <option value="Vestuário e Beleza">Vestuário e Beleza</option>
-                        <option value="Seguros">outros</option>
-                    </select>
-                    <label for="amount">Valor:</label>
-                    <input type="number" id="amount" required placeholder="Valor" step="0.01">
-                    <label for="date">Data:</label>
-                    <input type="date" id="date" required>
-                    <button type="submit">Adicionar Lançamento</button>
-                </form>
-            </div>
+        <div id="confirmacaoPedido" class="hidden">
+            <h2>Pedido realizado com sucesso!</h2>
+            <p>Seu número de pedido é: <span id="numeroPedido"></span></p>
+            <button class="button" onclick="abrirWhatsApp()">Abrir WhatsApp</button>
         </div>
     </div>
 
-    <div id="myModalConta" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('myModalConta')">×</span>
-            <h1>Incluir Conta</h1>
-            <div class="form-container">
-                <form id="account-form" onsubmit="addAccount(event)">
-                    <label for="account-name">Nome da Conta:</label>
-                    <select id="account-name" required>
-                        <option value="">Selecione um nome</option>
-                        <option value="Banco do Brasil"><i class="fas fa-university"></i> Banco do Brasil</option>
-                        <option value="Banco Pan">Banco Pan</option>
-                        <option value="Banco Inter">Banco Inter</option>
-                        <option value="Banco Safra">Banco Safra</option>
-                        <option value="Banco Votorantim">Banco Votorantim</option>
-                        <option value="Banrisul">Banrisul</option>
-                        <option value="Bradesco">Bradesco</option>
-                        <option value="Banco BTG">Banco BTG</option>
-                        <option value="Banco C6">Banco C6</option>
-                        <option value="Caixa Econômica">Caixa Econômica</option>
-                        <option value="Cresol">Cresol</option>
-                        <option value="Infinity Pay">Infinity Pay</option>
-                        <option value="Itaú">Itaú</option>
-                        <option value="Mercado Pago">Mercado Pago</option>
-                        <option value="Next">Next</option>
-                        <option value="Nubank">Nubank</option>
-                        <option value="Pag Seguro">Pag Seguro</option>
-                        <option value="Paypal">Paypal</option>
-                        <option value="PicPay">PicPay</option>
-                        <option value="Santander">Santander</option>
-                        <option value="Sicoob">Sicoob</option>
-                        <option value="Sicredi">Sicredi</option>
-                        <option value="Outros">Outros</option>
-                    </select>
-                    <label for="bank-logo-account">Banco:</label>
-                    <select id="bank-logo-account" required>
-                        <option value="">Selecione um banco</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true">
-                            Banco do Brasil</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco%20pan.jpeg?raw=true">
-                            Banco Pan</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-inter.jpeg?raw=true">
-                            Banco Inter</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-safra.jpeg?raw=true">
-                            Banco Safra</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-votorantim.jpeg?raw=true">
-                            Banco Votorantim</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banrisul.jpeg?raw=true">
-                            Banrisul</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bradesco.jpeg?raw=true">
-                            Bradesco</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/btg.jpeg?raw=true">
-                            Banco BTG</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/c6.jpeg?raw=true">
-                            Banco C6</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/caixa.jpeg?raw=true">
-                            Caixa Econômica</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/cresol.jpeg?raw=true">
-                            Cresol</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/infinity-pay.jpeg?raw=true">
-                            Infinity Pay</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/itau.jpeg?raw=true">
-                            Itaú</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/mercado-pago.jpeg?raw=true">
-                            Mercado Pago</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/next.jpeg?raw=true">
-                            Next</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/nubank.jpeg?raw=true">
-                            Nubank</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/pagseguro.jpeg?raw=true">
-                            Pag Seguro</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/paypal.jpeg?raw=true">
-                            Paypal</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/picpay.jpeg?raw=true">
-                            PicPay</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/santander.jpeg?raw=true">
-                            Santander</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicoob.jpeg?raw=true">
-                            Sicoob</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicredi.jpeg?raw=true">
-                            Sicredi</option>
-                        <!-- Adicione mais bancos conforme necessário -->
-                    </select>
-                    <label for="account-balance">Saldo Inicial:</label>
-                    <input type="number" id="account-balance" required placeholder="Saldo" step="0.01">
-                    <button type="submit">Adicionar Conta</button>
-                </form>
 
+<script>
+    
+    let carrinho = [];
+let pedidoNumero = parseInt(localStorage.getItem('pedidoNumero')) || 1;
+let taxaEntrega = 5.00;
+let totalPedido = 0;
+let entregaSelecionada = "retirada";
+let pagamentoSelecionado = "";
 
-                </form>
+function selecionarProduto(nome) {
+    document.getElementById('produtoSelecionado').classList.remove('hidden');
+    document.getElementById('produtoNome').innerText = nome;
+}
+
+function adicionarAoCarrinho() {
+    let produto = document.getElementById('produtoNome').innerText;
+    let quantidade = 1;  // Definimos a quantidade como 1 ao adicionar ao carrinho
+    let saboresSelecionados = document.querySelectorAll('#sabores input:checked');
+    let sabores = [];
+    let precoTotalSabores = 0;
+    let saboresCheckboxes = [];
+    let imagemProduto = document.querySelector('.card img').src;
+
+    // Para cada sabor, adicione a quantidade e o preço
+    saboresSelecionados.forEach(sabor => {
+        let precoSabor = parseFloat(sabor.dataset.preco);
+        sabores.push({
+            nome: sabor.value,
+            preco: precoSabor,
+            precoTotal: precoSabor * quantidade,
+            quantidade: quantidade
+        });
+        precoTotalSabores += precoSabor * quantidade;
+        saboresCheckboxes.push(sabor);
+    });
+
+    if (sabores.length === 0) {
+        alert("Escolha pelo menos um sabor.");
+        return;
+    }
+
+    carrinho.push({
+        produto,
+        quantidade,
+        sabores,
+        precoTotal: precoTotalSabores,
+        precoUnitario: precoTotalSabores / quantidade,
+        saboresCheckboxes,
+        imagemProduto
+    });
+
+    // Desmarcar os checkboxes
+    saboresSelecionados.forEach(sabor => {
+        sabor.checked = false;
+    });
+
+    atualizarCarrinho();
+    atualizarContadorCarrinho();  // Atualiza o contador do carrinho
+    habilitarFinalizar();  // Chama a função para habilitar o botão de finalizar
+}
+
+function ajustarQuantidadeSabor(produtoIndex, saborIndex, delta) {
+    let produto = carrinho[produtoIndex];
+    let sabor = produto.sabores[saborIndex];
+
+    // Soma a quantidade de todos os sabores do produto
+    let quantidadeProduto = produto.sabores.reduce((acc, sabor) => acc + sabor.quantidade, 0);
+
+    // Extração do número máximo do nome do produto (exemplo: "Caixa c/ 08 unidades")
+    let quantidadeMaxProduto = produto.produto.match(/\d+/);  // Captura o primeiro número do nome do produto
+    let quantidadeMax = quantidadeMaxProduto ? parseInt(quantidadeMaxProduto[0]) : 0;  // Caso haja número no nome, utiliza, caso contrário, 0
+
+    // Verifica se a quantidade máxima foi atingida e se não vai ultrapassar o limite
+    if (delta > 0 && quantidadeProduto < quantidadeMax) {
+        sabor.quantidade += delta;
+        sabor.precoTotal = sabor.preco * sabor.quantidade;
+        produto.precoTotal = produto.sabores.reduce((acc, sabor) => acc + sabor.precoTotal, 0); // Recalcula o preço total do produto
+        atualizarCarrinho();
+    } else if (delta < 0 && sabor.quantidade > 1) {  // Impede que a quantidade de um sabor seja menor que 1
+        sabor.quantidade += delta;
+        sabor.precoTotal = sabor.preco * sabor.quantidade;
+        produto.precoTotal = produto.sabores.reduce((acc, sabor) => acc + sabor.precoTotal, 0); // Recalcula o preço total do produto
+        atualizarCarrinho();
+    }
+}
+
+function atualizarCarrinho() {
+    let lista = document.getElementById('itensCarrinho');
+    let total = document.getElementById('totalCarrinho');
+    lista.innerHTML = "";
+    totalPedido = 0;
+
+    carrinho.forEach((item, index) => {
+        // Soma todas as quantidades de sabores para o produto
+        let quantidadeProduto = item.sabores.reduce((acc, sabor) => acc + sabor.quantidade, 0);
+        totalPedido += item.precoTotal;  // Soma o valor dos itens no carrinho
+
+        // Extração do número máximo do nome do produto (exemplo: "Caixa c/ 08 unidades")
+        let quantidadeMaxProduto = item.produto.match(/\d+/);  // Captura o primeiro número do nome do produto
+        let quantidadeMax = quantidadeMaxProduto ? parseInt(quantidadeMaxProduto[0]) : 0;  // Caso haja número no nome, utiliza, caso contrário, 0
+
+        // Exibe a quantidade do produto e o número máximo
+        let quantidadeMaxTexto = quantidadeMax ? ` / ${quantidadeMax}` : '';  // Se houver número no nome, exibe, senão não
+
+        lista.innerHTML += `
+            <div class="itemCarrinho">
+                <div class="imagemProduto">
+                    <img src="${item.imagemProduto}" alt="${item.produto}">
+                </div>
+
+                <div class="detalhesProduto">
+                    <div class="produtoNomeEtrash">
+                        <span class="produtoNome">${item.produto}</span>
+                        <button onclick="removerDoCarrinho(${index})" class="botaoLixeira">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+
+                    <div class="saboresProduto">
+                        ${item.sabores.map((sabor, saborIndex) => `
+                            <div class="saborItem">
+                                ${sabor.nome}
+                                <span class="seletorQuantidade">
+                                    <button onclick="ajustarQuantidadeSabor(${index}, ${saborIndex}, -1)" ${sabor.quantidade === 1 ? 'disabled' : ''}>-</button>
+                                    <span class="quantidade">${sabor.quantidade}</span>
+                                    <button onclick="ajustarQuantidadeSabor(${index}, ${saborIndex}, 1)" ${quantidadeProduto >= quantidadeMax ? 'disabled' : ''}>+</button>
+                                </span>
+                                <button onclick="removerSabor(${index}, ${saborIndex})" class="botaoLixeira">
+                                <p>X</p>
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="quantidadeEValor">
+                        <div class="valorTotal">
+                            <span>R$${item.precoTotal.toFixed(2)}</span>
+                        </div>
+                        <div class="quantidadeProduto">
+                            <span> ${quantidadeProduto}${quantidadeMaxTexto}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        `;
+    });
 
-    <div id="myModalCartao" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('myModalCartao')">×</span>
-            <h1>Incluir Cartão</h1>
-            <div class="form-container">
-                <form id="card-form" onsubmit="addCard(event)">
-                    <label for="card-name">Nome do Cartão:</label>
-                    <select id="card-name" required>
-                        <option value="">Selecione um nome</option>
-                        <option value="Banco do Brasil">Banco do Brasil</option>
-                        <option value="Banco Pan">Banco Pan</option>
-                        <option value="Banco Inter">Banco Inter</option>
-                        <option value="Banco Safra">Banco Safra</option>
-                        <option value="Banco Votorantim">Banco Votorantim</option>
-                        <option value="Banrisul">Banrisul</option>
-                        <option value="Bradesco">Bradesco</option>
-                        <option value="Banco BTG">Banco BTG</option>
-                        <option value="Banco C6">Banco C6</option>
-                        <option value="Caixa Econômica">Caixa Econômica</option>
-                        <option value="Cresol">Cresol</option>
-                        <option value="Infinity Pay">Infinity Pay</option>
-                        <option value="Itaú">Itaú</option>
-                        <option value="Mercado Pago">Mercado Pago</option>
-                        <option value="Next">Next</option>
-                        <option value="Nubank">Nubank</option>
-                        <option value="Pag Seguro">Pag Seguro</option>
-                        <option value="Paypal">Paypal</option>
-                        <option value="PicPay">PicPay</option>
-                        <option value="Santander">Santander</option>
-                        <option value="Sicoob">Sicoob</option>
-                        <option value="Sicredi">Sicredi</option>
-                        <option value="Outros">Outros</option>
-                    </select>
-                    <label for="bank-logo-card">Banco:</label>
-                    <select id="bank-logo-card" required>
-                        <option value="">Selecione um banco</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-do-brasil.jpeg?raw=true">
-                            Banco do Brasil</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco%20pan.jpeg?raw=true">
-                            Banco Pan</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-inter.jpeg?raw=true">
-                            Banco Inter</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-safra.jpeg?raw=true">
-                            Banco Safra</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banco-votorantim.jpeg?raw=true">
-                            Banco Votorantim</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/banrisul.jpeg?raw=true">
-                            Banrisul</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/bradesco.jpeg?raw=true">
-                            Bradesco</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/btg.jpeg?raw=true">
-                            Banco BTG</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/c6.jpeg?raw=true">
-                            Banco C6</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/caixa.jpeg?raw=true">
-                            Caixa Econômica</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/cresol.jpeg?raw=true">
-                            Cresol</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/infinity-pay.jpeg?raw=true">
-                            Infinity Pay</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/itau.jpeg?raw=true">
-                            Itaú</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/mercado-pago.jpeg?raw=true">
-                            Mercado Pago</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/next.jpeg?raw=true">
-                            Next</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/nubank.jpeg?raw=true">
-                            Nubank</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/pagseguro.jpeg?raw=true">
-                            Pag Seguro</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/paypal.jpeg?raw=true">
-                            Paypal</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/picpay.jpeg?raw=true">
-                            PicPay</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/santander.jpeg?raw=true">
-                            Santander</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicoob.jpeg?raw=true">
-                            Sicoob</option>
-                        <option
-                            value="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/sicredi.jpeg?raw=true">
-                            Sicredi</option>
-                        <!-- Adicione mais bancos conforme necessário -->
-                    </select>
-                    <label for="card-limit">Limite do Cartão:</label>
-                    <input type="number" id="card-limit" required placeholder="Limite" step="0.01">
-                    <button type="submit">Adicionar Cartão</button>
-                </form>
+    if (entregaSelecionada === 'entrega') {
+        totalPedido += taxaEntrega;
+    }
 
-
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="bottom-menu">
-        <a href="https://paulotalamini.github.io/gestaodedespesaspessoal/" class="menu-item">
-            <span class="icon"><i class="fas fa-home"></i></span>
-            <span class="label">Home</span>
-        </a>
-        <a href="#search" class="menu-item toggle-table">
-            <span class="icon"><i class="fas fa-list"></i></span>
-            <span class="label">Lançamentos</span>
-        </a>
-        <a href="#search" id="open-modal-btn-mobile-menu-inferior" class="menu-item">
-            <span class="icon"><i class="fas fa-plus"></i></span>
-            <span class="label">Adicionar</span>
-        </a>
-        <a href="#profile" class="menu-item toggle-graph">
-            <span class="icon"><i class="fas fa-chart-column"></i></span>
-            <span class="label">Gráficos</span>
-        </a>
-        <a href="#settings" class="menu-item">
-            <span class="icon"><i class="fas fa-gear"></i></span>
-            <span class="label">Configuração</span>
-        </a>
-    </div>
+    total.innerText = totalPedido.toFixed(2);
+    document.getElementById('carrinho').classList.remove('hidden');
+}
 
 
 
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+function ajustarQuantidadeSabor(produtoIndex, saborIndex, delta) {
+    let produto = carrinho[produtoIndex];
+    let sabor = produto.sabores[saborIndex];
+    if (sabor.quantidade + delta > 0) {
+        sabor.quantidade += delta;
+        sabor.precoTotal = sabor.preco * sabor.quantidade;
+        produto.precoTotal = produto.sabores.reduce((acc, sabor) => acc + sabor.precoTotal, 0); // Recalcula o preço total do produto
+        atualizarCarrinho();
+    }
+}
+
+function habilitarFinalizar() {
+    let pagamento = document.querySelector('input[name="pagamento"]:checked');  // Verificar se algum pagamento foi selecionado
+    let pagamentoEntrega = document.querySelectorAll('input[name="pagamentoEntrega"]:checked');  // Verificar pagamento na entrega
+    let finalizarBtn = document.getElementById("finalizarPedidoBtn");
+
+    // Verifica se o carrinho tem itens e se um método de pagamento foi selecionado
+    if (carrinho.length > 0 && (pagamento || pagamentoEntrega.length > 0)) {
+        finalizarBtn.disabled = false;  // Habilita o botão
+    } else {
+        finalizarBtn.disabled = true;  // Desabilita o botão
+    }
+}
+
+function mostrarCheckout() {
+    if (carrinho.length === 0) {
+        alert("Adicione itens ao carrinho antes de finalizar a compra.");
+        return;
+    }
+    document.getElementById('checkout').classList.remove('hidden');
+}
+
+function removerDoCarrinho(index) {
+    carrinho.splice(index, 1);  // Remove o item da posição do carrinho
+    atualizarCarrinho();  // Atualiza o carrinho exibido
+    atualizarContadorCarrinho();  // Atualiza o contador do carrinho
+}
+
+function removerSabor(produtoIndex, saborIndex) {
+    let produto = carrinho[produtoIndex];
+    produto.sabores.splice(saborIndex, 1);  // Remove o sabor da lista
+    produto.precoTotal = produto.sabores.reduce((acc, sabor) => acc + sabor.precoTotal, 0);  // Atualiza o preço total
+    if (produto.sabores.length === 0) {
+        carrinho.splice(produtoIndex, 1);  // Remove o produto do carrinho se não houver mais sabores
+    }
+    atualizarCarrinho();  // Atualiza o carrinho exibido
+    atualizarContadorCarrinho();  // Atualiza o contador do carrinho
+}
+
+function selecionarEntrega(tipo) {
+    let entregaDiv = document.getElementById('enderecoEntrega');
+    entregaSelecionada = tipo;
+
+    if (tipo === 'entrega') {
+        entregaDiv.classList.remove('hidden');
+    } else {
+        entregaDiv.classList.add('hidden');
+    }
+    atualizarCarrinho();
+}
+
+function copiarChavePix() {
+    const chavePix = document.getElementById("chavePix").innerText;
+    navigator.clipboard.writeText(chavePix).then(() => {
+        alert("Chave Pix copiada!");
+    }).catch(err => {
+        alert("Erro ao copiar chave Pix: " + err);
+    });
+}
+
+function enviarPedidoWhatsApp() {
+    let pagamento = document.querySelector('input[name="pagamento"]:checked');
+    if (!pagamento) {
+        alert("Escolha uma forma de pagamento.");
+        return;
+    }
+    pagamentoSelecionado = pagamento.value;
+
+    let pagamentoEntrega = [];
+    let checkboxesPagamentoEntrega = document.querySelectorAll('input[name="pagamentoEntrega"]:checked');
+    checkboxesPagamentoEntrega.forEach(checkbox => {
+        pagamentoEntrega.push(checkbox.value);
+    });
+
+    let mensagem = `Pedido #${String(pedidoNumero).padStart(2, '0')}\n`;  // Formata o número do pedido para ter 2 dígitos
+    carrinho.forEach(item => {
+        mensagem += `${item.quantidade}x ${item.produto}\n`;  // Nome do produto e quantidade
+
+        // Adiciona os sabores com a quantidade
+        item.sabores.forEach(sabor => {
+            mensagem += `${sabor.nome}: ${sabor.quantidade} unidades\n`;
+        });
+
+        // Adiciona o valor total dos produtos
+        mensagem += `Valor dos produtos: R$${item.precoTotal.toFixed(2)}\n`;  // Valor total do produto (sem incluir a entrega)
+    });
+
+    if (entregaSelecionada === 'entrega') {
+        let rua = document.getElementById('rua').value;
+        let numero = document.getElementById('numero').value;
+        let bairro = document.getElementById('bairro').value;
+
+        if (!rua || !numero || !bairro) {
+            alert("Por favor, preencha todos os campos do endereço.");
+            return;
+        }
+
+        mensagem += `Entrega: Sim (Taxa: R$${taxaEntrega.toFixed(2)})\n`;
+        mensagem += `Endereço: ${rua}, Nº ${numero}, ${bairro}\n`;
+    } else {
+        mensagem += `Entrega: Não (Retirada no local)\n`;
+    }
+
+    mensagem += `Forma de Pagamento: ${pagamentoSelecionado}\nPagamento na Entrega: ${pagamentoEntrega.join(", ")}\nTotal: R$${totalPedido.toFixed(2)}`;
+
+    let numeroWhatsApp = "5535997378247";  // Verifique se esse número está correto
+    let url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+
+    console.log("URL gerada: ", url);  // Verifique no console se a URL está correta
+
+    // Zerar o carrinho após o pedido ser enviado para o WhatsApp
+    carrinho = []; // Zera o carrinho
+    atualizarCarrinho(); // Atualiza a exibição do carrinho (agora vazio)
+    atualizarContadorCarrinho();  // Atualiza o contador do carrinho (vai para 0)
+
+    document.getElementById('checkout').classList.add('hidden');
+    document.getElementById('confirmacaoPedido').classList.remove('hidden');
+    document.getElementById('numeroPedido').innerText = String(pedidoNumero).padStart(2, '0');  // Exibe o número do pedido com 2 dígitos
+
+    pedidoNumero++;  // Incrementa o número do pedido
+
+    localStorage.setItem('pedidoNumero', pedidoNumero);
+
+    // Teste: Abrir o WhatsApp diretamente para ver se a URL está correta
+    window.open(url, '_blank');
+}
+
+function atualizarContadorCarrinho() {
+    let contador = document.getElementById("cart-count");
+    // Aqui, contamos apenas os produtos adicionados ao carrinho.
+    contador.innerText = carrinho.length;
+}
+
+
+// Chame essa função sempre que o carrinho for atualizado
+atualizarContadorCarrinho();
+
+
+document.addEventListener("DOMContentLoaded", atualizarContadorCarrinho);
+
+// banners
+document.addEventListener("DOMContentLoaded", function () {
+    function iniciarSlideShow(containerClass) {
+        let slides = document.querySelectorAll(`.${containerClass} .banner-slide`);
+        let currentIndex = 0;
+
+        function showNextSlide() {
+            slides[currentIndex].style.opacity = 0; // Oculta o slide atual
+            currentIndex = (currentIndex + 1) % slides.length; // Vai para o próximo
+            slides[currentIndex].style.opacity = 1; // Mostra o próximo
+        }
+
+        setInterval(showNextSlide, 4000); // Muda de banner a cada 4 segundos
+    }
+
+    iniciarSlideShow("desktop");
+    iniciarSlideShow("mobile");
+});
+
+
+//menu pesquisa
+document.addEventListener("DOMContentLoaded", function () {
+    new Swiper(".menu-carousel", {
+        loop: true,
+        autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+            320: { slidesPerView: 3, spaceBetween: 5 },   // Mobile padrão
+            400: { slidesPerView: 4, spaceBetween: 8 },   // Nova configuração para 400px
+            768: { slidesPerView: 6, spaceBetween: 10 },  // Tablets
+            1024: { slidesPerView: 7, spaceBetween: 12 }, // Desktop médio
+            1200: { slidesPerView: 8, spaceBetween: 15 }  // Desktop maior
+        },
+    });
+});
+
+
+//maximo sabores
+ 
+</script>
+    
     
 </body>
 
