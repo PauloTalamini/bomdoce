@@ -13,12 +13,22 @@
             background-color: #1e1e1e;
             color: white;
             font-family: Arial, sans-serif;
+            margin: 0;
         }
 
         body>h1 {
             display: flex;
             justify-content: center;
         }
+        .barra-topo {
+        height: 30px;
+        font-weight: 700;
+        background: orange;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }   
+
 
 header {
     background-color: #1e1e1e;
@@ -276,6 +286,17 @@ header {
     padding-left: 10px;
 }
 
+#produtoSelecionado {
+margin:10px;
+}
+
+#carrinho {
+margin:10px;
+}
+#checkout {
+margin:10px; 
+}
+
 .produtoNomeEtrash {
     display: flex;
     justify-content: space-between;
@@ -379,6 +400,12 @@ header {
     width: 50px; /* Ajuste o tamanho do seletor conforme necessário */
 }
 
+#produtoSelecionado > div.quantidadeSabores {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 700;
+}   
+
 
 
         #checkout>label:nth-child(3) {
@@ -466,12 +493,71 @@ header {
         .finalizar-btn:disabled {
             background-color: #555;
         }
+
+        .popout-confirmacao {
+    position: fixed;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%);
+    width: 50%;
+    text-align: center;
+    background: #2d2d2d;
+    color: white;
+    justify-content: center;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    opacity: 0;
+    animation: popoutAnim 0.3s forwards;
+}
+
+
+@keyframes popoutAnim {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.produto {
+  position: relative;
+  display: inline-block;
+}
+
+.etiqueta {
+  position: absolute;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+  background-color: #FF6600; /* cor para a etiqueta */
+  z-index: 10;
+}
+
+.etiqueta-nov {
+  position: absolute;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+  background-color: blue; /* cor para a etiqueta */
+  z-index: 10;
+}
+
     </style>
 </head>
 
 <body>
     
     <div class="container">
+        <div class="barra-topo">
+            <span>FRETE GRÁTIS ACIMA DE R$ 40,00</span>
+        </div>
 <header>
     <div class="header-container">
         <a href="index.html" class="home-icon">
@@ -523,47 +609,54 @@ header {
     <div class="swiper-button-prev"></div>
 </div>
 
-        <div class="container-cards">
-        <div class="card" onclick="selecionarProduto('Caixa c/ 08 unidades')">
-            <img src="https://mycatalog.sfo3.digitaloceanspaces.com/uploads/679027874f19ba0007d5a15b/V7DEhNypnr-medium-eaefdbeebe.jpg" alt="Caixa c/ 08 unidades">
-            <div class="info">
-                <p class="nome-produto">CAIXA C/ 08 UNIDADES</p>
-                <span>Até 4 Sabores</span>
-                <p class="preco">R$14,00</p>
-            </div>
-        </div>
-        
-        <div class="card" onclick="selecionarProduto('Caixa c/ 12 unidades')">
-            <img src="https://mycatalog.sfo3.digitaloceanspaces.com/uploads/679027874f19ba0007d5a15b/V7DEhNypnr-medium-eaefdbeebe.jpg" alt="Caixa c/ 12 unidades">
-            <div class="info">
-                <p class="nome-produto">CAIXA C/ 12 UNIDADES</p>
-                <span>Até 6 Sabores</span>
-                <p class="preco">R$20,00</p>
-            </div>
-        </div>
-        
-        <div class="card" onclick="selecionarProduto('Caixa c/ 30 unidades')">
-            <img src="https://mycatalog.sfo3.digitaloceanspaces.com/uploads/679027874f19ba0007d5a15b/V7DEhNypnr-medium-eaefdbeebe.jpg" alt="Caixa c/ 30 unidades">
-            <div class="info">
-                <p class="nome-produto">CAIXA C/ 30 UNIDADES</p>
-                <span>Até 6 Sabores</span>
-                <p class="preco">R$30,00</p>
-            </div>
-        </div>
-        
-        <div class="card" onclick="selecionarProduto('Caixa c/ 100 unidades')">
-            <img src="https://mycatalog.sfo3.digitaloceanspaces.com/uploads/679027874f19ba0007d5a15b/V7DEhNypnr-medium-eaefdbeebe.jpg" alt="Caixa c/ 100 unidades">
-            <div class="info">
-                <p class="nome-produto">CAIXA C/ 100 UNIDADES</p>
-                <span>Até 10 Sabores</span>
-                <p class="preco">R$160,00</p>
-            </div>
+<div class="container-cards">
+    <div class="card" onclick="selecionarProduto('Caixa c/ 08 unidades')">
+        <img src="https://mycatalog.sfo3.digitaloceanspaces.com/uploads/679027874f19ba0007d5a15b/V7DEhNypnr-medium-eaefdbeebe.jpg" alt="Caixa c/ 08 unidades">
+        <div class="info">
+            <p class="nome-produto">CAIXA C/ 08 UNIDADES</p>
+            <span>Até 4 Sabores</span>
+            <p class="preco">R$14,00</p>
         </div>
     </div>
+    
+    <div class="card" onclick="selecionarProduto('Caixa c/ 12 unidades')">
+        <div class="etiqueta">+ Vendido</div>
+        <img src="https://mycatalog.sfo3.digitaloceanspaces.com/uploads/679027874f19ba0007d5a15b/V7DEhNypnr-medium-eaefdbeebe.jpg" alt="Caixa c/ 12 unidades">
+        <div class="info">
+            <p class="nome-produto">CAIXA C/ 12 UNIDADES</p>
+            <span>Até 6 Sabores</span>
+            <p class="preco">R$20,00</p>
+        </div>
+    </div>
+    
+    <div class="card" onclick="selecionarProduto('Caixa c/ 30 unidades')">
+        <img src="https://mycatalog.sfo3.digitaloceanspaces.com/uploads/679027874f19ba0007d5a15b/V7DEhNypnr-medium-eaefdbeebe.jpg" alt="Caixa c/ 30 unidades">
+        <div class="info">
+            <p class="nome-produto">CAIXA C/ 30 UNIDADES</p>
+            <span>Até 6 Sabores</span>
+            <p class="preco">R$30,00</p>
+        </div>
+    </div>
+    
+    <div class="card" onclick="selecionarProduto('Caixa c/ 100 unidades')">
+        <div class="etiqueta-nov">Novidade</div>
+        <img src="https://mycatalog.sfo3.digitaloceanspaces.com/uploads/679027874f19ba0007d5a15b/V7DEhNypnr-medium-eaefdbeebe.jpg" alt="Caixa c/ 100 unidades">
+        <div class="info">
+            <p class="nome-produto">CAIXA C/ 100 UNIDADES</p>
+            <span>Até 10 Sabores</span>
+            <p class="preco">R$160,00</p>
+        </div>
+    </div>
+</div>
+
+        
+
+    </div>
         <div id="produtoSelecionado" class="hidden">
+            <img id="produtoImagem" src="" alt="Imagem do Produto" style="max-width: 100%; margin-bottom: 15px;">
             <h2 id="produtoNome"></h2>
             <div class="quantidadeSabores">
-                <span>Sabores selecionados: <span id="quantidadeSabores">0 / 0</span></span>
+                <span>Selecionar os sabores</span>
             </div>
             <div id="sabores">
                 <label>
@@ -582,13 +675,14 @@ header {
         
             
             <button class="button" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
-        </div>
+        </div>    
 
         <div id="carrinho" class="hidden">
             <h2>Carrinho <span class="cart-icon"></span></h2>
             <div id="quantidadeTotalCarrinho"></div>
             <div id="itensCarrinho"></div>
             <p>Total: R$ <span id="totalCarrinho"></span></p>
+            <button class="button" onclick="mostrarCheckout()">Continuar comprando</button>
             <button class="button" onclick="mostrarCheckout()">Finalizar Compra</button>
         </div>
         </div>
@@ -644,10 +738,35 @@ let totalPedido = 0;
 let entregaSelecionada = "retirada";
 let pagamentoSelecionado = "";
 
-function selecionarProduto(nome) {
-    document.getElementById('produtoSelecionado').classList.remove('hidden');
-    document.getElementById('produtoNome').innerText = nome;
+function selecionarProduto(nomeProduto) {
+    // Ocultar a lista de produtos
+    document.querySelector('.container-cards').style.display = 'none';
+    
+    // Ocultar os banners
+    document.querySelector('.banner-container.desktop').style.display = 'none';
+    document.querySelector('.banner-container.mobile').style.display = 'none';
+    
+    // Ocultar o menu de navegação
+    document.querySelector('.menu-carousel').style.display = 'none';
+    
+    // Exibir a seção de produto selecionado
+    const produtoSelecionadoDiv = document.getElementById('produtoSelecionado');
+    produtoSelecionadoDiv.classList.remove('hidden');
+    
+    // Exibir o nome do produto selecionado
+    const nomeElemento = document.getElementById('produtoNome');
+    nomeElemento.textContent = nomeProduto;
+    
+    // Buscar a imagem do produto clicado
+    const produtoCard = document.querySelector(`.card[onclick*="${nomeProduto}"]`);
+    const imagemElemento = produtoCard.querySelector('img');
+    
+    // Exibir a imagem do produto
+    const imagemProduto = document.getElementById('produtoImagem');
+    imagemProduto.src = imagemElemento.src;
 }
+
+
 
 function adicionarAoCarrinho() {
     let produto = document.getElementById('produtoNome').innerText;
@@ -694,6 +813,21 @@ function adicionarAoCarrinho() {
     atualizarCarrinho();
     atualizarContadorCarrinho();  // Atualiza o contador do carrinho
     habilitarFinalizar();  // Chama a função para habilitar o botão de finalizar
+
+    // Exibir Popout de Confirmação
+    let popout = document.createElement('div');
+    popout.classList.add('popout-confirmacao');
+    popout.innerHTML = `<p>${produto} adicionado ao carrinho!</p>`;
+    document.body.appendChild(popout);
+
+    // Remover popout após 2 segundos
+    setTimeout(() => {
+        popout.remove();
+    }, 2000);
+
+        // Ocultar a seção de detalhes do produto
+        document.getElementById('produtoSelecionado').classList.add('hidden');
+
 }
 
 function ajustarQuantidadeSabor(produtoIndex, saborIndex, delta) {
@@ -986,7 +1120,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//maximo sabores
+
+
+
+
+
+
  
 </script>
     
