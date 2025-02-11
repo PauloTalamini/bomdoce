@@ -682,8 +682,8 @@ margin:10px;
             <div id="quantidadeTotalCarrinho"></div>
             <div id="itensCarrinho"></div>
             <p>Total: R$ <span id="totalCarrinho"></span></p>
-            <button class="button" onclick="irParaHome()">Continuar comprando</button>
-            <button class="button" onclick="mostrarCheckout()">Finalizar Compra</button>
+            <button id="continuarComprando" class="button" onclick="irParaHome()">Continuar comprando</button>
+            <button id="finalizarCompra" class="button" onclick="mostrarCheckout()">Finalizar Compra</button>            
         </div>
         </div>
 
@@ -1120,9 +1120,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function irParaHome() {
+    // Ocultar os botões de continuar comprando e finalizar compra
+    document.getElementById('continuarComprando').style.display = 'none';
+    document.getElementById('finalizarCompra').style.display = 'none';
+
+    // Salvar o carrinho no localStorage antes de redirecionar
+    salvarCarrinhoNoLocalStorage(carrinho);  // Salva o carrinho atual no localStorage
+
     // Redirecionar para a página inicial
     window.location.href = 'https://paulotalamini.github.io/bomdoce/index.html';
 }
+
 
 
 </script>
