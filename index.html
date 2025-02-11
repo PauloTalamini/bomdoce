@@ -1119,29 +1119,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Salvar o carrinho no localStorage antes de redirecionar
-function salvarCarrinhoNoLocalStorage(carrinho) {
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
-}
-
 function irParaHome() {
-    // Exemplo de carrinho a ser salvo, altere conforme a sua lógica
-    let carrinho = [];  // Aqui, você recuperaria o carrinho atual
-
-    salvarCarrinhoNoLocalStorage(carrinho);  // Salva o carrinho no localStorage antes de redirecionar
+    // Salvar o carrinho no localStorage antes de redirecionar
+    salvarCarrinhoNoLocalStorage(carrinho);  // Salva o carrinho atual no localStorage
 
     // Redirecionar para a página inicial
     window.location.href = 'https://paulotalamini.github.io/bomdoce/index.html';
 }
-
-
-
-
-
-
-
-
-
+document.addEventListener("DOMContentLoaded", function () {
+    // Verifica se o carrinho está no localStorage e carrega se necessário
+    const carrinhoSalvo = localStorage.getItem('carrinho');
+    if (carrinhoSalvo) {
+        carrinho = JSON.parse(carrinhoSalvo);
+        atualizarCarrinho();  // Atualiza a exibição do carrinho
+        atualizarContadorCarrinho();  // Atualiza o contador de itens do carrinho
+    }
+});
 
  
 </script>
