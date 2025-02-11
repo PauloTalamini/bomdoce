@@ -1130,11 +1130,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Verifica se o carrinho está no localStorage e carrega se necessário
     const carrinhoSalvo = localStorage.getItem('carrinho');
     if (carrinhoSalvo) {
+        console.log("Carrinho recuperado do localStorage:", carrinhoSalvo);  // Log para depuração
         carrinho = JSON.parse(carrinhoSalvo);
         atualizarCarrinho();  // Atualiza a exibição do carrinho
         atualizarContadorCarrinho();  // Atualiza o contador de itens do carrinho
+    } else {
+        console.log("Nenhum carrinho encontrado no localStorage.");  // Log caso o carrinho esteja vazio
     }
 });
+
 
  
 </script>
