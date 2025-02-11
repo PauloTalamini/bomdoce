@@ -682,7 +682,7 @@ margin:10px;
             <div id="quantidadeTotalCarrinho"></div>
             <div id="itensCarrinho"></div>
             <p>Total: R$ <span id="totalCarrinho"></span></p>
-            <button class="button" onclick="mostrarCheckout()">Continuar comprando</button>
+            <button class="button" onclick="irParaHome()">Continuar comprando</button>
             <button class="button" onclick="mostrarCheckout()">Finalizar Compra</button>
         </div>
         </div>
@@ -1119,6 +1119,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+function irParaHome() {
+    // Redirecionar para a página inicial
+    window.location.href = 'https://paulotalamini.github.io/bomdoce/index.html';
+}
 
 
 
