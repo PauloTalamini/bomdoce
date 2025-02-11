@@ -560,7 +560,7 @@ margin:10px;
         </div>
 <header>
     <div class="header-container">
-        <a href="index.html" class="home-icon">
+        <a href="https://paulotalamini.github.io/bomdoce/" class="home-icon">
             <i class="fas fa-home"></i>
         </a>
         <div class="logo">
@@ -1120,27 +1120,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function irParaHome() {
-    // Salvar o carrinho no localStorage antes de redirecionar
-    salvarCarrinhoNoLocalStorage(carrinho);  // Salva o carrinho atual no localStorage
-
     // Redirecionar para a página inicial
     window.location.href = 'https://paulotalamini.github.io/bomdoce/index.html';
 }
-document.addEventListener("DOMContentLoaded", function () {
-    // Verifica se o carrinho está no localStorage e carrega se necessário
-    const carrinhoSalvo = localStorage.getItem('carrinho');
-    if (carrinhoSalvo) {
-        console.log("Carrinho recuperado do localStorage:", carrinhoSalvo);  // Log para depuração
-        carrinho = JSON.parse(carrinhoSalvo);
-        atualizarCarrinho();  // Atualiza a exibição do carrinho
-        atualizarContadorCarrinho();  // Atualiza o contador de itens do carrinho
-    } else {
-        console.log("Nenhum carrinho encontrado no localStorage.");  // Log caso o carrinho esteja vazio
-    }
-});
 
 
- 
 </script>
     
     
