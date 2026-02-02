@@ -10,8 +10,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #1e1e1e;
-            color: white;
+            background-color: #ffffff;
+            color: #4c0c00;
             font-family: Arial, sans-serif;
             margin: 0;
         }
@@ -23,15 +23,21 @@
         .barra-topo {
         height: 30px;
         font-weight: 700;
-        background: orange;
+        background: #4c0c00;
+        color:#ffe5b6;
         justify-content: center;
         align-items: center;
         display: flex;
-    }   
+    } 
+    
+#produtoSelecionado > img {
+    border: 1px solid #4c0c00;
+}
+
 
 
 header {
-    background-color: #1e1e1e;
+    background-color: #ffffff;
     padding: 10px 20px;
 
 }
@@ -48,7 +54,7 @@ header {
 .home-icon i,
 .cart-icon i {
     font-size: 24px;
-    color: white;
+    color: #923d30;
 }
 
 .logo img {
@@ -64,8 +70,8 @@ header {
     position: absolute;
     top: -18px;
     right: -22px;
-    background-color: green;
-    color: white;
+    background-color: #4c0c00;
+    color: #ffe5b6;
     font-size: 12px;
     font-weight: bold;
     padding: 4px 8px;
@@ -73,7 +79,7 @@ header {
     width: 10px;
     height: 15px;
     text-align: center;
-    border: 4px solid #1e1e1e;
+    border: 4px solid #ffffff;
 }
 /*----------------------------------*/
 
@@ -147,7 +153,7 @@ header {
 .swiper-slide p {
     font-size: 12px;
     text-align: center;
-    color: #fff;
+    color: #4c0c00;
 }
 
 .swiper-button-prev,
@@ -192,7 +198,8 @@ header {
             
 
         .card {
-            background-color: #2d2d2d;
+            background-color: #4c0c00;
+            color:#ffe5b6;
             padding: 10px;
             border-radius: 8px;
             cursor: pointer;
@@ -220,7 +227,7 @@ header {
 
         .card .preco {
             font-size: 16px;
-            color: #ffffff;
+            color: #ffe5b6;
             margin-bottom: 0;
         }
 
@@ -258,7 +265,7 @@ header {
         }
 
         .button {
-            background-color: #4CAF50;
+            background: #4c0c00;
             color: white;
             width: 100%;
             margin-left: auto;
@@ -277,8 +284,8 @@ header {
         }
 
         #voltarHomeBtn {
-        background-color: buttonface;
-        color: #000;
+        background-color: #ffe5b6;
+        color: #4c0c00;
         width: 100%;
         margin-left: auto;
         margin-right: auto;
@@ -289,8 +296,8 @@ header {
         }
 
         #voltarCarrinhoBtn {
-        background-color: buttonface;
-        color: #000;
+        background-color: #ffe5b6;
+        color: #4c0c00;
         width: 100%;
         margin-left: auto;
         margin-right: auto;
@@ -304,7 +311,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #4c0c00;
     margin-bottom: 10px;
 }
 
@@ -317,6 +324,7 @@ header {
     height: 80px;
     object-fit: cover;
     border-radius: 5px;
+    border: 1px solid #4c0c00;
 }
 
 .detalhesProduto {
@@ -345,6 +353,7 @@ padding: 5px;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 5px;
+    font-weight: 700;
 }
 
 .produtoNome {
@@ -377,24 +386,31 @@ padding: 5px;
 }
 
 .seletorQuantidade {
-    display: inline-flex;
     align-items: center;
     display: inline-flex;
     align-items: center;
     border-radius: 50px;
-    border: 1px solid #555;
+    border: 1px solid #4c0c00;
     padding: 5px;
     padding-inline: 0;
     margin-left: 5px;
+}
+
+#itensCarrinho span {
+    padding-inline: 8px;
+}
+
+#itensCarrinho {
+    color: #4c0c00;
 }
 
 .seletorQuantidade button {
     padding: 5px;
     margin: 0 5px;
     font-weight: 700;
-    color: white;
+    color: #ffe5b6;
     border-radius: 50%;
-    background-color: transparent;
+    background-color: #4c0c00;
     font-size: 14px;
     width: 18px;
     height: 18px;
@@ -541,12 +557,13 @@ padding: 5px;
 
         .copy-text {
             font-size: 8px;
-            color: #ccc;
+            color: #4c0c00;
             margin-top: -2px;
         }
 
         .finalizar-btn {
-            background-color: #4CAF50;
+            background-color: #4c0c00;
+            color: #ffe5b6;
             font-size: 16px;
             width: 100%;
             justify-content: center;
@@ -557,8 +574,9 @@ padding: 5px;
         }
 
         .finalizar-btn:disabled {
-            background-color: #555;
-        }
+            background-color: #ffe5b6;
+            color: #4c0c00;
+        }   
 
         .popout-confirmacao {
     position: fixed;
@@ -631,6 +649,9 @@ padding: 5px;
     padding: 5px 10px;
     cursor: pointer;
     font-weight: bold;
+    background: #923d30;
+    color: #ffe5b6;
+    border: none;
 }
 
 /* Popup */
@@ -826,6 +847,10 @@ label[for="horarioRetirada"] i {
 
 .btnAdicionarSabor {
 padding: 5PX;
+border-radius: 5px;
+background: #ffe5b6;
+color: #4c0c00;
+border: 1px solid #4c0c00;
 }
 
 
@@ -837,6 +862,22 @@ padding: 5PX;
     background: transparent;
 }
 
+#nomeCliente::placeholder {
+    color: #e8c68d; /* cor do placeholder */
+}
+
+#telefoneCliente::placeholder {
+    color: #e8c68d; /* cor do placeholder */
+}
+
+#rua::placeholder,
+#numero::placeholder,
+#bairro::placeholder {
+    color: #e8c68d;
+}
+
+
+
 /* Responsivo para mobile */
 @media (max-width: 480px) {
   select#horarioRetirada {
@@ -844,11 +885,10 @@ padding: 5PX;
     padding: 8px 10px;
     width: 80%;
     margin-bottom: 40px;
+    color:#4c0c00;
   }
 }
 
-
-button
 
 
 
