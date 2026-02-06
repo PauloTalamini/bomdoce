@@ -185,7 +185,7 @@ header {
             margin: auto;
         }
 
-        body > div > h1 {
+        body > div > h1 {   
             text-align: center;
         }
 
@@ -194,6 +194,7 @@ header {
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
+            margin: 10px 0 10px 0;
         }
             
 
@@ -507,6 +508,7 @@ padding: 5px;
             font-size: 1rem;
             border-radius: 8px;
             outline: none;
+            color: #4c0c00;
         }
 
         #numero {
@@ -516,6 +518,7 @@ padding: 5px;
             font-size: 1rem;
             border-radius: 8px;
             outline: none;
+            color: #4c0c00;
         }
 
         #bairro {
@@ -525,6 +528,7 @@ padding: 5px;
             font-size: 1rem;
             border-radius: 8px;
             outline: none;
+            color: #4c0c00;
         }
 
         .cart-icon {
@@ -547,6 +551,8 @@ padding: 5px;
         .copy-container {
             text-align: center;
             margin-left: 15px;
+            position: relative;
+            width: 60px;
         }
 
         .copy-icon {
@@ -556,10 +562,14 @@ padding: 5px;
         }
 
         .copy-text {
-            font-size: 8px;
+            font-size: 10px;
             color: #4c0c00;
-            margin-top: -2px;
         }
+
+        .copy-text.copiado {
+            color: #4c0c00;
+            font-size: 10px;
+}
 
         .finalizar-btn {
             background-color: #4c0c00;
@@ -831,6 +841,7 @@ label[for="horarioRetirada"] i {
     font-size: 1rem;
     border-radius: 8px;
     outline: none;
+    color: #4c0c00;
 }
 
 #telefoneCliente {
@@ -840,6 +851,7 @@ label[for="horarioRetirada"] i {
     font-size: 1rem;
     border-radius: 8px;
     outline: none;
+    color: #4c0c00;
 }
 
 #carrinho > h2 {
@@ -1711,21 +1723,21 @@ async function enviarPedidoWhatsApp() {
     if (entrega === "entrega") totalPedidoFinal += taxaEntrega;
 
     let mensagem = 
-`Pedido #${pedidoNumero}
+`Pedido *#${pedidoNumero}*
 
-Cliente:
+*Cliente*
 Nome: ${nomeCliente}
 Telefone: wa.me/${telefoneCliente.replace(/\D/g, "")}
 `;
 
     if (entrega === "entrega") {
-        mensagem += `Endereço de entrega:\nRua: ${rua}\nNúmero: ${numero}\nBairro: ${bairro}\n\n`;
+        mensagem += `\n*Endereço de entrega*\nRua: ${rua}\nNúmero: ${numero}\nBairro: ${bairro}\n\n`;
     }
 
-    mensagem += `Data: ${data} Horário: ${hora}\n\n`;
+    mensagem += `*Data:* ${data} *Horário:* ${hora}\n\n`;
 
     carrinho.forEach(item => {
-        mensagem += `${item.produto}\n`;
+        mensagem += `*${item.produto}*\n`;
         item.sabores.forEach(sabor => {
             mensagem += `- ${sabor.nome}: ${sabor.quantidade}\n`;
         });
@@ -1766,6 +1778,8 @@ Telefone: wa.me/${telefoneCliente.replace(/\D/g, "")}
     atualizarContadorCarrinho();
     pedidoNumero++;
     localStorage.setItem("pedidoNumero", pedidoNumero);
+    limparFormularioCheckout();
+
 
     const popup = document.createElement("div");
     popup.style.position = "fixed";
@@ -1879,13 +1893,13 @@ fecharHorario.addEventListener('click', () => {
    HORÁRIO DE FUNCIONAMENTO
 ======================= */
 const horariosFunc = {
-  0: { aberto: true, inicio: "09:00", fim: "22:00" }, // Domingo
-  1: { aberto: false },                              // Segunda
-  2: { aberto: false },                              // Terça
-  3: { aberto: false },                              // Quarta
-  4: { aberto: false },                              // Quinta
-  5: { aberto: true, inicio: "19:00", fim: "22:00" }, // Sexta
-  6: { aberto: true, inicio: "09:00", fim: "22:00" }  // Sábado
+  0: { aberto: false, inicio: "09:00", fim: "23:55" }, // Domingo
+  1: { aberto: false, inicio: "09:00", fim: "23:55" },// Segunda
+  2: { aberto: true, inicio: "09:00", fim: "23:55" }, // Terça
+  3: { aberto: true, inicio: "09:00", fim: "23:55" },// Quarta
+  4: { aberto: true, inicio: "09:00", fim: "23:55" }, // Quinta
+  5: { aberto: true, inicio: "01:00", fim: "23:55" }, // Sexta
+  6: { aberto: false, inicio: "09:00", fim: "23:55" }  // Sábado
 };
 
 function gerarIntervalos(inicio, fim, intervalo = 20) {
@@ -1910,38 +1924,65 @@ function preencherHorarioRetirada() {
   const select = document.getElementById("horarioRetirada");
   select.innerHTML = `<option value="">Escolha o horário de agendamento</option>`;
 
-  const hoje = new Date();
+  const agora = new Date();
+
+  // ⏰ soma 2 horas
+  let limite = new Date(agora.getTime() + 2 * 60 * 60 * 1000);
+
+  // 🔄 arredonda para o próximo intervalo de 20 minutos
+  const intervalo = 20;
+  const resto = limite.getMinutes() % intervalo;
+  if (resto !== 0) {
+    limite.setMinutes(limite.getMinutes() + (intervalo - resto));
+  }
+  limite.setSeconds(0, 0);
+
   const diasSemana = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
 
   for (let i = 0; i < 60; i++) {
-    const dia = new Date(hoje);
-    dia.setDate(hoje.getDate() + i);
+
+    const dia = new Date(
+      agora.getFullYear(),
+      agora.getMonth(),
+      agora.getDate() + i,
+      0, 0, 0, 0
+    );
 
     const config = horariosFunc[dia.getDay()];
-    if (!config || !config.aberto) continue; // Pula dias fechados
+    if (!config || !config.aberto) continue;
 
-    // Formata a data para DD/MM/YYYY
     const diaNum = dia.getDate().toString().padStart(2, "0");
-    const mesNum = (dia.getMonth()+1).toString().padStart(2, "0");
+    const mesNum = (dia.getMonth() + 1).toString().padStart(2, "0");
     const anoNum = dia.getFullYear();
 
-    const dataTexto = `${diasSemana[dia.getDay()]} ${diaNum}/${mesNum}`; // Para o usuário
-
+    const dataTexto = `${diasSemana[dia.getDay()]} ${diaNum}/${mesNum}`;
     const horarios = gerarIntervalos(config.inicio, config.fim);
 
     horarios.forEach(hora => {
+      const [h, m] = hora.split(":").map(Number);
+
+      const horarioOpcao = new Date(
+        dia.getFullYear(),
+        dia.getMonth(),
+        dia.getDate(),
+        h, m, 0, 0
+      );
+
+      // ⛔ BLOQUEIA QUALQUER HORÁRIO ANTES DO LIMITE (mesmo se virar o dia)
+      if (horarioOpcao < limite) return;
+
       const option = document.createElement("option");
-
-      // VALOR usado no WhatsApp: DD/MM/YYYY HH:MM
       option.value = `${diaNum}/${mesNum}/${anoNum} ${hora}`;
-
-      // TEXTO visível ao cliente
       option.textContent = `${dataTexto} • ${hora}`;
 
       select.appendChild(option);
     });
   }
 }
+
+
+
+
 
 
 document.getElementById("btnCompartilhar").addEventListener("click", () => {
@@ -1964,18 +2005,90 @@ document.getElementById("btnCompartilhar").addEventListener("click", () => {
 });
 
 
-//mascara telefone
+// mascara telefone COM 55
 const telefoneInput = document.getElementById("telefoneCliente");
 
 if (telefoneInput) {
     telefoneInput.addEventListener("input", function () {
-        this.value = this.value
-            .replace(/\D/g, "")
-            .replace(/^(\d{2})(\d)/, "($1) $2")
-            .replace(/(\d{5})(\d)/, "$1-$2")
-            .slice(0, 15);
+        let valor = this.value.replace(/\D/g, "");
+
+        // garante o 55 no começo
+        if (!valor.startsWith("55")) {
+            valor = "55" + valor;
+        }
+
+        // limita tamanho (55 + DDD + 9 dígitos)
+        valor = valor.slice(0, 13);
+
+        // aplica máscara visual
+        valor = valor
+            .replace(/^(\d{2})(\d{2})(\d)/, "+$1 ($2) $3")
+            .replace(/(\d{5})(\d)/, "$1-$2");
+
+        this.value = valor;
     });
 }
+
+
+//Copiar chave pix
+function copiarChavePix() {
+    const chavePix = document.getElementById("chavePix").innerText;
+
+    navigator.clipboard.writeText(chavePix).then(() => {
+        const copyText = document.querySelector(".copy-text");
+        copyText.innerText = "Copiado";
+
+        setTimeout(() => {
+            copyText.innerText = "Copiar";
+        }, 2000);
+    }).catch(err => {
+        alert("Erro ao copiar a chave Pix");
+        console.error(err);
+    });
+}
+
+
+// limpar Formulario Checkout
+function limparFormularioCheckout() {
+    // cliente
+    const nome = document.getElementById("nomeCliente");
+    const telefone = document.getElementById("telefoneCliente");
+
+    if (nome) nome.value = "";
+    if (telefone) telefone.value = "";
+
+    // endereço
+    ["rua", "numero", "bairro"].forEach(id => {
+        const campo = document.getElementById(id);
+        if (campo) campo.value = "";
+    });
+
+    // horário
+    const horario = document.getElementById("horarioRetirada");
+    if (horario) horario.selectedIndex = 0;
+
+    // pagamento
+    document
+        .querySelectorAll('input[name="pagamento"]')
+        .forEach(r => r.checked = false);
+
+    // comprovante pix
+    const comprovante = document.getElementById("comprovantePix");
+    const preview = document.getElementById("previewComprovante");
+
+    if (comprovante) comprovante.value = "";
+    if (preview) {
+        preview.src = "";
+        preview.style.display = "none";
+    }
+
+    // esconde container do pix
+    const comprovanteContainer = document.getElementById("comprovantePixContainer");
+    if (comprovanteContainer) {
+        comprovanteContainer.classList.add("hidden");
+    }
+}
+
 
 
 /* =======================
