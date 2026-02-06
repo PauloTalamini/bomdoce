@@ -889,6 +889,21 @@ border: 1px solid #4c0c00;
     color: #e8c68d;
 }
 
+.status-indicador {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #ffffff;
+    color: white;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 25px;
+    font-size: 1rem;
+    z-index: 10;
+    user-select: none; /* Evita seleção do texto por acidente */
+}
+
+
 
 
 /* Responsivo para mobile */
@@ -1055,6 +1070,7 @@ border: 1px solid #4c0c00;
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <img src="https://cdn.awsli.com.br/2297/2297081/arquivos/t-shirt-music-mobile-azul-preta.png" alt="Banner Mobile 1">
+            <div id="statusAbertoFechado" class="status-indicador">...</div>
         </div>  
     </div>
 
@@ -2088,6 +2104,46 @@ function limparFormularioCheckout() {
         comprovanteContainer.classList.add("hidden");
     }
 }
+
+
+//status abert/fechado
+
+function verificarAbertoFechado() {
+    const statusDiv = document.getElementById("statusAbertoFechado");
+    const agora = new Date();
+    const dia = agora.getDay();
+
+    const config = horariosFunc[dia];
+
+    if (!config || !config.aberto) {
+        statusDiv.textContent = "Fechado";
+        statusDiv.style.color = "red";
+        return;
+    }
+
+    // Pega horário atual em minutos desde meia-noite para facilitar comparação
+    const minutosAgora = agora.getHours() * 60 + agora.getMinutes();
+
+    // Transforma horários de abertura e fechamento em minutos
+    const [hi, mi] = config.inicio.split(":").map(Number);
+    const [hf, mf] = config.fim.split(":").map(Number);
+    const minutosInicio = hi * 60 + mi;
+    const minutosFim = hf * 60 + mf;
+
+    if (minutosAgora >= minutosInicio && minutosAgora <= minutosFim) {
+        statusDiv.textContent = "Aberto";
+        statusDiv.style.color = "green";
+    } else {
+        statusDiv.textContent = "Fechado";
+        statusDiv.style.color = "red";
+    }
+}
+
+// Chama a função ao carregar a página para já mostrar o status
+document.addEventListener("DOMContentLoaded", () => {
+    verificarAbertoFechado();
+});
+
 
 
 
