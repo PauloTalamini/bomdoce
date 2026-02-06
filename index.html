@@ -903,7 +903,96 @@ border: 1px solid #4c0c00;
     user-select: none; /* Evita seleção do texto por acidente */
 }
 
+.footer {
+  background: #ffffff;
+  color: #4c0c00;
+  padding: 40px 20px 20px;
+  font-family: Arial, sans-serif;
+}
 
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer h4 {
+  margin-bottom: 10px;
+  color: #4c0c00;
+}
+
+.footer a {
+  color: #4c0c00;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.footer a:hover {
+  color: #4c0c00;
+}
+
+.social-links a {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.map-links a {
+  font-size: 1em;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.8em;
+  color: #4c0c00;
+}
+
+.social-links a,
+.footer p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+body > div.container > footer > div.footer-container > div:nth-child(3) > div {
+    display: inline-flex;
+    gap: 10px;
+}
+
+body > div.container > footer > div.footer-container > div:nth-child(2) > p.map-links {
+gap: 15px;
+margin-top: 20px;
+}
+
+.btn-compartilhar {
+  margin-left: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.texto-compartilhar {
+  font-size: 10px; /* ajuste aqui */
+  margin-left: 4px;
+}
+
+body > div.container > footer > div.footer-container > div:nth-child(2) > p.endereco > a {
+display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+body > div.container > footer > div.footer-container > div:nth-child(2) > p.endereco > a.btn-compartilhar > i {
+    text-align: center;
+}
 
 
 /* Responsivo para mobile */
@@ -1134,6 +1223,69 @@ border: 1px solid #4c0c00;
     </div>
 </div>
 
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-section">
+      <h4>Contato</h4>
+      <p>
+  <i class="fab fa-whatsapp mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i>
+  <a href="tel:+5511999999999">(35) 99737-8247</a>
+</p>
+      <p>
+        <i class="fas fa-envelope mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i>
+        <a href="mailto:contato@empresa.com">contato@empresa.com</a></p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Endereço</h4>
+<p class="endereco">
+  <i class="fas fa-map-marker-alt mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i><a>
+  Rua Antonio da silva Batista, 231 – Pedro Scariot</a>
+
+  <a href="javascript:void(0)" onclick="compartilharLocalizacao()" title="Compartilhar endereço" class="btn-compartilhar">
+    <i class="fas fa-share-alt" style="font-size:14px; cursor:pointer;"></i>
+    <span class="texto-compartilhar">Compartilhar</span>
+  </a>
+</p>
+
+      <p class="map-links">
+<a href="https://www.google.com/maps?q=Rua+Exemplo+123+São+Paulo" target="_blank">
+  <i class="fas fa-map-marked-alt mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i>
+  Abrir localização
+</a>
+
+      </p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Redes Sociais</h4>
+      <div class="social-links">
+
+  <a href="https://instagram.com/suaempresa" target="_blank">
+    <i class="fab fa-instagram mr-2 pt-2" style="margin-right:5px;font-size:16px;"></i>
+  </a>
+
+  <a href="https://facebook.com/suaempresa" target="_blank">
+    <i class="fab fa-facebook-f mr-2 pt-2" style="margin-right:5px;font-size:16px;"></i>
+  </a>
+
+
+  <a href="https://linkedin.com/company/suaempresa" target="_blank">
+    <i class="fab fa-linkedin-in mr-2 pt-2" style="margin-right:5px;font-size:16px;"></i>
+  </a>
+
+</div>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    2026 Bom Doce. Todos os direitos reservados.
+  </div>
+</footer>
+
         
 
     </div>
@@ -1297,7 +1449,12 @@ function esconderHeaderCheckout() {
     if (iconeHome) iconeHome.classList.add("hidden");
 
     if (header) header.classList.add("hidden"); // oculta todo o header e remove espaço
+
+// ✅ AGORA ESCONDE O FOOTER
+    esconderFooter();
+    
 }
+
 
 // MOSTRAR HEADER AO VOLTAR PARA O CARRINHO OU HOME
 function mostrarHeader() {
@@ -1315,6 +1472,10 @@ function mostrarHeader() {
     elementos.forEach(el => {
         if (el) el.classList.remove("hidden"); // restaura todos os elementos internos
     });
+    
+ // ✅ MOSTRA O FOOTER NOVAMENTE
+    mostrarFooter();
+
 }
 
 
@@ -1350,6 +1511,18 @@ document.getElementById("voltarHomeBtn").addEventListener("click", () => {
     voltarHome();
 });
 
+
+// ESCONDER FOOTER
+function esconderFooter() {
+    const footer = document.querySelector(".footer");
+    if (footer) footer.classList.add("hidden");
+}
+
+// MOSTRAR FOOTER
+function mostrarFooter() {
+    const footer = document.querySelector(".footer");
+    if (footer) footer.classList.remove("hidden");
+}
 
 
 
@@ -1431,6 +1604,8 @@ function abrirAdicionarSabor(index) {
 
     // Esconder carrinho
     document.getElementById("carrinho").classList.add("hidden");
+
+    
 }
 
 /* =======================
@@ -1493,6 +1668,8 @@ document.getElementById('carrinho').classList.remove('hidden');
 
 // OCULTAR HEADER DO CARRINHO
 esconderHeaderCheckout();
+esconderFooter();
+
 
 
 }
@@ -1518,6 +1695,8 @@ function abrirCarrinho() {
     // Ocultar header do carrinho
     const header = document.querySelector(".header-container");
     if (header) header.classList.add("hidden");
+
+    esconderFooter();
 
     atualizarCarrinho();
 }
@@ -2143,6 +2322,24 @@ function verificarAbertoFechado() {
 document.addEventListener("DOMContentLoaded", () => {
     verificarAbertoFechado();
 });
+
+
+//compartilhar endereço
+
+function compartilharLocalizacao() {
+  const urlMaps = "https://www.google.com/maps?q=Rua+Exemplo+123+São+Paulo";
+
+  if (navigator.share) {
+    navigator.share({
+      title: "Localização",
+      text: "Confira nossa localização:",
+      url: urlMaps
+    });
+  } else {
+    window.open(urlMaps, "_blank");
+  }
+}
+
 
 
 
