@@ -990,31 +990,31 @@ border: 1px solid #4c0c00;
 
             <div class="linha">
                 <span>Domingo</span>
-                <span>09:00 - 22:00</span>
+                <span>09:00 - 23:55</span>
             </div>
             <div class="linha">
                 <span><strong>Segunda</strong></span>
-                <span>Fechado</span>
+                <span>09:00 - 23:55</span>
             </div>
             <div class="linha">
                 <span>Terça</span>
-                <span>Fechado</span>
+                <span>09:00 - 23:55</span>
             </div>
             <div class="linha">
                 <span>Quarta</span>
-                <span>Fechado</span>
+                <span>09:00 - 23:55</span>
             </div>
             <div class="linha">
                 <span>Quinta</span>
-                <span>Fechado</span>
+                <span>09:00 - 23:55</span>
             </div>
             <div class="linha">
                 <span>Sexta</span>
-                <span>19:00 - 22:00</span>
+                <span>09:00 - 23:55</span>
             </div>
             <div class="linha">
                 <span>Sábado</span>
-                <span>09:00 - 22:00</span>
+                <span>09:00 - 23:55</span>
             </div>
         </div>
     </div>
@@ -1893,13 +1893,13 @@ fecharHorario.addEventListener('click', () => {
    HORÁRIO DE FUNCIONAMENTO
 ======================= */
 const horariosFunc = {
-  0: { aberto: false, inicio: "09:00", fim: "23:55" }, // Domingo
-  1: { aberto: false, inicio: "09:00", fim: "23:55" },// Segunda
+  0: { aberto: true, inicio: "09:00", fim: "23:55" }, // Domingo
+  1: { aberto: true, inicio: "09:00", fim: "23:55" },// Segunda
   2: { aberto: true, inicio: "09:00", fim: "23:55" }, // Terça
   3: { aberto: true, inicio: "09:00", fim: "23:55" },// Quarta
   4: { aberto: true, inicio: "09:00", fim: "23:55" }, // Quinta
-  5: { aberto: true, inicio: "01:00", fim: "23:55" }, // Sexta
-  6: { aberto: false, inicio: "09:00", fim: "23:55" }  // Sábado
+  5: { aberto: true, inicio: "09:00", fim: "23:55" }, // Sexta
+  6: { aberto: true, inicio: "09:00", fim: "23:55" }  // Sábado
 };
 
 function gerarIntervalos(inicio, fim, intervalo = 20) {
