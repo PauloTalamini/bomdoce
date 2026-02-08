@@ -1399,7 +1399,7 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
         <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173871712067a2b7c020f7e_75_75.jpeg?raw=true" alt="Caixa c/ 08 unidades">
         <div class="info">
             <p class="nome-produto">CAIXA C/ 08 UNIDADES</p>
-            <span>Até 4 Sabores</span>
+            <span>Até 2 Sabores</span>
             <p class="preco">R$14,00</p>
         </div>
     </div>
@@ -1409,7 +1409,7 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
         <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173872240667a2cc662dead_75_75.jpeg?raw=true" alt="Caixa c/ 12 unidades">
         <div class="info">
             <p class="nome-produto">CAIXA C/ 12 UNIDADES</p>
-            <span>Até 6 Sabores</span>
+            <span>Até 2 Sabores</span>
             <p class="preco">R$20,00</p>
         </div>
     </div>
@@ -1418,7 +1418,7 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
         <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173888215067a53c6650921_75_75.jpeg?raw=true" alt="Caixa c/ 30 unidades">
         <div class="info">
             <p class="nome-produto">CAIXA C/ 30 UNIDADES</p>
-            <span>Até 6 Sabores</span>
+            <span>Até 3 Sabores</span>
             <p class="preco">R$30,00</p>
         </div>
     </div>
@@ -1498,8 +1498,13 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
             <img id="produtoImagem" src="" alt="Imagem do Produto" style="max-width: 100%; margin-bottom: 15px;">
             <h2 id="produtoNome"></h2>
             <div class="quantidadeSabores">
-                <span>Selecionar os sabores</span>
             </div>
+
+            <div class="quantidadeSabores">
+    <span>Selecionar os sabores</span>
+    <span id="contadorSabores" style="font-weight:bold;">0 / 0</span>
+</div>
+
             <div id="sabores">
 <label>
     <input type="checkbox" value="Ao Leite 50%" data-preco="2.00">
@@ -1892,21 +1897,25 @@ function abrirAdicionarSabor(index) {
     document.getElementById("produtoNome").innerText = item.produto;
     document.getElementById("produtoImagem").src = item.imagemProduto;
 
-    // Marca os sabores que o produto já possui
     const checkboxes = document.querySelectorAll("#sabores input[type=checkbox]");
+
+    // Marca os sabores já escolhidos
     checkboxes.forEach(cb => {
         cb.checked = item.sabores.some(s => s.nome === cb.value);
+        cb.disabled = false; // 🔓 LIBERA TODOS AO ABRIR
     });
 
-    // Mostrar modal de produto selecionado
+    // Atualiza contador corretamente
+    const contador = document.getElementById("contadorSabores");
+    if (contador) contador.innerText = `${item.sabores.length} / ${limiteSabores}`;
+
+    // Mostra modal
     document.getElementById("produtoSelecionado").classList.remove("hidden");
 
-    // Esconder carrinho
+    // Esconde carrinho
     document.getElementById("carrinho").classList.add("hidden");
-    
-
-    
 }
+
 
 /* =======================
    ADICIONAR AO CARRINHO
@@ -1935,17 +1944,10 @@ function adicionarAoCarrinho() {
         sabor.checked = false;
     });
 
-    // Se estamos editando um produto existente
+    // 👉 AQUI ESTÁ A CORREÇÃO
     if (produtoEditandoIndex !== null) {
-        let produtoCarrinho = carrinho[produtoEditandoIndex];
-
-        saboresNovos.forEach(s => {
-            if (!produtoCarrinho.sabores.some(existing => existing.nome === s.nome)) {
-                produtoCarrinho.sabores.push(s);
-                produtoCarrinho.precoTotal += s.precoTotal;
-            }
-        });
-
+        carrinho[produtoEditandoIndex].sabores = saboresNovos;
+        carrinho[produtoEditandoIndex].precoTotal = precoTotalNovos;
         produtoEditandoIndex = null;
     } else {
         carrinho.push({
@@ -1962,17 +1964,15 @@ function adicionarAoCarrinho() {
 
     // Fechar modal e abrir carrinho
     document.getElementById('produtoSelecionado').classList.add('hidden');
-    
-// MOSTRAR CARRINHO
-document.getElementById('carrinho').classList.remove('hidden');
 
-// OCULTAR HEADER DO CARRINHO
-esconderHeaderCheckout();
-esconderFooter();
+    // MOSTRAR CARRINHO
+    document.getElementById('carrinho').classList.remove('hidden');
 
-
-
+    // OCULTAR HEADER DO CARRINHO
+    esconderHeaderCheckout();
+    esconderFooter();
 }
+
 
 /* =======================
    ABRIR CARRINHO
@@ -2639,6 +2639,60 @@ function compartilharLocalizacao() {
     window.open(urlMaps, "_blank");
   }
 }
+
+
+
+// ===== LIMITADOR DE SABORES POR CAIXA =====
+let limiteSabores = 0;
+
+function definirLimitePorProduto(nomeProduto) {
+    if (nomeProduto.includes("08")) limiteSabores = 2;
+    else if (nomeProduto.includes("12")) limiteSabores = 2;
+    else if (nomeProduto.includes("30")) limiteSabores = 3;
+    else if (nomeProduto.includes("100")) limiteSabores = 10;
+    else limiteSabores = 0;
+
+    const contador = document.getElementById("contadorSabores");
+    if (contador) contador.innerText = `0 / ${limiteSabores}`;
+}
+
+// Intercepta sua função original sem quebrar
+const selecionarProdutoOriginal = selecionarProduto;
+selecionarProduto = function(nomeProduto) {
+    selecionarProdutoOriginal(nomeProduto);
+    definirLimitePorProduto(nomeProduto);
+
+    const checkboxes = document.querySelectorAll("#sabores input[type=checkbox]");
+    checkboxes.forEach(cb => {
+        cb.checked = false;
+        cb.disabled = false;
+    });
+};
+
+document.addEventListener("change", function(e) {
+    if (!e.target.matches("#sabores input[type=checkbox]")) return;
+
+    const checkboxes = document.querySelectorAll("#sabores input[type=checkbox]");
+    const selecionados = Array.from(checkboxes).filter(cb => cb.checked);
+
+    if (selecionados.length > limiteSabores) {
+        e.target.checked = false;
+        alert(`Você pode escolher no máximo ${limiteSabores} sabores.`);
+        return;
+    }
+
+    const contador = document.getElementById("contadorSabores");
+    if (contador) contador.innerText = `${selecionados.length} / ${limiteSabores}`;
+
+    if (selecionados.length === limiteSabores) {
+        checkboxes.forEach(cb => {
+            if (!cb.checked) cb.disabled = true;
+        });
+    } else {
+        checkboxes.forEach(cb => cb.disabled = false);
+    }
+});
+
 
 
 
