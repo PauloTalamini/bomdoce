@@ -310,7 +310,7 @@ header {
 
         .itemCarrinho {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 0 0 10px;
     border-bottom: 1px solid #4c0c00;
     margin-bottom: 10px;
@@ -333,7 +333,7 @@ header {
     flex-direction: column;
     justify-content: space-between;
     width: calc(100% - 100px);  /* Ajusta a largura do produto */
-    padding-left: 10px;
+    padding-left: 5px;
     gap: 10px;
 }
 
@@ -342,8 +342,9 @@ margin:10px;
 }
 
 #carrinho {
-margin:10px;
+margin:5px;
 }
+
 #checkout {
 margin:10px;
 padding: 5px;   
@@ -877,6 +878,7 @@ border: 1px solid #4c0c00;
     border: none;
     outline: none;
     color: RED;
+    padding: 0;
     background: transparent;
 }
 
@@ -2040,7 +2042,7 @@ ${item.sabores.map((s, i) => `
                                 ${quantidadeProduto >= quantidadeMax ? "disabled" : ""}>+</button>
                         </div>
 
-                        <button onclick="removerSabor(${index},${i})"style="background: none; border: none;color: red;cursor: pointer;font-size: 1.2em;vertical-align: middle;margin-left: 5px;">✖</button>
+                        <button onclick="removerSabor(${index},${i})"style="background: none; border: none;color: red;cursor: pointer;font-size: 1.2em;vertical-align: middle;margin-left: 5px;padding:0;">✖</button>
 
                     </div>
                 `).join("")}
