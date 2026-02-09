@@ -1002,6 +1002,32 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
     text-align: center;
 }
 
+.especial {
+color: #923d30;
+    margin-left: 6px;
+    font-size: 0.7em;
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card .preco span {
+    font-size: 0.7em;
+}
+
+#cardapioPopup .produto-valor.especial {
+  font-size: 1em;
+}
+
+#cardapioPopup .produto-valor.especial > i {
+    font-size: 0.6em;
+    display: inline-flex;
+    margin-left: 5px;
+    gap: 5px;
+}
+
+
 
 /* Responsivo para mobile */
 @media (max-width: 480px) {
@@ -1044,16 +1070,13 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
 
         <span id="fecharCardapio" class="fechar">&times;</span>
 
-        <!-- Aqui você coloca os produtos -->
-<!-- AO LEITE 50% -->
+        <!-- AO LEITE 50% (ESPECIAL) -->
 <div class="produto-card">
   <img src="https://via.placeholder.com/150" alt="Ao Leite 50%" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Ao Leite 50%</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, choc granule, cacau 50%
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, choc granule, cacau 50%</p>
+    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
   </div>
 </div>
 
@@ -1062,10 +1085,8 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
   <img src="https://via.placeholder.com/150" alt="Beijinho (Coco)" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Beijinho (Coco)</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, coco
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, coco</p>
+    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
   </div>
 </div>
 
@@ -1074,10 +1095,8 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
   <img src="https://via.placeholder.com/150" alt="Café" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Café</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, cacau 50%, café
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, cacau 50%, café</p>
+    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
   </div>
 </div>
 
@@ -1086,22 +1105,18 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
   <img src="https://via.placeholder.com/150" alt="Cajuzinho" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Cajuzinho</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, cacau 50%, amendoim torrado
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, cacau 50%, amendoim torrado</p>
+    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
   </div>
 </div>
 
-<!-- CARAMELO -->
+<!-- CARAMELO (ESPECIAL) -->
 <div class="produto-card">
   <img src="https://via.placeholder.com/150" alt="Caramelo" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Caramelo</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, açúcar
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, açúcar</p>
+    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
   </div>
 </div>
 
@@ -1110,34 +1125,28 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
   <img src="https://via.placeholder.com/150" alt="Casadinho" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Casadinho</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, Nescau, leite em pó
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, Nescau, leite em pó</p>
+    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
   </div>
 </div>
 
-<!-- CHOCOBOL -->
+<!-- CHOCOBOL (ESPECIAL) -->
 <div class="produto-card">
   <img src="https://via.placeholder.com/150" alt="Chocobol" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Chocobol</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, Chocobol, Nescau
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, Chocobol, Nescau</p>
+    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
   </div>
 </div>
 
-<!-- CHURROS -->
+<!-- CHURROS (ESPECIAL) -->
 <div class="produto-card">
   <img src="https://via.placeholder.com/150" alt="Churros" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Churros</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, doce de leite
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, doce de leite</p>
+    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
   </div>
 </div>
 
@@ -1146,58 +1155,48 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
   <img src="https://via.placeholder.com/150" alt="Coco Queimado" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Coco Queimado</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, coco queimado
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, coco queimado</p>
+    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
   </div>
 </div>
 
-<!-- FERRERO -->
+<!-- FERRERO (ESPECIAL) -->
 <div class="produto-card">
   <img src="https://via.placeholder.com/150" alt="Ferrero" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Ferrero</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, Nescau, Nutella
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, Nescau, Nutella</p>
+    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
   </div>
 </div>
 
-<!-- MEIO AMARGO -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Meio Amargo" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Meio Amargo</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, chocolate granule, cacau 70%
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
-  </div>
-</div>
-
-<!-- M&M -->
+<!-- M&M (ESPECIAL) -->
 <div class="produto-card">
   <img src="https://via.placeholder.com/150" alt="M&M" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">M&M</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, M&M, Nescau
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, M&M, Nescau</p>
+    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
   </div>
 </div>
 
-<!-- NAPOLITANO -->
+<!-- MEIO AMARGO (ESPECIAL) -->
+<div class="produto-card">
+  <img src="https://via.placeholder.com/150" alt="Meio Amargo" class="produto-img">
+  <div class="produto-info">
+    <h3 class="produto-nome">Meio Amargo</h3>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, chocolate granule, cacau 70%</p>
+    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
+  </div>
+</div>
+
+<!-- NAPOLITANO (ESPECIAL) -->
 <div class="produto-card">
   <img src="https://via.placeholder.com/150" alt="Napolitano" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Napolitano</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, Nescau, Nesquik, leite em pó
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, Nescau, Nesquik, leite em pó</p>
+    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
   </div>
 </div>
 
@@ -1206,10 +1205,8 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
   <img src="https://via.placeholder.com/150" alt="Nescau" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Nescau</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, granulado, Nescau
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, granulado, Nescau</p>
+    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
   </div>
 </div>
 
@@ -1218,10 +1215,8 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
   <img src="https://via.placeholder.com/150" alt="Nesquik" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Nesquik</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, açúcar colorido, Nesquik
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, açúcar colorido, Nesquik</p>
+    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
   </div>
 </div>
 
@@ -1230,22 +1225,18 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
   <img src="https://via.placeholder.com/150" alt="Ninho" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Ninho</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, leite em pó
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, leite em pó</p>
+    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
   </div>
 </div>
 
-<!-- NINHO + NUTELLA -->
+<!-- NINHO + NUTELLA (ESPECIAL) -->
 <div class="produto-card">
   <img src="https://via.placeholder.com/150" alt="Ninho + Nutella" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Ninho + Nutella</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, leite em pó, Nutella
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, leite em pó, Nutella</p>
+    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
   </div>
 </div>
 
@@ -1254,36 +1245,31 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
   <img src="https://via.placeholder.com/150" alt="Paçoca" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Paçoca</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, paçoca
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, paçoca</p>
+    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
   </div>
 </div>
 
-<!-- PRESTÍGIO -->
+<!-- PRESTÍGIO (ESPECIAL) -->
 <div class="produto-card">
   <img src="https://via.placeholder.com/150" alt="Prestigio" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Prestigio</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, Nescau, coco ralado, massa de beijinho
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, Nescau, coco ralado</p>
+    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
   </div>
 </div>
 
-<!-- ROMEU E JULIETA -->
+<!-- ROMEU JULIETA (ESPECIAL) -->
 <div class="produto-card">
   <img src="https://via.placeholder.com/150" alt="Romeu Julieta" class="produto-img">
   <div class="produto-info">
     <h3 class="produto-nome">Romeu Julieta</h3>
-    <p class="produto-ingredientes">
-      Leite condensado, creme de leite, queijo parmesão, goiabada
-    </p>
-    <p class="produto-valor" data-valor="2.00">R$ 2,00</p>
+    <p class="produto-ingredientes">Leite condensado, creme de leite, queijo parmesão, goiabada</p>
+    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
   </div>
 </div>
+
 
 
 
@@ -1400,7 +1386,7 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
         <div class="info">
             <p class="nome-produto">CAIXA C/ 08 UNIDADES</p>
             <span>Até 2 Sabores</span>
-            <p class="preco">R$14,00</p>
+            <p class="preco"><span>A partir</span> R$13,00</p>
         </div>
     </div>
     
@@ -1410,7 +1396,7 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
         <div class="info">
             <p class="nome-produto">CAIXA C/ 12 UNIDADES</p>
             <span>Até 2 Sabores</span>
-            <p class="preco">R$20,00</p>
+            <p class="preco"><span>A partir</span> R$20,00</p>
         </div>
     </div>
     
@@ -1419,7 +1405,7 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
         <div class="info">
             <p class="nome-produto">CAIXA C/ 30 UNIDADES</p>
             <span>Até 3 Sabores</span>
-            <p class="preco">R$30,00</p>
+            <p class="preco"><span>A partir</span> R$50,00</p>
         </div>
     </div>
     
@@ -1429,7 +1415,7 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
         <div class="info">
             <p class="nome-produto">CAIXA C/ 100 UNIDADES</p>
             <span>Até 10 Sabores</span>
-            <p class="preco">R$160,00</p>
+            <p class="preco"><span>A partir</span> R$170,00</p>
         </div>
     </div>
 </div>
@@ -1455,7 +1441,7 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
       <h4>Endereço</h4>
 <p class="endereco">
   <i class="fas fa-map-marker-alt mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i><a>
-  Rua Antonio da silva Batista, 231 – Pedro Scariot</a>
+  R. Antonio da silva Batista, 231 – Pedro Scariot</a>
 
   <a href="javascript:void(0)" onclick="compartilharLocalizacao()" title="Compartilhar endereço" class="btn-compartilhar">
     <i class="fas fa-share-alt" style="font-size:14px; cursor:pointer;"></i>
@@ -1477,7 +1463,7 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
       <div class="social-links">
 
   <a href="https://www.instagram.com/bomdocepm?igsh=MTlqanM3cDF0eXdmeA==" target="_blank">
-    <i class="fab fa-instagram mr-2 pt-2" style="margin-right:5px;font-size:16px;"></i>
+    <i class="fab fa-instagram mr-2 pt-2" style="margin-right:5px;font-size:20px;"></i>
   </a>
 
 </div>
@@ -1507,104 +1493,105 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
 
             <div id="sabores">
 <label>
-    <input type="checkbox" value="Ao Leite 50%" data-preco="2.00">
-    Ao Leite 50%
+  <input type="checkbox" value="Ao Leite 50%" data-preco="2.00" data-especial="true">
+  Ao Leite 50% <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
 </label>
 
 <label>
-    <input type="checkbox" value="Beijinho (Coco)" data-preco="2.00">
-    Beijinho (Coco)
+  <input type="checkbox" value="Beijinho (Coco)" data-preco="1.70">
+  Beijinho (Coco)
 </label>
 
 <label>
-    <input type="checkbox" value="Café" data-preco="2.00">
-    Café
+  <input type="checkbox" value="Café" data-preco="1.70">
+  Café
 </label>
 
 <label>
-    <input type="checkbox" value="Cajuzinho" data-preco="2.00">
-    Cajuzinho
+  <input type="checkbox" value="Cajuzinho" data-preco="1.70">
+  Cajuzinho
 </label>
 
 <label>
-    <input type="checkbox" value="Caramelo" data-preco="2.00">
-    Caramelo
+  <input type="checkbox" value="Caramelo" data-preco="2.00" data-especial="true">
+  Caramelo <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
 </label>
 
 <label>
-    <input type="checkbox" value="Casadinho" data-preco="2.00">
-    Casadinho
+  <input type="checkbox" value="Casadinho" data-preco="1.70">
+  Casadinho
 </label>
 
 <label>
-    <input type="checkbox" value="Chocobol" data-preco="2.00">
-    Chocobol
+  <input type="checkbox" value="Chocobol" data-preco="2.00" data-especial="true">
+  Chocobol <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
 </label>
 
 <label>
-    <input type="checkbox" value="Churros" data-preco="2.00">
-    Churros
+  <input type="checkbox" value="Churros" data-preco="2.00" data-especial="true">
+  Churros <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
 </label>
 
 <label>
-    <input type="checkbox" value="Coco Queimado" data-preco="2.00">
-    Coco Queimado
+  <input type="checkbox" value="Coco Queimado" data-preco="1.70">
+  Coco Queimado
 </label>
 
 <label>
-    <input type="checkbox" value="Ferrero" data-preco="2.00">
-    Ferrero
+  <input type="checkbox" value="Ferrero" data-preco="2.00" data-especial="true">
+  Ferrero <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
 </label>
 
 <label>
-    <input type="checkbox" value="M&M" data-preco="2.00">
-    M&M
+  <input type="checkbox" value="M&M" data-preco="2.00" data-especial="true">
+  M&M <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
 </label>
 
 <label>
-    <input type="checkbox" value="Meio Amargo" data-preco="2.00">
-    Meio Amargo
+  <input type="checkbox" value="Meio Amargo" data-preco="2.00" data-especial="true">
+  Meio Amargo <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
 </label>
 
 <label>
-    <input type="checkbox" value="Napolitano" data-preco="2.00">
-    Napolitano
+  <input type="checkbox" value="Napolitano" data-preco="2.00" data-especial="true">
+  Napolitano <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
 </label>
 
 <label>
-    <input type="checkbox" value="Nescau" data-preco="2.00">
-    Nescau
+  <input type="checkbox" value="Nescau" data-preco="1.70">
+  Nescau
 </label>
 
 <label>
-    <input type="checkbox" value="Nesquik" data-preco="2.00">
-    Nesquik
+  <input type="checkbox" value="Nesquik" data-preco="1.70">
+  Nesquik
 </label>
 
 <label>
-    <input type="checkbox" value="Ninho" data-preco="2.00">
-    Ninho
+  <input type="checkbox" value="Ninho" data-preco="1.70">
+  Ninho
 </label>
 
 <label>
-    <input type="checkbox" value="Ninho + Nutella" data-preco="2.00">
-    Ninho + Nutella
+  <input type="checkbox" value="Ninho + Nutella" data-preco="2.00" data-especial="true">
+  Ninho + Nutella <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
 </label>
 
 <label>
-    <input type="checkbox" value="Paçoca" data-preco="2.00">
-    Paçoca
+  <input type="checkbox" value="Paçoca" data-preco="1.70">
+  Paçoca
 </label>
 
 <label>
-    <input type="checkbox" value="Prestigio" data-preco="2.00">
-    Prestigio
+  <input type="checkbox" value="Prestigio" data-preco="2.00" data-especial="true">
+  Prestigio <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
 </label>
 
 <label>
-    <input type="checkbox" value="Romeu Julieta" data-preco="2.00">
-    Romeu Julieta
+  <input type="checkbox" value="Romeu Julieta" data-preco="2.00" data-especial="true">
+  Romeu Julieta <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
 </label>
+
 
 
             </div>
@@ -1661,7 +1648,7 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
                 <input type="text" id="rua" placeholder="Digite nome da rua">
                 <input type="text" id="numero" placeholder="Digite nº da casa">
                 <input type="text" id="bairro" placeholder="Digite o bairro">
-                <p>Taxa de Entrega: R$ <span id="taxaEntrega">5.00</span></p>
+                <p>Taxa de Entrega: R$ <span id="taxaEntrega">10.00</span></p>
             </div>
 
 <label for="horarioRetirada">*Agende seu pedido <span style="color: red;">(obrigatório)</span>
@@ -1726,7 +1713,7 @@ body > div.container > footer > div.footer-container > div:nth-child(2) > p.ende
 ======================= */
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 let pedidoNumero = parseInt(localStorage.getItem("pedidoNumero")) || 1;
-let taxaEntrega = 5.00;
+let taxaEntrega = 10.00;
 let totalPedido = 0;
 let entregaSelecionada = "retirada";
 
@@ -1934,17 +1921,28 @@ function adicionarAoCarrinho() {
 
     saboresSelecionados.forEach(sabor => {
         let preco = parseFloat(sabor.dataset.preco);
+
+        // 🔥 Se estiver editando, tenta reaproveitar a quantidade antiga
+        let quantidade = 1;
+        if (produtoEditandoIndex !== null) {
+            const saborAntigo = carrinho[produtoEditandoIndex].sabores.find(s => s.nome === sabor.value);
+            if (saborAntigo) {
+                quantidade = saborAntigo.quantidade; // MANTÉM A QTD
+            }
+        }
+
         saboresNovos.push({
             nome: sabor.value,
             preco,
-            quantidade: 1,
-            precoTotal: preco
+            quantidade: quantidade,
+            precoTotal: preco * quantidade,
+            especial: sabor.dataset.especial === "true"
         });
-        precoTotalNovos += preco;
+
+        precoTotalNovos += preco * quantidade;
         sabor.checked = false;
     });
 
-    // 👉 AQUI ESTÁ A CORREÇÃO
     if (produtoEditandoIndex !== null) {
         carrinho[produtoEditandoIndex].sabores = saboresNovos;
         carrinho[produtoEditandoIndex].precoTotal = precoTotalNovos;
@@ -1962,16 +1960,13 @@ function adicionarAoCarrinho() {
     atualizarCarrinho();
     atualizarContadorCarrinho();
 
-    // Fechar modal e abrir carrinho
     document.getElementById('produtoSelecionado').classList.add('hidden');
-
-    // MOSTRAR CARRINHO
     document.getElementById('carrinho').classList.remove('hidden');
 
-    // OCULTAR HEADER DO CARRINHO
     esconderHeaderCheckout();
     esconderFooter();
 }
+
 
 
 /* =======================
@@ -2030,9 +2025,10 @@ function atualizarCarrinho() {
                     <button onclick="removerDoCarrinho(${index})"style="background: none; border: none; padding: 0; cursor: pointer;"><i class="fas fa-trash"></i></button>
                 </div>
 
-                ${item.sabores.map((s, i) => `
-                    <div class="saborItem">
-                        ${s.nome}
+${item.sabores.map((s, i) => `
+    <div class="saborItem">
+        ${s.nome}${s.especial ? ' <i class="fas fa-star especial"></i>' : ''}
+
 
                         <div class="seletorQuantidade">
                             <button onclick="ajustarQuantidadeSabor(${index},${i},-1)"
