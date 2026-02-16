@@ -1995,12 +1995,16 @@ function carregarCarrinho() {
    HOME
 ======================= */
 function voltarHome() {
+
     document.querySelector(".header-container")
-    .classList.remove("header-carrinho");
+        .classList.remove("header-carrinho");
 
     document.querySelector(".container-cards").style.display = "flex";
-    document.querySelector(".banner-container.mobile").style.display = "block";
     document.querySelector(".menu-carousel").style.display = "block";
+
+    // 🔥 deixa o CSS decidir
+    document.querySelector(".banner-container.desktop").style.display = "";
+    document.querySelector(".banner-container.mobile").style.display = "";
 
     document.getElementById("produtoSelecionado").classList.add("hidden");
     document.getElementById("checkout").classList.add("hidden");
@@ -2008,9 +2012,11 @@ function voltarHome() {
     document.getElementById("carrinho").classList.add("hidden");
 
     mostrarHeader();
+    mostrarFooter();
 
     carregarCarrinho();
 }
+
 
 /* =======================
    PRODUTO
