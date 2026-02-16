@@ -1078,6 +1078,19 @@ background-color: #ffe5b6;
     margin-top: 20PX;
 }
 
+.produtoSwiper {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.produtoSwiper img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+
 
 /* Responsivo para mobile */
 @media (max-width: 480px) {
@@ -1439,14 +1452,39 @@ background-color: #ffe5b6;
     </div>
 
 <div class="container-cards">
-    <div class="card" onclick="selecionarProduto('Caixa c/ 08 unidades')">
-        <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173871712067a2b7c020f7e_75_75.jpeg?raw=true" alt="Caixa c/ 08 unidades">
-        <div class="info">
-            <p class="nome-produto">CAIXA C/ 08 UNIDADES</p>
-            <span>Até 2 Sabores</span>
-            <p class="preco"><span>A partir</span> R$13,00</p>
+<div class="card" onclick="selecionarProduto('Caixa c/ 08 unidades')">
+
+    <!-- SLIDER -->
+    <div class="swiper produtoSwiper">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173871712067a2b7c020f7e_75_75.jpeg?raw=true" alt="Caixa c/ 08 unidades">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173872240667a2cc662dead_75_75.jpeg?raw=true" alt="Caixa c/ 08 unidades">
+            </div>
+
+            <div class="swiper-slide">
+                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173888215067a53c6650921_75_75.jpeg?raw=true" alt="Caixa c/ 08 unidades">
+            </div>
+
         </div>
+
+        <!-- bolinhas -->
+        <div class="swiper-pagination"></div>
     </div>
+
+    <!-- INFO -->
+    <div class="info">
+        <p class="nome-produto">CAIXA C/ 08 UNIDADES</p>
+        <span>Até 2 Sabores</span>
+        <p class="preco"><span>A partir</span> R$13,00</p>
+    </div>
+
+</div>
+
     
     <div class="card" onclick="selecionarProduto('Caixa c/ 12 unidades')">
         <div class="etiqueta">+ Vendido</div>
@@ -2760,6 +2798,21 @@ document.addEventListener("change", function(e) {
         checkboxes.forEach(cb => cb.disabled = false);
     }
 });
+
+
+
+//*slide de fotos produtos
+document.querySelectorAll(".produtoSwiper").forEach(swiper => {
+    new Swiper(swiper, {
+        slidesPerView: 1,
+        loop: true,
+        pagination: {
+            el: swiper.querySelector(".swiper-pagination"),
+            clickable: true
+        }
+    });
+});
+
 
 
 
