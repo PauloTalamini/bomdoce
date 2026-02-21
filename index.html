@@ -2065,6 +2065,9 @@ function voltarHome() {
     mostrarHeader();
     mostrarFooter();
 
+    document.getElementById("statusAbertoFechado")
+    ?.classList.remove("hidden");
+
     carregarCarrinho();
 }
 
@@ -2087,6 +2090,10 @@ function selecionarProduto(nomeProduto) {
     if (card) {
         document.getElementById("produtoImagem").src = card.querySelector("img").src;
     }
+
+    //ESCONDE O STATUS
+    document.getElementById("statusAbertoFechado")
+    ?.classList.add("hidden");
 
     // ✅ ESCONDE O FOOTER AO ESCOLHER SABORES
     esconderFooter();
