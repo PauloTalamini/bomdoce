@@ -1063,7 +1063,7 @@ body > div.container > footer > div.footer-container > div:nth-child(4) > p.map-
 
 /* CARRINHO */
 .header-container.header-carrinho {
-    height: 70px; /* ajuste o valor que quiser */
+    height: 60px; /* ajuste o valor que quiser */
 }
 
 #voltarHomeBtnProduto {    
@@ -1090,20 +1090,20 @@ background-color: #ffe5b6;
     object-fit: cover;
 }
 
-/*video home*/
-.popup-video-home {
-    width: 220px;
-    margin: 20px 0 0 0; /* espaço abaixo do banner */
-}
+/* ============================= */
+/* VIDEO POPUP HOME */
+/* ============================= */
 
 .popup-video-home {
     position: fixed;
     bottom: 20px;
-    width: 220px;
     z-index: 9999;
+
+    /* largura fluida controlada */
+    width: clamp(110px, 12vw, 160px);
 }
 
-/* Desktop (layout 1040px) */
+/* Desktop (layout centralizado 1040px) */
 @media (min-width: 1040px) {
     .popup-video-home {
         left: calc((100% - 1040px) / 2 + 20px);
@@ -1114,35 +1114,46 @@ background-color: #ffe5b6;
 @media (max-width: 1039px) {
     .popup-video-home {
         left: 15px;
-        width: 110px; /* menor no celular */
     }
 }
 
+/* Conteúdo do vídeo */
 .popup-conteudo {
+    position: relative;
     background: #2d2d2d;
     border-radius: 12px;
     overflow: hidden;
-    position: relative;
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+
+    /* Mantém proporção perfeita */
+    aspect-ratio: 9 / 16; /* Se for horizontal troque para 16 / 9 */
 }
 
+/* Vídeo */
 .popup-conteudo video {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
+/* Botão fechar */
 .fechar-popup {
     position: absolute;
-    top: 5px;
-    right: 8px;
+    top: 6px;
+    right: 6px;
     background: #1e1e1e;
-    color: white;
+    color: #ffffff;
     border: none;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
     cursor: pointer;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
