@@ -23,179 +23,191 @@
             display: flex;
             justify-content: center;
         }
+
         .barra-topo {
-        height: 30px;
-        font-weight: 700;
-        background: #4c0c00;
-        color:#ffe5b6;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    } 
-    
-#produtoSelecionado > img {
-    border: 1px solid #4c0c00;
-}
+            height: 30px;
+            font-weight: 700;
+            background: #4c0c00;
+            color: #ffe5b6;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        #produtoSelecionado>img {
+            border: 1px solid #4c0c00;
+        }
 
 
 
-header {
-    background-color: #ffffff;
-    padding: 10px 20px;
-}
+        header {
+            background-color: #ffffff;
+            padding: 10px 20px;
+        }
 
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: auto;
-    position: relative;
-    
-
-}
-
-.home-icon i,
-.cart-icon i {
-    font-size: 34px;
-    color: #923d30; 
-}
-
-.logo img {
-    max-height: 50px;
-}
-
-.logo {
-    width: 50px;   /* escolha o tamanho real */
-    height: 50px;   /* MUITO IMPORTANTE */
-    object-fit: contain;
-}
-
-.cart-icon {
-    position: relative;
-    cursor: pointer;
-}
-
-.cart-count {
-    position: absolute;
-    top: 12px;
-    right: 2px;
-    /*background-color: #4c0c00;*/
-    color: #ffe5b6;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 4px 8px;
-    border-radius: 50%;
-    width: 10px;
-    height: 15px;
-    text-align: center;
-    /*border: 4px solid #ffffff;*/
-}
-/*----------------------------------*/
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            position: relative;
 
 
-@media (max-width: 768px) {
-    .swiper-button-prev, .swiper-button-next {
-        display: none;
-    }
-}
+        }
 
-.banner-container {
-    position: relative;
-    width: 100%;
-    height: auto; /* Ajuste a altura conforme necessário */
-    overflow: hidden;
-}
+        .home-icon i,
+        .cart-icon i {
+            font-size: 34px;
+            color: #923d30;
+        }
 
-.banner-slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
+        .logo img {
+            max-height: 50px;
+        }
+
+        .logo {
+            width: 50px;
+            /* escolha o tamanho real */
+            height: 50px;
+            /* MUITO IMPORTANTE */
+            object-fit: contain;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 12px;
+            right: 2px;
+            /*background-color: #4c0c00;*/
+            color: #ffe5b6;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 50%;
+            width: 10px;
+            height: 15px;
+            text-align: center;
+            /*border: 4px solid #ffffff;*/
+        }
+
+        /*----------------------------------*/
 
 
+        @media (max-width: 768px) {
 
-/* Mostra o primeiro banner inicialmente */
-.banner-slide:first-child {
-    opacity: 1;
-}
+            .swiper-button-prev,
+            .swiper-button-next {
+                display: none;
+            }
+        }
 
-/* Oculta o banner mobile por padrão */
-.mobile {
-    display: none;
-}
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+            /* Ajuste a altura conforme necessário */
+            overflow: hidden;
+        }
 
-/* Quando a tela for menor que 768px (mobile), mostra o banner mobile e oculta o desktop */
-@media screen and (max-width: 768px) {
-    .desktop {
-        display: none;
-    }
-
-    .mobile {
-        display: block;
-    }
-}
-
-/*---------------------------------------------*/
-
-.menu-carousel {
-    width: 100%;
-    overflow: hidden;
-    margin-top: 10px;
-    padding: 10px 0;
-}
-
-.swiper-slide {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.swiper-slide img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-.swiper-slide p {
-    font-size: 12px;
-    text-align: center;
-    color: #4c0c00;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-    width: 10px; /* Reduz o tamanho */
-    height: 10px;
-    font-size: 10px;
-    opacity: 0.3; /* Deixa transparente */
-    color: rgba(255, 255, 255, 0.5); /* Define cor transparente */
-}
-
-.swiper-button-prev::after,
-.swiper-button-next::after {
-    font-size: 20px; /* Tamanho do ícone da seta */
-}
-
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-    opacity: 0.7; /* Aumenta a visibilidade ao passar o mouse */
-}
+        .banner-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
 
 
 
+        /* Mostra o primeiro banner inicialmente */
+        .banner-slide:first-child {
+            opacity: 1;
+        }
 
-/*-----------------------------------------------------*/
+        /* Oculta o banner mobile por padrão */
+        .mobile {
+            display: none;
+        }
+
+        /* Quando a tela for menor que 768px (mobile), mostra o banner mobile e oculta o desktop */
+        @media screen and (max-width: 768px) {
+            .desktop {
+                display: none;
+            }
+
+            .mobile {
+                display: block;
+            }
+        }
+
+        /*---------------------------------------------*/
+
+        .menu-carousel {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 10px;
+            padding: 10px 0;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .swiper-slide p {
+            font-size: 12px;
+            text-align: center;
+            color: #4c0c00;
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            width: 10px;
+            /* Reduz o tamanho */
+            height: 10px;
+            font-size: 10px;
+            opacity: 0.3;
+            /* Deixa transparente */
+            color: rgba(255, 255, 255, 0.5);
+            /* Define cor transparente */
+        }
+
+        .swiper-button-prev::after,
+        .swiper-button-next::after {
+            font-size: 20px;
+            /* Tamanho do ícone da seta */
+        }
+
+        .swiper-button-prev:hover,
+        .swiper-button-next:hover {
+            opacity: 0.7;
+            /* Aumenta a visibilidade ao passar o mouse */
+        }
+
+
+
+
+        /*-----------------------------------------------------*/
 
         .container {
             width: 100%;
             margin: auto;
         }
 
-        body > div > h1 {   
+        body>div>h1 {
             text-align: center;
         }
 
@@ -203,14 +215,14 @@ header {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            justify-content:space-evenly;
+            justify-content: space-evenly;
             margin: 10px 0 10px 0;
         }
-            
+
 
         .card {
             background-color: #4c0c00;
-            color:#ffe5b6;
+            color: #ffe5b6;
             padding: 10px;
             border-radius: 8px;
             cursor: pointer;
@@ -286,203 +298,206 @@ header {
             cursor: pointer;
         }
 
-        body > div.container > header > div > a {
+        body>div.container>header>div>a {
             display: none;
         }
 
-        #checkout > label:nth-child(5) {
+        #checkout>label:nth-child(5) {
             margin-left: 10PX;
         }
 
         #voltarHomeBtn {
-        background-color: #ffe5b6;
-        color: #4c0c00;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 10px;
-        border: none;
-        cursor: pointer;
-        margin-top: 20PX;
+            background-color: #ffe5b6;
+            color: #4c0c00;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20PX;
         }
 
         #voltarCarrinhoBtn {
-        background-color: #ffe5b6;
-        color: #4c0c00;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 10px;
-        border: none;
-        cursor: pointer;
-        margin-top: 20PX;
+            background-color: #ffe5b6;
+            color: #4c0c00;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20PX;
         }
 
         .itemCarrinho {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 0 0 10px;
-    border-bottom: 1px solid #4c0c00;
-    margin-bottom: 10px;
-}
+            display: flex;
+            justify-content: space-evenly;
+            padding: 0 0 10px;
+            border-bottom: 1px solid #4c0c00;
+            margin-bottom: 10px;
+        }
 
-.imagemProduto {
-    height: 80px;
-}
+        .imagemProduto {
+            height: 80px;
+        }
 
-.imagemProduto img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 5px;
-    border: 1px solid #4c0c00;
-}
+        .imagemProduto img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #4c0c00;
+        }
 
-.detalhesProduto {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: calc(100% - 100px);  /* Ajusta a largura do produto */
-    padding-left: 5px;
-    gap: 10px;
-}
+        .detalhesProduto {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: calc(100% - 100px);
+            /* Ajusta a largura do produto */
+            padding-left: 5px;
+            gap: 10px;
+        }
 
-#produtoSelecionado {
-margin:10px;
-}
+        #produtoSelecionado {
+            margin: 10px;
+        }
 
-#carrinho {
-margin:10px;
-}
+        #carrinho {
+            margin: 10px;
+        }
 
-#checkout {
-margin:10px; 
-}
+        #checkout {
+            margin: 10px;
+        }
 
-.produtoNomeEtrash {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-    font-weight: 700;
-}
+        .produtoNomeEtrash {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
 
-.produtoNome {
-    font-weight: bold;
-    font-size: 16px;
-}
+        .produtoNome {
+            font-weight: bold;
+            font-size: 16px;
+        }
 
-.fa-trash:before {
-    background: none;
-    border: none;
-    color: red;
-    cursor: pointer;
-    FONT-SIZE: 1.2EM;
-}
+        .fa-trash:before {
+            background: none;
+            border: none;
+            color: red;
+            cursor: pointer;
+            FONT-SIZE: 1.2EM;
+        }
 
-.produto-info > .produto-nome {
-    margin-bottom: 0;
-}
-
-
-.saboresProduto {
-    font-size: 14px;
-    color: #555;
-    display: grid;
-}
-
-.quantidadeEValor {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    flex-direction: row-reverse;
-    align-items: center;
-}
-
-.seletorQuantidade {
-    align-items: center;
-    display: inline-flex;
-    align-items: center;
-    border-radius: 50px;
-    border: 1px solid #4c0c00;
-    padding: 5px;
-    padding-inline: 0;
-    margin-left: 5px;
-}
-
-#itensCarrinho span {
-    padding-inline: 6px;
-}
-
-#itensCarrinho {
-    color: #4c0c00;
-}
-
-.seletorQuantidade button {
-    padding: 5px;
-    margin: 0 5px;
-    font-weight: 700;
-    color: #ffe5b6;
-    border-radius: 50%;
-    background-color: #4c0c00;
-    font-size: 14px;
-    width: 18px;
-    height: 18px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    text-align: center;
-    cursor: pointer;
-}
-
-.quantidade {
-    font-size: 16px;
-    margin: 0 10px;
-}
-
-.quantidadeProduto {
-    padding: 5px;
-    padding-inline: 10px;
-    background-color: #4CAF50;
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 12px;
-    border-radius: 25px;
-}
-
-.valorTotal {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-#carrinho > p {
-    display: flex;
-    justify-content: end;
-}
+        .produto-info>.produto-nome {
+            margin-bottom: 0;
+        }
 
 
-.sabor-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espaço entre o sabor e o seletor */
-}
+        .saboresProduto {
+            font-size: 14px;
+            color: #555;
+            display: grid;
+        }
 
-.sabor-nome {
-    font-size: 16px;
-    color: white;
-}
+        .quantidadeEValor {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            flex-direction: row-reverse;
+            align-items: center;
+        }
 
-.sabor-quantidade {
-    width: 50px; /* Ajuste o tamanho do seletor conforme necessário */
-}
+        .seletorQuantidade {
+            align-items: center;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 50px;
+            border: 1px solid #4c0c00;
+            padding: 5px;
+            padding-inline: 0;
+            margin-left: 5px;
+        }
 
-#produtoSelecionado > div.quantidadeSabores {
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: 700;
-}   
+        #itensCarrinho span {
+            padding-inline: 6px;
+        }
 
-        #checkout > label:nth-child(4) {
+        #itensCarrinho {
+            color: #4c0c00;
+        }
+
+        .seletorQuantidade button {
+            padding: 5px;
+            margin: 0 5px;
+            font-weight: 700;
+            color: #ffe5b6;
+            border-radius: 50%;
+            background-color: #4c0c00;
+            font-size: 14px;
+            width: 18px;
+            height: 18px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .quantidade {
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        .quantidadeProduto {
+            padding: 5px;
+            padding-inline: 10px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 12px;
+            border-radius: 25px;
+        }
+
+        .valorTotal {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        #carrinho>p {
+            display: flex;
+            justify-content: end;
+        }
+
+
+        .sabor-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* Espaço entre o sabor e o seletor */
+        }
+
+        .sabor-nome {
+            font-size: 16px;
+            color: white;
+        }
+
+        .sabor-quantidade {
+            width: 50px;
+            /* Ajuste o tamanho do seletor conforme necessário */
+        }
+
+        #produtoSelecionado>div.quantidadeSabores {
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        #checkout>label:nth-child(4) {
             margin-left: 20px;
         }
 
@@ -499,17 +514,17 @@ margin:10px;
             gap: 10px;
         }
 
-        #enderecoEntrega > span {
+        #enderecoEntrega>span {
             margin-top: 15px;
             font-size: 14px;
         }
 
-        #checkout > h2 {
+        #checkout>h2 {
             margin-bottom: 40px;
             margin-top: 0;
         }
 
-        #enderecoEntrega > p {
+        #enderecoEntrega>p {
             margin-top: 0;
             font-size: 14px;
         }
@@ -581,7 +596,7 @@ margin:10px;
         .copy-text.copiado {
             color: #4c0c00;
             font-size: 10px;
-}
+        }
 
         .finalizar-btn {
             background-color: #4c0c00;
@@ -598,2472 +613,2552 @@ margin:10px;
         .finalizar-btn:disabled {
             background-color: #ffe5b6;
             color: #4c0c00;
-        }   
+        }
 
         .popout-confirmacao {
-    position: fixed;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%);
-    width: 50%;
-    text-align: center;
-    background: #2d2d2d;
-    color: white;
-    justify-content: center;
-    padding: 12px 16px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    font-size: 16px;
-    opacity: 0;
-    animation: popoutAnim 0.3s forwards;
-}
-
-
-@keyframes popoutAnim {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.produto {
-  position: relative;
-  display: inline-block;
-}
-
-.etiqueta {
-  position: absolute;
-  padding: 5px 10px;
-  font-weight: bold;
-  border-radius: 5px;
-  color: white;
-  background-color: #FF6600; /* cor para a etiqueta */
-  z-index: 10;
-}
-
-.etiqueta-nov {
-  position: absolute;
-  padding: 5px 10px;
-  font-weight: bold;
-  border-radius: 5px;
-  color: white;
-  background-color: blue; /* cor para a etiqueta */
-  z-index: 10;
-}
-
-#comprovantePix {
-    margin-bottom: 20px;
-    margin-top: 5px;
-}
-
-
-.top-bar {
-    display: flex;
-    gap: 30px;
-    padding: 10px;
-    position: sticky;
-}
-
-.top-bar button {
-    padding: 5px 10px;
-    cursor: pointer;
-    font-weight: bold;
-    background: #923d30;
-    color: #ffe5b6;
-    border: none;
-    border-radius: 5px;
-}
-
-/* Popup */
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    max-height: 80%;
-    overflow-y: auto;
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.produto-card {
-    border: 1px solid #4c0c00;
-    background: #ffe5b6;
-    display: inline-flex;
-    padding: 10px;
-    text-align: center;
-    align-items: center; /* centraliza verticalmente */
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-}
-
-.produto-img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-}
-
-.fechar {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    font-size: 2rem;
-    color: #fff!important;
-}
-
-.hidden {
-    display: none;
-}
-
-.produto-info {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  color: #4c0c00;
-  width: 100%;
-}
-
-.banner-container .swiper-wrapper .swiper-slide img {
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-}
-
-label input[type="radio"] {
-    transform: scale(1.4);
-    margin-right: 6px;
-    cursor: pointer;
-}
-
-
-
-.horario-popup {
-    max-width: 320px;
-    color: #4c0c00;
-    margin-top: -75%;
-}
-
-.horario-funcionamento {
-    font-family: Arial, sans-serif;
-    font-size: 15px;
-}
-
-.horario-funcionamento .titulo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #4c0c00;
-    margin-bottom: 12px;
-}
-
-.horario-funcionamento .linha {
-    display: flex;
-    justify-content: space-between;
-    padding: 3px 0;
-}
-
-.horario-funcionamento .linha span:last-child {
-    font-weight: 500;
-}
-
-label[for="horarioRetirada"] {
-  font-size: 14px;
-margin-top: 20px;
-  display: block;
-  margin-bottom: 6px;
-  font-family: Arial, sans-serif;
-}
-
-select#horarioRetirada {
-  width: 100%;
-  max-width: 400px;
-  padding: 10px 12px;
-  font-size: 15px;
-  border: 1.8px solid #9c2f1f; /* tom parecido com seu tema */
-  border-radius: 8px;
-  background-color: #fff;
-  color: #333;
-  cursor: pointer;
-  font-family: Arial, sans-serif;
-  transition: border-color 0.3s ease;
-}
-
-select#horarioRetirada:focus {
-  outline: none;
-  border-color: #6b1d10;
-  box-shadow: 0 0 5px rgba(156, 47, 31, 0.6);
-}
-
-select#horarioRetirada option {
-  font-size: 14px;
-  padding: 8px;
-}
-
-label[for="horarioRetirada"] i {
-  font-size: 14px;
-}
-
-#checkout > h3:nth-child(2) > i {
-    margin-right: 5px;
-    font-size: 16px;
-}
-
-#checkout > h3:nth-child(8) {
-    margin-top: 40px;
-}
-
-#btnCompartilhar > span {
-    font-size: 1em;
-}
-
-#dadosCliente {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 50px;
-}
-
-#dadosCliente > span > i {
-    margin-right: 5px;
-    font-size: 16px;
-    font-weight: 900;
-}
-
-#nomeCliente {
-    max-width: 100%;
-    border: 1.8px solid #9c2f1f;
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 8px;
-    outline: none;
-    color: #4c0c00;
-}
-
-#telefoneCliente {
-    max-width: 100%;
-    border: 1.8px solid #9c2f1f;
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 8px;
-    outline: none;
-    color: #4c0c00;
-}
-
-#carrinho > h2 {
-    margin-top: 0;
-}
-
-.btnAdicionarSabor {
-padding: 5PX;
-border-radius: 5px;
-background: #ffe5b6;
-color: #4c0c00;
-border: 1px solid #4c0c00;
-}
-
-
-#removerDoCarrinho {
-    box-shadow: none;
-    border: none;
-    outline: none;
-    color: RED;
-    padding: 0;
-    background: transparent;
-}
-
-#nomeCliente::placeholder {
-    color: #e8c68d; /* cor do placeholder */
-}
-
-#telefoneCliente::placeholder {
-    color: #e8c68d; /* cor do placeholder */
-}
-
-#rua::placeholder,
-#numero::placeholder,
-#bairro::placeholder {
-    color: #e8c68d;
-}
-
-
-
-.status-indicador {
-    position: absolute;
-    top: 80px;
-    left: 10px;
-    background: #ffffff;
-    color: white;
-    font-weight: bold;
-    padding: 6px 10px;
-    border-radius: 25px;
-    font-size: 1rem;
-    z-index: 100;
-    user-select: none; /* Evita seleção do texto por acidente */
-}
-
-.footer {
-  background: #ffffff;
-  color: #4c0c00;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.footer-section {
-  flex: 1;
-  min-width: 220px;
-}
-
-.footer h4 {
-  margin-bottom: 8px;
-  color: #4c0c00;
-margin-top: 10px;
-}
-
-.footer a {
-  color: #4c0c00;
-  text-decoration: none;
-  font-size: 1em;
-}
-
-.footer a:hover {
-  color: #4c0c00;
-}
-
-.social-links a {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.map-links a {
-  font-size: 1em;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 0.8em;
-  color: #4c0c00;
-}
-
-.social-links a,
-.footer p {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-  margin-top: 5px;
-
-}
-
-body > div.container > footer > div.footer-container > div:nth-child(3) > div {
-    display: inline-flex;
-    gap: 10px;
-}
-
-body > div.container > footer > div.footer-container > div:nth-child(2) > p.map-links {
-gap: 15px;
-margin-top: 20px;
-}
-
-.btn-compartilhar {
-  margin-left: 8px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.texto-compartilhar {
-  font-size: 10px; /* ajuste aqui */
-  margin-left: 4px;
-}
-
-body > div.container > footer > div.footer-container > div:nth-child(2) > p.endereco > a {
-display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-}
-
-body > div.container > footer > div.footer-container > div:nth-child(2) > p.endereco > a.btn-compartilhar > i {
-    text-align: center;
-}
-
-.especial {
-color: #923d30;
-    margin-left: 6px;
-    font-size: 0.7em;
-    vertical-align: middle;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.card .preco span {
-    font-size: 0.7em;
-}
-
-#cardapioPopup .produto-valor.especial {
-  font-size: 1em;
-}
-
-#cardapioPopup .produto-valor.especial > i {
-    font-size: 0.6em;
-    display: inline-flex;
-    margin-left: 5px;
-    gap: 5px;
-}
-
-div.eapps-widget {
-    position: relative;
-    margin-left: auto!important;
-    margin-right: auto!important;
-}
-
-body > div.container > footer > div.footer-container > div:nth-child(4) > p.map-links > a.btn-compartilhar {
-    display: inline-flex;
-    align-items: center;
-}
-
-body > div.container > footer > div.footer-container > div:nth-child(4) > p.map-links {
-    justify-content: space-between;
-}
-
-/* HOME */
-.header-container {
-    height: 60px;
-}
-
-/* CARRINHO */
-.header-container.header-carrinho {
-    height: 60px; /* ajuste o valor que quiser */
-}
-
-#voltarHomeBtnProduto {    
-background-color: #ffe5b6;
-    color: #4c0c00;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    margin-top: 20PX;
-}
-
-.produtoSwiper {
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.produtoSwiper img {
-    width: 100%;
-    height: 170px;
-    object-fit: cover;
-}
-
-/* ============================= */
-/* VIDEO POPUP HOME */
-/* ============================= */
-
-.popup-video-home {
-    position: fixed;
-    bottom: 20px;
-    z-index: 9999;
-
-    /* largura fluida controlada */
-    width: clamp(110px, 12vw, 160px);
-}
-
-/* Desktop (layout centralizado 1040px) */
-@media (min-width: 1040px) {
-    .popup-video-home {
-        left: calc((100% - 1040px) / 2 + 20px);
-    }
-}
-
-/* Mobile */
-@media (max-width: 1039px) {
-    .popup-video-home {
-        left: 15px;
-    }
-}
-
-/* Conteúdo do vídeo */
-.popup-conteudo {
-    position: relative;
-    background: #2d2d2d;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-
-    /* Mantém proporção perfeita */
-    aspect-ratio: 9 / 16; /* Se for horizontal troque para 16 / 9 */
-}
-
-/* Vídeo */
-.popup-conteudo video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Botão fechar */
-.fechar-popup {
-    position: absolute;
-    top: 6px;
-    right: 6px;
-    background: #1e1e1e;
-    color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    width: 22px;
-    height: 22px;
-    font-size: 14px;
-    cursor: pointer;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-
-/* Responsivo para mobile */
-@media (max-width: 480px) {
-  select#horarioRetirada {
-    font-size: 14px;
-    padding: 8px 10px;
-    width: 80%;
-    margin-bottom: 40px;
-    color:#4c0c00;
-  }
-}
-
-
-
-
-
+            position: fixed;
+            top: 50%;
+            left: 25%;
+            transform: translate(-50%);
+            width: 50%;
+            text-align: center;
+            background: #2d2d2d;
+            color: white;
+            justify-content: center;
+            padding: 12px 16px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            opacity: 0;
+            animation: popoutAnim 0.3s forwards;
+        }
+
+
+        @keyframes popoutAnim {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .produto {
+            position: relative;
+            display: inline-block;
+        }
+
+        .etiqueta {
+            position: absolute;
+            padding: 5px 10px;
+            font-weight: bold;
+            border-radius: 5px;
+            color: white;
+            background-color: #FF6600;
+            /* cor para a etiqueta */
+            z-index: 10;
+        }
+
+        .etiqueta-nov {
+            position: absolute;
+            padding: 5px 10px;
+            font-weight: bold;
+            border-radius: 5px;
+            color: white;
+            background-color: blue;
+            /* cor para a etiqueta */
+            z-index: 10;
+        }
+
+        #comprovantePix {
+            margin-bottom: 20px;
+            margin-top: 5px;
+        }
+
+
+        .top-bar {
+            display: flex;
+            gap: 30px;
+            padding: 10px;
+            position: sticky;
+        }
+
+        .top-bar button {
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: bold;
+            background: #923d30;
+            color: #ffe5b6;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Popup */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            max-height: 80%;
+            overflow-y: auto;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .produto-card {
+            border: 1px solid #4c0c00;
+            background: #ffe5b6;
+            display: inline-flex;
+            padding: 10px;
+            text-align: center;
+            align-items: center;
+            /* centraliza verticalmente */
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .produto-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .fechar {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            font-size: 2rem;
+            color: #fff !important;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .produto-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            color: #4c0c00;
+            width: 100%;
+        }
+
+        .banner-container .swiper-wrapper .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+        }
+
+        label input[type="radio"] {
+            transform: scale(1.4);
+            margin-right: 6px;
+            cursor: pointer;
+        }
+
+
+
+        .horario-popup {
+            max-width: 320px;
+            color: #4c0c00;
+            margin-top: -75%;
+        }
+
+        .horario-funcionamento {
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+        }
+
+        .horario-funcionamento .titulo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4c0c00;
+            margin-bottom: 12px;
+        }
+
+        .horario-funcionamento .linha {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+        }
+
+        .horario-funcionamento .linha span:last-child {
+            font-weight: 500;
+        }
+
+        label[for="horarioRetirada"] {
+            font-size: 14px;
+            margin-top: 20px;
+            display: block;
+            margin-bottom: 6px;
+            font-family: Arial, sans-serif;
+        }
+
+        select#horarioRetirada {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px 12px;
+            font-size: 15px;
+            border: 1.8px solid #9c2f1f;
+            /* tom parecido com seu tema */
+            border-radius: 8px;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+            font-family: Arial, sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        select#horarioRetirada:focus {
+            outline: none;
+            border-color: #6b1d10;
+            box-shadow: 0 0 5px rgba(156, 47, 31, 0.6);
+        }
+
+        select#horarioRetirada option {
+            font-size: 14px;
+            padding: 8px;
+        }
+
+        label[for="horarioRetirada"] i {
+            font-size: 14px;
+        }
+
+        #checkout>h3:nth-child(2)>i {
+            margin-right: 5px;
+            font-size: 16px;
+        }
+
+        #checkout>h3:nth-child(8) {
+            margin-top: 40px;
+        }
+
+        #btnCompartilhar>span {
+            font-size: 1em;
+        }
+
+        #dadosCliente {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+
+        #dadosCliente>span>i {
+            margin-right: 5px;
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        #nomeCliente {
+            max-width: 100%;
+            border: 1.8px solid #9c2f1f;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 8px;
+            outline: none;
+            color: #4c0c00;
+        }
+
+        #telefoneCliente {
+            max-width: 100%;
+            border: 1.8px solid #9c2f1f;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 8px;
+            outline: none;
+            color: #4c0c00;
+        }
+
+        #carrinho>h2 {
+            margin-top: 0;
+        }
+
+        .btnAdicionarSabor {
+            padding: 5PX;
+            border-radius: 5px;
+            background: #ffe5b6;
+            color: #4c0c00;
+            border: 1px solid #4c0c00;
+        }
+
+
+        #removerDoCarrinho {
+            box-shadow: none;
+            border: none;
+            outline: none;
+            color: RED;
+            padding: 0;
+            background: transparent;
+        }
+
+        #nomeCliente::placeholder {
+            color: #e8c68d;
+            /* cor do placeholder */
+        }
+
+        #telefoneCliente::placeholder {
+            color: #e8c68d;
+            /* cor do placeholder */
+        }
+
+        #rua::placeholder,
+        #numero::placeholder,
+        #bairro::placeholder {
+            color: #e8c68d;
+        }
+
+
+
+        .status-indicador {
+            position: absolute;
+            top: 80px;
+            left: 10px;
+            background: #ffffff;
+            color: white;
+            font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 25px;
+            font-size: 1rem;
+            z-index: 100;
+            user-select: none;
+            /* Evita seleção do texto por acidente */
+        }
+
+        .footer {
+            background: #ffffff;
+            color: #4c0c00;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .footer h4 {
+            margin-bottom: 8px;
+            color: #4c0c00;
+            margin-top: 10px;
+        }
+
+        .footer a {
+            color: #4c0c00;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer a:hover {
+            color: #4c0c00;
+        }
+
+        .social-links a {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .map-links a {
+            font-size: 1em;
+            align-items: center;
+            display: inline-flex;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8em;
+            color: #4c0c00;
+        }
+
+        .social-links a,
+        .footer p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            margin-top: 5px;
+
+        }
+
+        body>div.container>footer>div.footer-container>div:nth-child(3)>div {
+            display: inline-flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        body>div.container>footer>div.footer-container>div:nth-child(2)>p.map-links {
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .btn-compartilhar {
+            margin-left: 8px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .texto-compartilhar {
+            font-size: 10px;
+            /* ajuste aqui */
+            margin-left: 4px;
+        }
+
+        body>div.container>footer>div.footer-container>div:nth-child(2)>p.endereco>a {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        body>div.container>footer>div.footer-container>div:nth-child(2)>p.endereco>a.btn-compartilhar>i {
+            text-align: center;
+        }
+
+        .especial {
+            color: #923d30;
+            margin-left: 6px;
+            font-size: 0.7em;
+            vertical-align: middle;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card .preco span {
+            font-size: 0.7em;
+        }
+
+        #cardapioPopup .produto-valor.especial {
+            font-size: 1em;
+        }
+
+        #cardapioPopup .produto-valor.especial>i {
+            font-size: 0.6em;
+            display: inline-flex;
+            margin-left: 5px;
+            gap: 5px;
+        }
+
+        div.eapps-widget {
+            position: relative;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        body>div.container>footer>div.footer-container>div:nth-child(4)>p.map-links>a.btn-compartilhar {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        body>div.container>footer>div.footer-container>div:nth-child(4)>p.map-links {
+            justify-content: space-between;
+        }
+
+        /* HOME */
+        .header-container {
+            height: 60px;
+        }
+
+        /* CARRINHO */
+        .header-container.header-carrinho {
+            height: 60px;
+            /* ajuste o valor que quiser */
+        }
+
+        #voltarHomeBtnProduto {
+            background-color: #ffe5b6;
+            color: #4c0c00;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20PX;
+        }
+
+        .produtoSwiper {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .produtoSwiper img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+        }
+
+        /* ============================= */
+        /* VIDEO POPUP HOME */
+        /* ============================= */
+
+        .popup-video-home {
+            position: fixed;
+            bottom: 20px;
+            z-index: 9999;
+
+            /* largura fluida controlada */
+            width: clamp(110px, 12vw, 160px);
+        }
+
+        /* Desktop (layout centralizado 1040px) */
+        @media (min-width: 1040px) {
+            .popup-video-home {
+                left: calc((100% - 1040px) / 2 + 20px);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 1039px) {
+            .popup-video-home {
+                left: 15px;
+            }
+        }
+
+        /* Conteúdo do vídeo */
+        .popup-conteudo {
+            position: relative;
+            background: #2d2d2d;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+
+            /* Mantém proporção perfeita */
+            aspect-ratio: 9 / 16;
+            /* Se for horizontal troque para 16 / 9 */
+        }
+
+        /* Vídeo */
+        .popup-conteudo video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Botão fechar */
+        .fechar-popup {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            background: #1e1e1e;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+        /* Responsivo para mobile */
+        @media (max-width: 480px) {
+            select#horarioRetirada {
+                font-size: 14px;
+                padding: 8px 10px;
+                width: 80%;
+                margin-bottom: 40px;
+                color: #4c0c00;
+            }
+        }
     </style>
 </head>
 
 <body>
-    
+
     <div class="container">
         <div class="barra-topo">
             <span>TELE GRÁTIS ACIMA DE R$ 200,00</span>
         </div>
-<header>
-    <div class="header-container">
-<a href="#" class="home-icon" onclick="voltarHome()">
-    <i class="fas fa-home"></i>
-</a>
+        <header>
+            <div class="header-container">
+                <a href="#" class="home-icon" onclick="voltarHome()">
+                    <i class="fas fa-home"></i>
+                </a>
 
 
 
-<!-- POPUP DO CARDÁPIO -->
-<div id="cardapioPopup" class="popup hidden">
-    <div class="popup-content">
-        <button id="btnCompartilhar" style="background:none; border:none; cursor:pointer;">
-  <i class="fas fa-share-alt-square" style="margin-right:6px;font-size: 18px; color: #4c0c00;"></i> <span>Compartilhar</span>
-</button>
+                <!-- POPUP DO CARDÁPIO -->
+                <div id="cardapioPopup" class="popup hidden">
+                    <div class="popup-content">
+                        <button id="btnCompartilhar" style="background:none; border:none; cursor:pointer;">
+                            <i class="fas fa-share-alt-square"
+                                style="margin-right:6px;font-size: 18px; color: #4c0c00;"></i> <span>Compartilhar</span>
+                        </button>
 
-        <span id="fecharCardapio" class="fechar">&times;</span>
+                        <span id="fecharCardapio" class="fechar">&times;</span>
 
-        <!-- AO LEITE 50% (ESPECIAL) -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Ao Leite 50%" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Ao Leite 50%</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, choc granule, cacau 50%</p>
-    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
-  </div>
-</div>
+                        <!-- AO LEITE 50% (ESPECIAL) -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Ao Leite 50%" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Ao Leite 50%</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, choc granule, cacau
+                                    50%</p>
+                                <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i
+                                        class="fas fa-star">Especial</i></p>
+                            </div>
+                        </div>
 
-<!-- BEIJINHO -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Beijinho (Coco)" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Beijinho (Coco)</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, coco</p>
-    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
-  </div>
-</div>
+                        <!-- BEIJINHO -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Beijinho (Coco)" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Beijinho (Coco)</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, coco</p>
+                                <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
+                            </div>
+                        </div>
 
-<!-- CAFÉ -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Café" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Café</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, cacau 50%, café</p>
-    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
-  </div>
-</div>
+                        <!-- CAFÉ -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Café" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Café</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, cacau 50%, café</p>
+                                <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
+                            </div>
+                        </div>
 
-<!-- CAJUZINHO -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Cajuzinho" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Cajuzinho</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, cacau 50%, amendoim torrado</p>
-    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
-  </div>
-</div>
+                        <!-- CAJUZINHO -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Cajuzinho" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Cajuzinho</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, cacau 50%, amendoim
+                                    torrado</p>
+                                <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
+                            </div>
+                        </div>
 
-<!-- CARAMELO (ESPECIAL) -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Caramelo" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Caramelo</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, açúcar</p>
-    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
-  </div>
-</div>
+                        <!-- CARAMELO (ESPECIAL) -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Caramelo" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Caramelo</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, açúcar</p>
+                                <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i
+                                        class="fas fa-star">Especial</i></p>
+                            </div>
+                        </div>
 
-<!-- CASADINHO -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Casadinho" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Casadinho</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, Nescau, leite em pó</p>
-    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
-  </div>
-</div>
+                        <!-- CASADINHO -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Casadinho" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Casadinho</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, Nescau, leite em pó
+                                </p>
+                                <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
+                            </div>
+                        </div>
 
-<!-- CHOCOBOL (ESPECIAL) -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Chocobol" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Chocobol</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, Chocobol, Nescau</p>
-    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
-  </div>
-</div>
+                        <!-- CHOCOBOL (ESPECIAL) -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Chocobol" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Chocobol</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, Chocobol, Nescau</p>
+                                <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i
+                                        class="fas fa-star">Especial</i></p>
+                            </div>
+                        </div>
 
-<!-- CHURROS (ESPECIAL) -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Churros" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Churros</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, doce de leite</p>
-    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
-  </div>
-</div>
+                        <!-- CHURROS (ESPECIAL) -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Churros" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Churros</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, doce de leite</p>
+                                <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i
+                                        class="fas fa-star">Especial</i></p>
+                            </div>
+                        </div>
 
-<!-- COCO QUEIMADO -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Coco Queimado" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Coco Queimado</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, coco queimado</p>
-    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
-  </div>
-</div>
+                        <!-- COCO QUEIMADO -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Coco Queimado" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Coco Queimado</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, coco queimado</p>
+                                <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
+                            </div>
+                        </div>
 
-<!-- FERRERO (ESPECIAL) -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Ferrero" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Ferrero</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, Nescau, Nutella</p>
-    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
-  </div>
-</div>
+                        <!-- FERRERO (ESPECIAL) -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Ferrero" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Ferrero</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, Nescau, Nutella</p>
+                                <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i
+                                        class="fas fa-star">Especial</i></p>
+                            </div>
+                        </div>
 
-<!-- M&M (ESPECIAL) -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="M&M" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">M&M</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, M&M, Nescau</p>
-    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
-  </div>
-</div>
+                        <!-- M&M (ESPECIAL) -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="M&M" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">M&M</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, M&M, Nescau</p>
+                                <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i
+                                        class="fas fa-star">Especial</i></p>
+                            </div>
+                        </div>
 
-<!-- MEIO AMARGO (ESPECIAL) -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Meio Amargo" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Meio Amargo</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, chocolate granule, cacau 70%</p>
-    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
-  </div>
-</div>
+                        <!-- MEIO AMARGO (ESPECIAL) -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Meio Amargo" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Meio Amargo</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, chocolate granule,
+                                    cacau 70%</p>
+                                <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i
+                                        class="fas fa-star">Especial</i></p>
+                            </div>
+                        </div>
 
-<!-- NAPOLITANO (ESPECIAL) -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Napolitano" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Napolitano</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, Nescau, Nesquik, leite em pó</p>
-    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
-  </div>
-</div>
+                        <!-- NAPOLITANO (ESPECIAL) -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Napolitano" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Napolitano</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, Nescau, Nesquik, leite
+                                    em pó</p>
+                                <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i
+                                        class="fas fa-star">Especial</i></p>
+                            </div>
+                        </div>
 
-<!-- NESCAU -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Nescau" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Nescau</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, granulado, Nescau</p>
-    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
-  </div>
-</div>
+                        <!-- NESCAU -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Nescau" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Nescau</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, granulado, Nescau</p>
+                                <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
+                            </div>
+                        </div>
 
-<!-- NESQUIK -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Nesquik" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Nesquik</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, açúcar colorido, Nesquik</p>
-    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
-  </div>
-</div>
+                        <!-- NESQUIK -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Nesquik" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Nesquik</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, açúcar colorido,
+                                    Nesquik</p>
+                                <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
+                            </div>
+                        </div>
 
-<!-- NINHO -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Ninho" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Ninho</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, leite em pó</p>
-    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
-  </div>
-</div>
+                        <!-- NINHO -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Ninho" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Ninho</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, leite em pó</p>
+                                <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
+                            </div>
+                        </div>
 
-<!-- NINHO + NUTELLA (ESPECIAL) -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Ninho + Nutella" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Ninho + Nutella</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, leite em pó, Nutella</p>
-    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
-  </div>
-</div>
+                        <!-- NINHO + NUTELLA (ESPECIAL) -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Ninho + Nutella" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Ninho + Nutella</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, leite em pó, Nutella
+                                </p>
+                                <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i
+                                        class="fas fa-star">Especial</i></p>
+                            </div>
+                        </div>
 
-<!-- PAÇOCA -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Paçoca" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Paçoca</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, paçoca</p>
-    <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
-  </div>
-</div>
+                        <!-- PAÇOCA -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Paçoca" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Paçoca</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, paçoca</p>
+                                <p class="produto-valor" data-valor="1.70">R$ 1,70</p>
+                            </div>
+                        </div>
 
-<!-- PRESTÍGIO (ESPECIAL) -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Prestigio" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Prestigio</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, Nescau, coco ralado</p>
-    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
-  </div>
-</div>
+                        <!-- PRESTÍGIO (ESPECIAL) -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Prestigio" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Prestigio</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, Nescau, coco ralado
+                                </p>
+                                <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i
+                                        class="fas fa-star">Especial</i></p>
+                            </div>
+                        </div>
 
-<!-- ROMEU JULIETA (ESPECIAL) -->
-<div class="produto-card">
-  <img src="https://via.placeholder.com/150" alt="Romeu Julieta" class="produto-img">
-  <div class="produto-info">
-    <h3 class="produto-nome">Romeu Julieta</h3>
-    <p class="produto-ingredientes">Leite condensado, creme de leite, queijo parmesão, goiabada</p>
-    <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i class="fas fa-star">Especial</i></p>
-  </div>
-</div>
+                        <!-- ROMEU JULIETA (ESPECIAL) -->
+                        <div class="produto-card">
+                            <img src="https://via.placeholder.com/150" alt="Romeu Julieta" class="produto-img">
+                            <div class="produto-info">
+                                <h3 class="produto-nome">Romeu Julieta</h3>
+                                <p class="produto-ingredientes">Leite condensado, creme de leite, queijo parmesão,
+                                    goiabada</p>
+                                <p class="produto-valor especial" data-valor="2.00">R$ 2,00 <i
+                                        class="fas fa-star">Especial</i></p>
+                            </div>
+                        </div>
 
 
 
 
 
-        <!-- Adicione mais produtos aqui -->
-    </div>
-</div>
+                        <!-- Adicione mais produtos aqui -->
+                    </div>
+                </div>
 
-<!-- POPUP HORÁRIO DE FUNCIONAMENTO -->
-<div id="horarioPopup" class="popup hidden">
-    <div class="popup-content horario-popup">
-        <span id="fecharHorario" class="fechar">&times;</span>
+                <!-- POPUP HORÁRIO DE FUNCIONAMENTO -->
+                <div id="horarioPopup" class="popup hidden">
+                    <div class="popup-content horario-popup">
+                        <span id="fecharHorario" class="fechar">&times;</span>
 
-        <div class="horario-funcionamento">
-            <div class="titulo">
-                <i class="fa-solid fa-clock"></i>
-                <strong>Horários de Funcionamento</strong>
+                        <div class="horario-funcionamento">
+                            <div class="titulo">
+                                <i class="fa-solid fa-clock"></i>
+                                <strong>Horários de Funcionamento</strong>
+                            </div>
+
+                            <div class="linha">
+                                <span>Domingo</span>
+                                <span>09:00 - 23:55</span>
+                            </div>
+                            <div class="linha">
+                                <span><strong>Segunda</strong></span>
+                                <span>09:00 - 23:55</span>
+                            </div>
+                            <div class="linha">
+                                <span>Terça</span>
+                                <span>09:00 - 23:55</span>
+                            </div>
+                            <div class="linha">
+                                <span>Quarta</span>
+                                <span>09:00 - 23:55</span>
+                            </div>
+                            <div class="linha">
+                                <span>Quinta</span>
+                                <span>09:00 - 23:55</span>
+                            </div>
+                            <div class="linha">
+                                <span>Sexta</span>
+                                <span>09:00 - 23:55</span>
+                            </div>
+                            <div class="linha">
+                                <span>Sábado</span>
+                                <span>09:00 - 23:55</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="logo">
+                    <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/Doce%20(1)-Photoroom.png?raw=true"
+                        alt="Logo da Loja">
+                    <div id="statusAbertoFechado" class="status-indicador">...</div>
+                </div>
+
+
+
+                <div class="top-bar">
+                    <button id="btnHorario" onclick="abrirHorario()">Horários</button>
+                    <button id="abrirCardapioBtn">Cardápio</button>
+                </div>
+
+                <div class="cart-icon" onclick="abrirCarrinho()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cart-count" class="cart-count">0</span>
+                </div>
             </div>
+        </header>
 
-            <div class="linha">
-                <span>Domingo</span>
-                <span>09:00 - 23:55</span>
-            </div>
-            <div class="linha">
-                <span><strong>Segunda</strong></span>
-                <span>09:00 - 23:55</span>
-            </div>
-            <div class="linha">
-                <span>Terça</span>
-                <span>09:00 - 23:55</span>
-            </div>
-            <div class="linha">
-                <span>Quarta</span>
-                <span>09:00 - 23:55</span>
-            </div>
-            <div class="linha">
-                <span>Quinta</span>
-                <span>09:00 - 23:55</span>
-            </div>
-            <div class="linha">
-                <span>Sexta</span>
-                <span>09:00 - 23:55</span>
-            </div>
-            <div class="linha">
-                <span>Sábado</span>
-                <span>09:00 - 23:55</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-        <div class="logo">
-            <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/Doce%20(1)-Photoroom.png?raw=true" alt="Logo da Loja">
-            <div id="statusAbertoFechado" class="status-indicador">...</div>
-        </div>
-
-        
-
-<div class="top-bar">
-    <button id="btnHorario" onclick="abrirHorario()">Horários</button>
-    <button id="abrirCardapioBtn">Cardápio</button>
-</div>
-
-        <div class="cart-icon" onclick="abrirCarrinho()">
-            <i class="fa-solid fa-bag-shopping"></i>
-            <span id="cart-count" class="cart-count">0</span>
-        </div>
-    </div>
-</header>
-
-<!-- Banner Carrossel Desktop -->
-<div class="banner-container swiper desktop">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <img src="https://github.com/bomdoce/gerenciamentodedespesas/blob/main/WhatsApp%20Image%202026-02-14%20at%2023.36.49%20(1).jpeg?raw=true" alt="Banner Desktop 1">
-        </div>
+        <!-- Banner Carrossel Desktop -->
+        <div class="banner-container swiper desktop">
+            <div class="swiper-wrapper">
                 <div class="swiper-slide">
-            <img src="https://github.com/bomdoce/gerenciamentodedespesas/blob/main/WhatsApp%20Image%202026-02-14%20at%2023.36.49%20(3).jpeg?raw=true" alt="Banner Desktop 1">
-        </div>
-    </div>
-
-    <!-- Paginação -->
-    <div class="swiper-pagination"></div>
-</div>
-
-
-<!-- Banner Carrossel Mobile -->
-<div class="banner-container swiper mobile">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <img src="https://github.com/bomdoce/gerenciamentodedespesas/blob/main/WhatsApp%20Image%202026-02-14%20at%2023.36.49%20(2).jpeg?raw=true" alt="Banner Mobile 1">
-        </div>
+                    <img src="https://github.com/bomdoce/gerenciamentodedespesas/blob/main/WhatsApp%20Image%202026-02-14%20at%2023.36.49%20(1).jpeg?raw=true"
+                        alt="Banner Desktop 1">
+                </div>
                 <div class="swiper-slide">
-            <img src="https://github.com/bomdoce/gerenciamentodedespesas/blob/main/WhatsApp%20Image%202026-02-14%20at%2023.36.49.jpeg?raw=true" alt="Banner Mobile 1">
-        </div>
-    </div>
-
-    <!-- Se quiser bolinhas de navegação -->
-    <div class="swiper-pagination"></div>
-</div>
-
-
-
-    <div class="menu-carousel swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><a href="#"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173888215067a53c6650921_75_75.jpeg?raw=true"><p>Sortidos</p></a></div>
-            <div class="swiper-slide"><a href="#"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173880359867a4098ee9854_75_75.jpeg?raw=true"><p>Tradicionais</p></a></div>
-            <div class="swiper-slide"><a href="#"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/WhatsApp%20Image%202025-02-05%20at%2022.39.41.jpeg?raw=true"><p>Gourmet</p></a></div>
-            <div class="swiper-slide"><a href="#"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/173914123067a9306e97c72_75_75.jpeg?raw=true"><p>Temáticos</p></a></div>
-            <div class="swiper-slide"><a href="#"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/caixa-para-bombons-com-berco-marrom-cristal-san-felipo-embalagens-4.jpg?raw=true"><p>Presentes com sabor</p></a></div>
-            <div class="swiper-slide"><a href="#"><img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/e6663392782603.5e5440530b25a.png?raw=true"><p>Ofertas</p></a></div>
-        </div>
-
-        <!-- Botões de navegação -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-    </div>
-
-<div class="container-cards">
-<div class="card" onclick="selecionarProduto('Caixa c/ 08 unidades')">
-
-    <!-- SLIDER -->
-    <div class="swiper produtoSwiper">
-        <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173871712067a2b7c020f7e_75_75.jpeg?raw=true" alt="Caixa c/ 08 unidades">
-            </div>
-
-            <div class="swiper-slide">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173872240667a2cc662dead_75_75.jpeg?raw=true" alt="Caixa c/ 08 unidades">
-            </div>
-
-            <div class="swiper-slide">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173888215067a53c6650921_75_75.jpeg?raw=true" alt="Caixa c/ 08 unidades">
-            </div>
-
-        </div>
-
-        <!-- bolinhas -->
-        <div class="swiper-pagination"></div>
-    </div>
-
-    <!-- INFO -->
-    <div class="info">
-        <p class="nome-produto">CAIXA C/ 08 UNIDADES</p>
-        <span>Até 2 Sabores</span>
-        <p class="preco"><span>A partir</span> R$13,00</p>
-    </div>
-
-</div>
-
-    
-    <!-- CAIXA 12 -->
-<div class="card" onclick="selecionarProduto('Caixa c/ 12 unidades')">
-
-    <div class="etiqueta">+ Vendido</div>
-
-    <div class="swiper produtoSwiper">
-        <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173872240667a2cc662dead_75_75.jpeg?raw=true" alt="Caixa c/ 12 unidades">
-            </div>
-
-            <div class="swiper-slide">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173871712067a2b7c020f7e_75_75.jpeg?raw=true">
-            </div>
-
-        </div>
-
-        <div class="swiper-pagination"></div>
-    </div>
-
-    <div class="info">
-        <p class="nome-produto">CAIXA C/ 12 UNIDADES</p>
-        <span>Até 3 Sabores</span>
-        <p class="preco"><span>A partir</span> R$20,00</p>
-    </div>
-</div>
-
-
-    <!-- CAIXA 15 -->
-<div class="card" onclick="selecionarProduto('Caixa c/ 15 unidades')">
-
-    <div class="etiqueta-nov">Novidade</div>
-
-    <div class="swiper produtoSwiper">
-        <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-                <img src="https://github.com/bomdoce/gerenciamentodedespesas/blob/main/WhatsApp%20Image%202026-02-16%20at%2011.44.13.jpeg?raw=true" alt="Caixa c/ 15 unidades">
-            </div>
-
-            <div class="swiper-slide">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173871712067a2b7c020f7e_75_75.jpeg?raw=true">
-            </div>
-
-        </div>
-
-        <div class="swiper-pagination"></div>
-    </div>
-
-    <div class="info">
-        <p class="nome-produto">CAIXA C/ 15 UNIDADES</p>
-        <span>Até 4 Sabores</span>
-        <p class="preco"><span>A partir</span> R$26,00</p>
-    </div>
-</div>
-
-
-<!-- CAIXA 30 -->
-<div class="card" onclick="selecionarProduto('Caixa c/ 30 unidades')">
-
-    <div class="swiper produtoSwiper">
-        <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173888215067a53c6650921_75_75.jpeg?raw=true" alt="Caixa c/ 30 unidades">
-            </div>
-
-            <div class="swiper-slide">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173879875267a3f6a0d0631_75_75.jpeg?raw=true">
-            </div>
-
-        </div>
-
-        <div class="swiper-pagination"></div>
-    </div>
-
-    <div class="info">
-        <p class="nome-produto">CAIXA C/ 30 UNIDADES</p>
-        <span>Até 5 Sabores</span>
-        <p class="preco"><span>A partir</span> R$50,00</p>
-    </div>
-</div>
-
-
-    <!-- CAIXA 50 -->
-<div class="card" onclick="selecionarProduto('Caixa c/ 50 unidades')">
-
-
-    <div class="swiper produtoSwiper">
-        <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-                <img src="https://github.com/bomdoce/gerenciamentodedespesas/blob/main/IMG_20260124_121647_907.webp?raw=true" alt="Caixa c/ 50 unidades">
-            </div>
-
-            <div class="swiper-slide">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173871712067a2b7c020f7e_75_75.jpeg?raw=true">
-            </div>
-
-        </div>
-
-        <div class="swiper-pagination"></div>
-    </div>
-
-    <div class="info">
-        <p class="nome-produto">CAIXA C/ 50 UNIDADES</p>
-        <span>Até 7 Sabores</span>
-        <p class="preco"><span>A partir</span> R$85,00</p>
-    </div>
-</div>
-
-
-
-<!-- CAIXA 100 -->
-<div class="card" onclick="selecionarProduto('Caixa c/ 100 unidades')">
-
-    <div class="swiper produtoSwiper">
-        <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173879875267a3f6a0d0631_75_75.jpeg?raw=true" alt="Caixa c/ 100 unidades">
-            </div>
-
-            <div class="swiper-slide">
-                <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173888215067a53c6650921_75_75.jpeg?raw=true">
-            </div>
-
-        </div>
-
-        <div class="swiper-pagination"></div>
-    </div>
-
-    <div class="info">
-        <p class="nome-produto">CAIXA C/ 100 UNIDADES</p>
-        <span>Até 10 Sabores</span>
-        <p class="preco"><span>A partir</span> R$170,00</p>
-    </div>
-</div>
-
-</div>
-
-<footer class="footer">
-  <div class="footer-container">
-
-
-    <div class="footer-section">
-      <h4>Contato</h4>
-      <p>
-  <i class="fab fa-whatsapp mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i>
-  <a href="https://wa.me/5535997378247" target="_blank">
-    (35) 99737-8247
-  </a>
-</p>
-
-      <p>
-        <i class="fas fa-envelope mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i>
-        <a href="mailto:contato@empresa.com">bomdocepm@gmail.com</a></p>
-    </div>
-
-    <div class="footer-section">
-      <h4>Endereço</h4>
-<p class="endereco">
-  <i class="fas fa-map-marker-alt mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i><a>
-  R. Antônio S. Batista, 231 – Pedro Scariot</a>
-
-
-</p>
-
-      <p class="map-links">
-<a href="https://maps.app.goo.gl/zeXNEQfvKMCJwLbo9" target="_blank">
-  <i class="fas fa-map-marked-alt mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i>Abrir localização</a>
-  <a href="javascript:void(0)" onclick="compartilharLocalizacao()" title="Compartilhar endereço" class="btn-compartilhar">
-    <i class="fas fa-share-alt-square" style="font-size:1em; cursor:pointer;display: inline-flex;"></i>
-    <span class="texto-compartilhar">Compartilhar</span>
-  </a>
-
-      </p>
-    </div>
-
-    <div class="footer-section">
-      <h4>Redes Sociais</h4>
-      <div class="social-links">
-
-  <a href="https://www.instagram.com/bomdocepm?igsh=MTlqanM3cDF0eXdmeA==" target="_blank">
-    <i class="fab fa-instagram mr-2 pt-2" style="margin-right:5px;font-size:20px;"></i>
-  </a>
-
-</div>
-
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    2026 Bom Doce. Todos os direitos reservados.
-  </div>
-</footer>
-
-        
-
-    </div>
-        <div id="produtoSelecionado" class="hidden">
-            <img id="produtoImagem" src="" alt="Imagem do Produto" style="max-width: 100%; margin-bottom: 15px;">
-            <h2 id="produtoNome"></h2>
-            <div class="quantidadeSabores">
-            </div>
-
-            <div class="quantidadeSabores">
-    <span>Selecionar os sabores</span>
-    <span id="contadorSabores" style="font-weight:bold;">0 / 0</span>
-</div>
-
-            <div id="sabores">
-<label>
-  <input type="checkbox" value="Ao Leite 50%" data-preco="2.00" data-especial="true">
-  Ao Leite 50% <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
-</label>
-
-<label>
-  <input type="checkbox" value="Beijinho (Coco)" data-preco="1.70">
-  Beijinho (Coco)
-</label>
-
-<label>
-  <input type="checkbox" value="Café" data-preco="1.70">
-  Café
-</label>
-
-<label>
-  <input type="checkbox" value="Cajuzinho" data-preco="1.70">
-  Cajuzinho
-</label>
-
-<label>
-  <input type="checkbox" value="Caramelo" data-preco="2.00" data-especial="true">
-  Caramelo <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
-</label>
-
-<label>
-  <input type="checkbox" value="Casadinho" data-preco="1.70">
-  Casadinho
-</label>
-
-<label>
-  <input type="checkbox" value="Chocobol" data-preco="2.00" data-especial="true">
-  Chocobol <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
-</label>
-
-<label>
-  <input type="checkbox" value="Churros" data-preco="2.00" data-especial="true">
-  Churros <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
-</label>
-
-<label>
-  <input type="checkbox" value="Coco Queimado" data-preco="1.70">
-  Coco Queimado
-</label>
-
-<label>
-  <input type="checkbox" value="Ferrero" data-preco="2.00" data-especial="true">
-  Ferrero <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
-</label>
-
-<label>
-  <input type="checkbox" value="M&M" data-preco="2.00" data-especial="true">
-  M&M <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
-</label>
-
-<label>
-  <input type="checkbox" value="Meio Amargo" data-preco="2.00" data-especial="true">
-  Meio Amargo <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
-</label>
-
-<label>
-  <input type="checkbox" value="Napolitano" data-preco="2.00" data-especial="true">
-  Napolitano <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
-</label>
-
-<label>
-  <input type="checkbox" value="Nescau" data-preco="1.70">
-  Nescau
-</label>
-
-<label>
-  <input type="checkbox" value="Nesquik" data-preco="1.70">
-  Nesquik
-</label>
-
-<label>
-  <input type="checkbox" value="Ninho" data-preco="1.70">
-  Ninho
-</label>
-
-<label>
-  <input type="checkbox" value="Ninho + Nutella" data-preco="2.00" data-especial="true">
-  Ninho + Nutella <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
-</label>
-
-<label>
-  <input type="checkbox" value="Paçoca" data-preco="1.70">
-  Paçoca
-</label>
-
-<label>
-  <input type="checkbox" value="Prestigio" data-preco="2.00" data-especial="true">
-  Prestigio <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
-</label>
-
-<label>
-  <input type="checkbox" value="Romeu Julieta" data-preco="2.00" data-especial="true">
-  Romeu Julieta <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
-</label>
-
-
-
-            </div>
-        
-            
-            <button class="button" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
-            <button id="voltarHomeBtnProduto" class="checkout-btn" onclick="voltarHome()">Voltar Home</button>
-            
-
-        </div>    
-
-        <div id="carrinho" class="hidden">
-            <h2>Carrinho <span class="cart-icon"></span></h2>
-            <div id="quantidadeTotalCarrinho"></div>
-            <div id="itensCarrinho"></div>
-            <p>Total: R$ <span id="totalCarrinho"></span></p>
-
-
-            <button id="finalizarCompra" class="button" onclick="mostrarCheckout()">Finalizar Compra</button> 
-            <button id="voltarHomeBtn" class="checkout-btn">Continuar comprando</button>
-           
-        </div>
-        </div>
-
-        <div id="checkout" class="hidden">
-            <h2>Finalizar Pedido</h2>
-
-<div id="dadosCliente">
-  <h3><i class="fa-regular fa-address-card"></i> Contato</h3>
-
-  <input 
-    type="text" 
-    id="nomeCliente" 
-    placeholder="Digite seu nome" 
-    required
-  >
-
-  <input 
-    type="tel" 
-    id="telefoneCliente" 
-    placeholder="Digite seu telefone" 
-    required
-  >
-</div>
-
-
-
-
-            <h3><i class="fas fa-motorcycle mr-2"></i> Forma de Entrega:</h3>
-            <label><input type="radio" name="entrega" value="retirada" onclick="selecionarEntrega('retirada')">
- Retirar no Local</label>
-            <label><input type="radio" name="entrega" value="entrega" onclick="selecionarEntrega('entrega')"> 
-                Entrega</label>
-            
-            <div id="enderecoEntrega" class="hidden">
-                <span>Endereço em Palmeira das Missões</span>
-                <input type="text" id="rua" placeholder="Digite nome da rua">
-                <input type="text" id="numero" placeholder="Digite nº da casa">
-                <input type="text" id="bairro" placeholder="Digite o bairro">
-                <p>Taxa de Entrega: R$ <span id="taxaEntrega">10.00</span></p>
-            </div>
-
-<label for="horarioRetirada">*Agende seu pedido <span style="color: red;">(obrigatório)</span>
-</label>
-
-<select id="horarioRetirada" name="horarioRetirada" required>
-  <option value="">Escolha o horário de agendamento</option>
-</select>
-
-
-
-            <h3><i class="fas fa-money-bill mr-2 pt-2" style="margin-right:5px;font-size: 16px;"></i> Forma de Pagamento:</h3>
-            <label><input type="checkbox" name="pagamento" value="Pix" onclick="habilitarFinalizar()"> Pix</label>
-
-            <div id="pixChave" class="pix-container">
-                <img src="https://cdn.awsli.com.br/2396/2396648/arquivos/pix_icon.svg" alt="Ícone Pix" class="pix-icon"
-                    width="15" height="15">
-                <span id="chavePix">bomdocepm@gmail.com</span>
-                <div class="copy-container">
-                    <i class="fa-solid fa-copy copy-icon" onclick="copiarChavePix()"></i>
-                    <div class="copy-text">Copiar</div>
+                    <img src="https://github.com/bomdoce/gerenciamentodedespesas/blob/main/WhatsApp%20Image%202026-02-14%20at%2023.36.49%20(3).jpeg?raw=true"
+                        alt="Banner Desktop 1">
                 </div>
             </div>
 
-            <div id="comprovantePixContainer" class="hidden">
-    <label for="comprovantePix">Anexar comprovante Pix:</label>
-    <input type="file" id="comprovantePix" accept="image/*">
-    <img id="previewComprovante" src="" alt="Prévia do comprovante" style="display:none; max-width:200px; margin-top:10px;margin-bottom: 15px;">
-</div>
+            <!-- Paginação -->
+            <div class="swiper-pagination"></div>
+        </div>
 
 
-            <label><input type="checkbox" name="pagamento" value="Pix" onclick="habilitarFinalizar()"> Pagamento na
-                entrega</label>
-            <p>Dinheiro, Cartão (Visa, Master, Elo)</p>
+        <!-- Banner Carrossel Mobile -->
+        <div class="banner-container swiper mobile">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://github.com/bomdoce/gerenciamentodedespesas/blob/main/WhatsApp%20Image%202026-02-14%20at%2023.36.49%20(2).jpeg?raw=true"
+                        alt="Banner Mobile 1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://github.com/bomdoce/gerenciamentodedespesas/blob/main/WhatsApp%20Image%202026-02-14%20at%2023.36.49.jpeg?raw=true"
+                        alt="Banner Mobile 1">
+                </div>
+            </div>
 
-            <button id="finalizarPedidoBtn" class="button finalizar-btn" onclick="enviarPedidoWhatsApp()"> Enviar Pedido</button>
-            <button id="voltarCarrinhoBtn" class="btn">Voltar ao Carrinho</button>
+            <!-- Se quiser bolinhas de navegação -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+
+
+        <div class="menu-carousel swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><a href="#"><img
+                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173888215067a53c6650921_75_75.jpeg?raw=true">
+                        <p>Sortidos</p>
+                    </a></div>
+                <div class="swiper-slide"><a href="#"><img
+                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173880359867a4098ee9854_75_75.jpeg?raw=true">
+                        <p>Tradicionais</p>
+                    </a></div>
+                <div class="swiper-slide"><a href="#"><img
+                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/WhatsApp%20Image%202025-02-05%20at%2022.39.41.jpeg?raw=true">
+                        <p>Gourmet</p>
+                    </a></div>
+                <div class="swiper-slide"><a href="#"><img
+                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/173914123067a9306e97c72_75_75.jpeg?raw=true">
+                        <p>Temáticos</p>
+                    </a></div>
+                <div class="swiper-slide"><a href="#"><img
+                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/caixa-para-bombons-com-berco-marrom-cristal-san-felipo-embalagens-4.jpg?raw=true">
+                        <p>Presentes com sabor</p>
+                    </a></div>
+                <div class="swiper-slide"><a href="#"><img
+                            src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/e6663392782603.5e5440530b25a.png?raw=true">
+                        <p>Ofertas</p>
+                    </a></div>
+            </div>
+
+            <!-- Botões de navegação -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <div class="container-cards">
+            <div class="card" onclick="selecionarProduto('Caixa c/ 08 unidades')">
+
+                <!-- SLIDER -->
+                <div class="swiper produtoSwiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173871712067a2b7c020f7e_75_75.jpeg?raw=true"
+                                alt="Caixa c/ 08 unidades">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173872240667a2cc662dead_75_75.jpeg?raw=true"
+                                alt="Caixa c/ 08 unidades">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173888215067a53c6650921_75_75.jpeg?raw=true"
+                                alt="Caixa c/ 08 unidades">
+                        </div>
+
+                    </div>
+
+                    <!-- bolinhas -->
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <!-- INFO -->
+                <div class="info">
+                    <p class="nome-produto">CAIXA C/ 08 UNIDADES</p>
+                    <span>Até 2 Sabores</span>
+                    <p class="preco"><span>A partir</span> R$13,00</p>
+                </div>
+
+            </div>
+
+
+            <!-- CAIXA 12 -->
+            <div class="card" onclick="selecionarProduto('Caixa c/ 12 unidades')">
+
+                <div class="etiqueta">+ Vendido</div>
+
+                <div class="swiper produtoSwiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173872240667a2cc662dead_75_75.jpeg?raw=true"
+                                alt="Caixa c/ 12 unidades">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img
+                                src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173871712067a2b7c020f7e_75_75.jpeg?raw=true">
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="info">
+                    <p class="nome-produto">CAIXA C/ 12 UNIDADES</p>
+                    <span>Até 3 Sabores</span>
+                    <p class="preco"><span>A partir</span> R$20,00</p>
+                </div>
+            </div>
+
+
+            <!-- CAIXA 15 -->
+            <div class="card" onclick="selecionarProduto('Caixa c/ 15 unidades')">
+
+                <div class="etiqueta-nov">Novidade</div>
+
+                <div class="swiper produtoSwiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <img src="https://github.com/bomdoce/gerenciamentodedespesas/blob/main/WhatsApp%20Image%202026-02-16%20at%2011.44.13.jpeg?raw=true"
+                                alt="Caixa c/ 15 unidades">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img
+                                src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173871712067a2b7c020f7e_75_75.jpeg?raw=true">
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="info">
+                    <p class="nome-produto">CAIXA C/ 15 UNIDADES</p>
+                    <span>Até 4 Sabores</span>
+                    <p class="preco"><span>A partir</span> R$26,00</p>
+                </div>
+            </div>
+
+
+            <!-- CAIXA 30 -->
+            <div class="card" onclick="selecionarProduto('Caixa c/ 30 unidades')">
+
+                <div class="swiper produtoSwiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173888215067a53c6650921_75_75.jpeg?raw=true"
+                                alt="Caixa c/ 30 unidades">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img
+                                src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173879875267a3f6a0d0631_75_75.jpeg?raw=true">
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="info">
+                    <p class="nome-produto">CAIXA C/ 30 UNIDADES</p>
+                    <span>Até 5 Sabores</span>
+                    <p class="preco"><span>A partir</span> R$50,00</p>
+                </div>
+            </div>
+
+
+            <!-- CAIXA 50 -->
+            <div class="card" onclick="selecionarProduto('Caixa c/ 50 unidades')">
+
+
+                <div class="swiper produtoSwiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <img src="https://github.com/bomdoce/gerenciamentodedespesas/blob/main/IMG_20260124_121647_907.webp?raw=true"
+                                alt="Caixa c/ 50 unidades">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img
+                                src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173871712067a2b7c020f7e_75_75.jpeg?raw=true">
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="info">
+                    <p class="nome-produto">CAIXA C/ 50 UNIDADES</p>
+                    <span>Até 7 Sabores</span>
+                    <p class="preco"><span>A partir</span> R$85,00</p>
+                </div>
+            </div>
+
+
+
+            <!-- CAIXA 100 -->
+            <div class="card" onclick="selecionarProduto('Caixa c/ 100 unidades')">
+
+                <div class="swiper produtoSwiper">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <img src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173879875267a3f6a0d0631_75_75.jpeg?raw=true"
+                                alt="Caixa c/ 100 unidades">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img
+                                src="https://github.com/PauloTalamini/gerenciamentodedespesas/blob/main/docs/173888215067a53c6650921_75_75.jpeg?raw=true">
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="info">
+                    <p class="nome-produto">CAIXA C/ 100 UNIDADES</p>
+                    <span>Até 10 Sabores</span>
+                    <p class="preco"><span>A partir</span> R$170,00</p>
+                </div>
+            </div>
 
         </div>
 
-        <div id="confirmacaoPedido" class="hidden">
-            <h2>Pedido realizado com sucesso!</h2>
-            <p>Seu número de pedido é: <span id="numeroPedido"></span></p>
-            <button class="button" onclick="abrirWhatsApp()">Abrir WhatsApp</button>
+        <footer class="footer">
+            <div class="footer-container">
+
+
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>
+                        <i class="fab fa-whatsapp mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i>
+                        <a href="https://wa.me/5535997378247" target="_blank">
+                            (35) 99737-8247
+                        </a>
+                    </p>
+
+                    <p>
+                        <i class="fas fa-envelope mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i>
+                        <a href="mailto:contato@empresa.com">bomdocepm@gmail.com</a>
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Endereço</h4>
+                    <p class="endereco">
+                        <i class="fas fa-map-marker-alt mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i><a>
+                            R. Antônio S. Batista, 231 – Pedro Scariot</a>
+                    </p>
+
+                    <p class="map-links">
+                        <a href="https://maps.app.goo.gl/zeXNEQfvKMCJwLbo9" target="_blank">
+                            <i class="fas fa-map-marked-alt mr-2 pt-2" style="margin-right:5px;font-size:1em;"></i>Abrir
+                            localização</a>
+                        <a href="javascript:void(0)" onclick="compartilharLocalizacao()" title="Compartilhar endereço"
+                            class="btn-compartilhar">
+                            <i class="fas fa-share-alt-square"
+                                style="font-size:1em; cursor:pointer;display: inline-flex;"></i>
+                            <span class="texto-compartilhar">Compartilhar</span>
+                        </a>
+
+                    </p>
+                </div>
+
+                                <div class="footer-section">
+                    <h4>Pagamentos</h4>
+                    <div class="social-links">
+                        <i class="fa-brands fa-pix" style="margin-right:5px;font-size:16px;"></i>
+                        <i class="fa-solid fa-credit-card" style="margin-right:5px;font-size:16px;"></i>
+                        <i class="fa-regular fa-money-bill-1" style="margin-right:5px;font-size: 20px;"></i>   
+                        
+                        
+
+
+                    </div>
+
+                </div>
+
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+
+                        <a href="https://www.instagram.com/bomdocepm?igsh=MTlqanM3cDF0eXdmeA==" target="_blank">
+                            <i class="fab fa-instagram mr-2 pt-2" style="margin-right:5px;font-size:20px;"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <div class="footer-bottom">
+                2026 Bom Doce. Todos os direitos reservados.
+            </div>
+            
+        </footer>
+
+
+
+    </div>
+    <div id="produtoSelecionado" class="hidden">
+        <img id="produtoImagem" src="" alt="Imagem do Produto" style="max-width: 100%; margin-bottom: 15px;">
+        <h2 id="produtoNome"></h2>
+        <div class="quantidadeSabores">
         </div>
+
+        <div class="quantidadeSabores">
+            <span>Selecionar os sabores</span>
+            <span id="contadorSabores" style="font-weight:bold;">0 / 0</span>
+        </div>
+
+        <div id="sabores">
+            <label>
+                <input type="checkbox" value="Ao Leite 50%" data-preco="2.00" data-especial="true">
+                Ao Leite 50% <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
+            </label>
+
+            <label>
+                <input type="checkbox" value="Beijinho (Coco)" data-preco="1.70">
+                Beijinho (Coco)
+            </label>
+
+            <label>
+                <input type="checkbox" value="Café" data-preco="1.70">
+                Café
+            </label>
+
+            <label>
+                <input type="checkbox" value="Cajuzinho" data-preco="1.70">
+                Cajuzinho
+            </label>
+
+            <label>
+                <input type="checkbox" value="Caramelo" data-preco="2.00" data-especial="true">
+                Caramelo <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
+            </label>
+
+            <label>
+                <input type="checkbox" value="Casadinho" data-preco="1.70">
+                Casadinho
+            </label>
+
+            <label>
+                <input type="checkbox" value="Chocobol" data-preco="2.00" data-especial="true">
+                Chocobol <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
+            </label>
+
+            <label>
+                <input type="checkbox" value="Churros" data-preco="2.00" data-especial="true">
+                Churros <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
+            </label>
+
+            <label>
+                <input type="checkbox" value="Coco Queimado" data-preco="1.70">
+                Coco Queimado
+            </label>
+
+            <label>
+                <input type="checkbox" value="Ferrero" data-preco="2.00" data-especial="true">
+                Ferrero <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
+            </label>
+
+            <label>
+                <input type="checkbox" value="M&M" data-preco="2.00" data-especial="true">
+                M&M <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
+            </label>
+
+            <label>
+                <input type="checkbox" value="Meio Amargo" data-preco="2.00" data-especial="true">
+                Meio Amargo <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
+            </label>
+
+            <label>
+                <input type="checkbox" value="Napolitano" data-preco="2.00" data-especial="true">
+                Napolitano <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
+            </label>
+
+            <label>
+                <input type="checkbox" value="Nescau" data-preco="1.70">
+                Nescau
+            </label>
+
+            <label>
+                <input type="checkbox" value="Nesquik" data-preco="1.70">
+                Nesquik
+            </label>
+
+            <label>
+                <input type="checkbox" value="Ninho" data-preco="1.70">
+                Ninho
+            </label>
+
+            <label>
+                <input type="checkbox" value="Ninho + Nutella" data-preco="2.00" data-especial="true">
+                Ninho + Nutella <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
+            </label>
+
+            <label>
+                <input type="checkbox" value="Paçoca" data-preco="1.70">
+                Paçoca
+            </label>
+
+            <label>
+                <input type="checkbox" value="Prestigio" data-preco="2.00" data-especial="true">
+                Prestigio <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
+            </label>
+
+            <label>
+                <input type="checkbox" value="Romeu Julieta" data-preco="2.00" data-especial="true">
+                Romeu Julieta <span class="especial"><i class="fas fa-star especial"></i> Especial</span>
+            </label>
+
+
+
+        </div>
+
+
+        <button class="button" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+        <button id="voltarHomeBtnProduto" class="checkout-btn" onclick="voltarHome()">Voltar Home</button>
+
+
+    </div>
+
+    <div id="carrinho" class="hidden">
+        <h2>Carrinho <span class="cart-icon"></span></h2>
+        <div id="quantidadeTotalCarrinho"></div>
+        <div id="itensCarrinho"></div>
+        <p>Total: R$ <span id="totalCarrinho"></span></p>
+
+
+        <button id="finalizarCompra" class="button" onclick="mostrarCheckout()">Finalizar Compra</button>
+        <button id="voltarHomeBtn" class="checkout-btn">Continuar comprando</button>
+
+    </div>
+    </div>
+
+    <div id="checkout" class="hidden">
+        <h2>Finalizar Pedido</h2>
+
+        <div id="dadosCliente">
+            <h3><i class="fa-regular fa-address-card"></i> Contato</h3>
+
+            <input type="text" id="nomeCliente" placeholder="Digite seu nome" required>
+
+            <input type="tel" id="telefoneCliente" placeholder="Digite seu telefone" required>
+        </div>
+
+
+
+
+        <h3><i class="fas fa-motorcycle mr-2"></i> Forma de Entrega:</h3>
+        <label><input type="radio" name="entrega" value="retirada" onclick="selecionarEntrega('retirada')">
+            Retirar no Local</label>
+        <label><input type="radio" name="entrega" value="entrega" onclick="selecionarEntrega('entrega')">
+            Entrega</label>
+
+        <div id="enderecoEntrega" class="hidden">
+            <span>Endereço em Palmeira das Missões</span>
+            <input type="text" id="rua" placeholder="Digite nome da rua">
+            <input type="text" id="numero" placeholder="Digite nº da casa">
+            <input type="text" id="bairro" placeholder="Digite o bairro">
+            <p>Taxa de Entrega: R$ <span id="taxaEntrega">10.00</span></p>
+        </div>
+
+        <label for="horarioRetirada">*Agende seu pedido <span style="color: red;">(obrigatório)</span>
+        </label>
+
+        <select id="horarioRetirada" name="horarioRetirada" required>
+            <option value="">Escolha o horário de agendamento</option>
+        </select>
+
+
+
+        <h3><i class="fa-regular fa-money-bill-1" style="font-size: 18px;"></i> Forma de Pagamento:
+        </h3>
+        <label><input type="checkbox" name="pagamento" value="Pix" onclick="habilitarFinalizar()"> Pix</label>
+
+        <div id="pixChave" class="pix-container">
+            <img src="https://cdn.awsli.com.br/2396/2396648/arquivos/pix_icon.svg" alt="Ícone Pix" class="pix-icon"
+                width="15" height="15">
+            <span id="chavePix">bomdocepm@gmail.com</span>
+            <div class="copy-container">
+                <i class="fa-solid fa-copy copy-icon" onclick="copiarChavePix()"></i>
+                <div class="copy-text">Copiar</div>
+            </div>
+        </div>
+
+        <div id="comprovantePixContainer" class="hidden">
+            <label for="comprovantePix">Anexar comprovante Pix:</label>
+            <input type="file" id="comprovantePix" accept="image/*">
+            <img id="previewComprovante" src="" alt="Prévia do comprovante"
+                style="display:none; max-width:200px; margin-top:10px;margin-bottom: 15px;">
+        </div>
+
+
+        <label><input type="checkbox" name="pagamento" value="Pix" onclick="habilitarFinalizar()"> Pagamento na
+            entrega</label>
+        <p>Dinheiro, Cartão (Visa, Master, Elo)</p>
+
+        <button id="finalizarPedidoBtn" class="button finalizar-btn" onclick="enviarPedidoWhatsApp()"> Enviar
+            Pedido</button>
+        <button id="voltarCarrinhoBtn" class="btn">Voltar ao Carrinho</button>
+
+    </div>
+
+    <div id="confirmacaoPedido" class="hidden">
+        <h2>Pedido realizado com sucesso!</h2>
+        <p>Seu número de pedido é: <span id="numeroPedido"></span></p>
+        <button class="button" onclick="abrirWhatsApp()">Abrir WhatsApp</button>
+    </div>
     </div>
 
 
     <div id="produtoSelecionado" class="hidden">
-    <h2 id="produtoNome"></h2>
-    <img id="produtoImagem">
-    <div id="sabores">
-        <!-- checkboxes de sabores -->
+        <h2 id="produtoNome"></h2>
+        <img id="produtoImagem">
+        <div id="sabores">
+            <!-- checkboxes de sabores -->
+        </div>
+        <button onclick="adicionarAoCarrinho()">Adicionar ao carrinho</button>
     </div>
-    <button onclick="adicionarAoCarrinho()">Adicionar ao carrinho</button>
-</div>
 
- <!-- video home -->
-<div id="popupVideoHome" class="popup-video-home">
-    <div class="popup-conteudo">
-        <button onclick="fecharPopup()" class="fechar-popup">×</button>
-<video autoplay muted loop playsinline>
-  <source src="https://raw.githubusercontent.com/bomdoce/gerenciamentodedespesas/main/VID-20251005-WA0162.mp4" type="video/mp4">
-</video>
+    <!-- video home -->
+    <div id="popupVideoHome" class="popup-video-home">
+        <div class="popup-conteudo">
+            <button onclick="fecharPopup()" class="fechar-popup">×</button>
+            <video autoplay muted loop playsinline>
+                <source
+                    src="https://raw.githubusercontent.com/bomdoce/gerenciamentodedespesas/main/VID-20251005-WA0162.mp4"
+                    type="video/mp4">
+            </video>
+        </div>
     </div>
-</div>
 
 
-<script>
-/* =======================
-   VARIÁVEIS GLOBAIS
-======================= */
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-let pedidoNumero = parseInt(localStorage.getItem("pedidoNumero")) || 1;
-let taxaEntrega = 10.00;
-let totalPedido = 0;
-let entregaSelecionada = "retirada";
-
-
-
-// ESCONDER HEADER COMPLETO AO FINALIZAR
-function esconderHeaderCheckout() {
-    const header = document.querySelector(".header-container");
-    const logo = document.querySelector(".logo"); 
-    const btnHorario = document.getElementById("btnHorario"); 
-    const btnCardapio = document.getElementById("abrirCardapioBtn"); 
-    const iconeCarrinho = document.querySelector(".cart-icon"); 
-    const iconeHome = document.querySelector(".home-icon");
-
-
-    if (logo) logo.classList.add("hidden");
-    if (btnHorario) btnHorario.classList.add("hidden");
-    if (btnCardapio) btnCardapio.classList.add("hidden");
-    if (iconeCarrinho) iconeCarrinho.classList.add("hidden");
-    if (iconeHome) iconeHome.classList.add("hidden");
-
-
-    if (header) header.classList.add("hidden"); // oculta todo o header e remove espaço
-
-// ✅ AGORA ESCONDE O FOOTER
-    esconderFooter();
-    
-}
-
-
-// MOSTRAR HEADER AO VOLTAR PARA O CARRINHO OU HOME
-function mostrarHeader() {
-    const header = document.querySelector(".header-container");
-    const elementos = [
-        document.querySelector(".logo"),
-        document.getElementById("btnHorario"),
-        document.getElementById("abrirCardapioBtn"),
-        document.querySelector(".cart-icon"),
-        document.querySelector(".home-icon")
-    ];
-
-    if (header) header.classList.remove("hidden"); // mostra todo o header
-
-    elementos.forEach(el => {
-        if (el) el.classList.remove("hidden"); // restaura todos os elementos internos
-    });
-    
- // ✅ MOSTRA O FOOTER NOVAMENTE
-    mostrarFooter();
-
-}
+    <script>
+        /* =======================
+        VARIÁVEIS GLOBAIS
+        ======================= */
+        let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        let pedidoNumero = parseInt(localStorage.getItem("pedidoNumero")) || 1;
+        let taxaEntrega = 10.00;
+        let totalPedido = 0;
+        let entregaSelecionada = "retirada";
 
 
 
-document.getElementById("voltarCarrinhoBtn").addEventListener("click", () => {
-
-    // Mostrar o carrinho
-    abrirCarrinho();
-
-    // Ocultar checkout
-    document.getElementById("checkout").classList.add("hidden");
-
-    // Restaurar header e ícones que estavam ocultos (logo, cardápio, carrinho, home)
-    const elementosHeader = [
-        document.querySelector(".logo"),
-        document.getElementById("btnHorario"),
-        document.getElementById("abrirCardapioBtn"),
-        document.querySelector(".cart-icon"),
-        document.querySelector(".home-icon")
-    ];
-
-    elementosHeader.forEach(el => {
-        if (el) el.classList.remove("hidden");
-    });
-});
-
-//VOLTAR HOME
-document.getElementById("voltarHomeBtn").addEventListener("click", () => {
-    // Esconder checkout
-    document.getElementById("checkout").classList.add("hidden");
-
-    // Voltar para home
-    voltarHome();
-});
+        // ESCONDER HEADER COMPLETO AO FINALIZAR
+        function esconderHeaderCheckout() {
+            const header = document.querySelector(".header-container");
+            const logo = document.querySelector(".logo");
+            const btnHorario = document.getElementById("btnHorario");
+            const btnCardapio = document.getElementById("abrirCardapioBtn");
+            const iconeCarrinho = document.querySelector(".cart-icon");
+            const iconeHome = document.querySelector(".home-icon");
 
 
-// ESCONDER FOOTER
-function esconderFooter() {
-    const footer = document.querySelector(".footer");
-    if (footer) footer.classList.add("hidden");
-}
-
-// MOSTRAR FOOTER
-function mostrarFooter() {
-    const footer = document.querySelector(".footer");
-    if (footer) footer.classList.remove("hidden");
-}
+            if (logo) logo.classList.add("hidden");
+            if (btnHorario) btnHorario.classList.add("hidden");
+            if (btnCardapio) btnCardapio.classList.add("hidden");
+            if (iconeCarrinho) iconeCarrinho.classList.add("hidden");
+            if (iconeHome) iconeHome.classList.add("hidden");
 
 
+            if (header) header.classList.add("hidden"); // oculta todo o header e remove espaço
+
+            // ✅ AGORA ESCONDE O FOOTER
+            esconderFooter();
+
+        }
 
 
-// Variável para controlar qual produto está sendo editado
-let produtoEditandoIndex = null;
+        // MOSTRAR HEADER AO VOLTAR PARA O CARRINHO OU HOME
+        function mostrarHeader() {
+            const header = document.querySelector(".header-container");
+            const elementos = [
+                document.querySelector(".logo"),
+                document.getElementById("btnHorario"),
+                document.getElementById("abrirCardapioBtn"),
+                document.querySelector(".cart-icon"),
+                document.querySelector(".home-icon")
+            ];
 
-/* =======================
-   LOCAL STORAGE
-======================= */
-function salvarCarrinho() {
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-}
+            if (header) header.classList.remove("hidden"); // mostra todo o header
 
-function carregarCarrinho() {
-    carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-    atualizarCarrinho();
-    atualizarContadorCarrinho();
-}
+            elementos.forEach(el => {
+                if (el) el.classList.remove("hidden"); // restaura todos os elementos internos
+            });
 
-/* =======================
-   HOME
-======================= */
-function voltarHome() {
+            // ✅ MOSTRA O FOOTER NOVAMENTE
+            mostrarFooter();
 
-    document.querySelector(".header-container")
-        .classList.remove("header-carrinho");
-
-    document.querySelector(".container-cards").style.display = "flex";
-    document.querySelector(".menu-carousel").style.display = "block";
-
-    // 🔥 deixa o CSS decidir
-    document.querySelector(".banner-container.desktop").style.display = "";
-    document.querySelector(".banner-container.mobile").style.display = "";
-
-    document.getElementById("produtoSelecionado").classList.add("hidden");
-    document.getElementById("checkout").classList.add("hidden");
-    document.getElementById("confirmacaoPedido").classList.add("hidden");
-    document.getElementById("carrinho").classList.add("hidden");
-
-    mostrarHeader();
-    mostrarFooter();
-
-    document.getElementById("statusAbertoFechado")
-    ?.classList.remove("hidden");
-
-    carregarCarrinho();
-}
+        }
 
 
-/* =======================
-   PRODUTO
-======================= */
-function selecionarProduto(nomeProduto) {
-    document.querySelector(".container-cards").style.display = "none";
-    document.querySelector(".banner-container.desktop").style.display = "none";
-    document.querySelector(".banner-container.mobile").style.display = "none";
-    document.querySelector(".menu-carousel").style.display = "none";
 
-    document.getElementById("produtoSelecionado").classList.remove("hidden");
-    document.getElementById("produtoNome").innerText = nomeProduto;
+        document.getElementById("voltarCarrinhoBtn").addEventListener("click", () => {
 
-    const card = Array.from(document.querySelectorAll(".card")).find(c =>
-        c.getAttribute("onclick").includes(nomeProduto)
-    );
-    if (card) {
-        document.getElementById("produtoImagem").src = card.querySelector("img").src;
-    }
+            // Mostrar o carrinho
+            abrirCarrinho();
 
-    //ESCONDE O STATUS
-    document.getElementById("statusAbertoFechado")
-    ?.classList.add("hidden");
+            // Ocultar checkout
+            document.getElementById("checkout").classList.add("hidden");
 
-    // ✅ ESCONDE O FOOTER AO ESCOLHER SABORES
-    esconderFooter();
-}
+            // Restaurar header e ícones que estavam ocultos (logo, cardápio, carrinho, home)
+            const elementosHeader = [
+                document.querySelector(".logo"),
+                document.getElementById("btnHorario"),
+                document.getElementById("abrirCardapioBtn"),
+                document.querySelector(".cart-icon"),
+                document.querySelector(".home-icon")
+            ];
 
-/* =======================
-   ABRIR ADICIONAR SABOR
-======================= */
-function abrirAdicionarSabor(index) {
-    produtoEditandoIndex = index;
+            elementosHeader.forEach(el => {
+                if (el) el.classList.remove("hidden");
+            });
+        });
 
-    const item = carrinho[index];
+        //VOLTAR HOME
+        document.getElementById("voltarHomeBtn").addEventListener("click", () => {
+            // Esconder checkout
+            document.getElementById("checkout").classList.add("hidden");
 
-    // Preenche nome e imagem do produto
-    document.getElementById("produtoNome").innerText = item.produto;
-    document.getElementById("produtoImagem").src = item.imagemProduto;
-
-    const checkboxes = document.querySelectorAll("#sabores input[type=checkbox]");
-
-    // Marca os sabores já escolhidos
-    checkboxes.forEach(cb => {
-        cb.checked = item.sabores.some(s => s.nome === cb.value);
-        cb.disabled = false; // 🔓 LIBERA TODOS AO ABRIR
-    });
-
-    // Atualiza contador corretamente
-    const contador = document.getElementById("contadorSabores");
-    if (contador) contador.innerText = `${item.sabores.length} / ${limiteSabores}`;
-
-    // Mostra modal
-    document.getElementById("produtoSelecionado").classList.remove("hidden");
-
-    // Esconde carrinho
-    document.getElementById("carrinho").classList.add("hidden");
-}
+            // Voltar para home
+            voltarHome();
+        });
 
 
-/* =======================
-   ADICIONAR AO CARRINHO
-======================= */
-function adicionarAoCarrinho() {
-    let produto = document.getElementById('produtoNome').innerText;
-    let saboresSelecionados = document.querySelectorAll('#sabores input:checked');
-    let saboresNovos = [];
-    let precoTotalNovos = 0;
-    let imagemProduto = document.getElementById('produtoImagem').src;
+        // ESCONDER FOOTER
+        function esconderFooter() {
+            const footer = document.querySelector(".footer");
+            if (footer) footer.classList.add("hidden");
+        }
 
-    if (saboresSelecionados.length === 0) {
-        alert("Escolha pelo menos um sabor.");
-        return;
-    }
+        // MOSTRAR FOOTER
+        function mostrarFooter() {
+            const footer = document.querySelector(".footer");
+            if (footer) footer.classList.remove("hidden");
+        }
 
-    saboresSelecionados.forEach(sabor => {
-        let preco = parseFloat(sabor.dataset.preco);
 
-        // 🔥 Se estiver editando, tenta reaproveitar a quantidade antiga
-        let quantidade = 1;
-        if (produtoEditandoIndex !== null) {
-            const saborAntigo = carrinho[produtoEditandoIndex].sabores.find(s => s.nome === sabor.value);
-            if (saborAntigo) {
-                quantidade = saborAntigo.quantidade; // MANTÉM A QTD
+
+
+        // Variável para controlar qual produto está sendo editado
+        let produtoEditandoIndex = null;
+
+        /* =======================
+        LOCAL STORAGE
+        ======================= */
+        function salvarCarrinho() {
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+        }
+
+        function carregarCarrinho() {
+            carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            atualizarCarrinho();
+            atualizarContadorCarrinho();
+        }
+
+        /* =======================
+        HOME
+        ======================= */
+        function voltarHome() {
+
+            document.querySelector(".header-container")
+                .classList.remove("header-carrinho");
+
+            document.querySelector(".container-cards").style.display = "flex";
+            document.querySelector(".menu-carousel").style.display = "block";
+
+            // 🔥 deixa o CSS decidir
+            document.querySelector(".banner-container.desktop").style.display = "";
+            document.querySelector(".banner-container.mobile").style.display = "";
+
+            document.getElementById("produtoSelecionado").classList.add("hidden");
+            document.getElementById("checkout").classList.add("hidden");
+            document.getElementById("confirmacaoPedido").classList.add("hidden");
+            document.getElementById("carrinho").classList.add("hidden");
+
+            mostrarHeader();
+            mostrarFooter();
+
+            document.getElementById("statusAbertoFechado")
+                ?.classList.remove("hidden");
+
+            carregarCarrinho();
+        }
+
+
+        /* =======================
+        PRODUTO
+        ======================= */
+        function selecionarProduto(nomeProduto) {
+            document.querySelector(".container-cards").style.display = "none";
+            document.querySelector(".banner-container.desktop").style.display = "none";
+            document.querySelector(".banner-container.mobile").style.display = "none";
+            document.querySelector(".menu-carousel").style.display = "none";
+
+            document.getElementById("produtoSelecionado").classList.remove("hidden");
+            document.getElementById("produtoNome").innerText = nomeProduto;
+
+            const card = Array.from(document.querySelectorAll(".card")).find(c =>
+                c.getAttribute("onclick").includes(nomeProduto)
+            );
+            if (card) {
+                document.getElementById("produtoImagem").src = card.querySelector("img").src;
+            }
+
+            //ESCONDE O STATUS
+            document.getElementById("statusAbertoFechado")
+                ?.classList.add("hidden");
+
+            // ✅ ESCONDE O FOOTER AO ESCOLHER SABORES
+            esconderFooter();
+        }
+
+        /* =======================
+        ABRIR ADICIONAR SABOR
+        ======================= */
+        function abrirAdicionarSabor(index) {
+            produtoEditandoIndex = index;
+
+            const item = carrinho[index];
+
+            // Preenche nome e imagem do produto
+            document.getElementById("produtoNome").innerText = item.produto;
+            document.getElementById("produtoImagem").src = item.imagemProduto;
+
+            const checkboxes = document.querySelectorAll("#sabores input[type=checkbox]");
+
+            // Marca os sabores já escolhidos
+            checkboxes.forEach(cb => {
+                cb.checked = item.sabores.some(s => s.nome === cb.value);
+                cb.disabled = false; // 🔓 LIBERA TODOS AO ABRIR
+            });
+
+            // Atualiza contador corretamente
+            const contador = document.getElementById("contadorSabores");
+            if (contador) contador.innerText = `${item.sabores.length} / ${limiteSabores}`;
+
+            // Mostra modal
+            document.getElementById("produtoSelecionado").classList.remove("hidden");
+
+            // Esconde carrinho
+            document.getElementById("carrinho").classList.add("hidden");
+        }
+
+
+        /* =======================
+        ADICIONAR AO CARRINHO
+        ======================= */
+        function adicionarAoCarrinho() {
+            let produto = document.getElementById('produtoNome').innerText;
+            let saboresSelecionados = document.querySelectorAll('#sabores input:checked');
+            let saboresNovos = [];
+            let precoTotalNovos = 0;
+            let imagemProduto = document.getElementById('produtoImagem').src;
+
+            if (saboresSelecionados.length === 0) {
+                alert("Escolha pelo menos um sabor.");
+                return;
+            }
+
+            saboresSelecionados.forEach(sabor => {
+                let preco = parseFloat(sabor.dataset.preco);
+
+                // 🔥 Se estiver editando, tenta reaproveitar a quantidade antiga
+                let quantidade = 1;
+                if (produtoEditandoIndex !== null) {
+                    const saborAntigo = carrinho[produtoEditandoIndex].sabores.find(s => s.nome === sabor.value);
+                    if (saborAntigo) {
+                        quantidade = saborAntigo.quantidade; // MANTÉM A QTD
+                    }
+                }
+
+                saboresNovos.push({
+                    nome: sabor.value,
+                    preco,
+                    quantidade: quantidade,
+                    precoTotal: preco * quantidade,
+                    especial: sabor.dataset.especial === "true"
+                });
+
+                precoTotalNovos += preco * quantidade;
+                sabor.checked = false;
+            });
+
+            if (produtoEditandoIndex !== null) {
+                carrinho[produtoEditandoIndex].sabores = saboresNovos;
+                carrinho[produtoEditandoIndex].precoTotal = precoTotalNovos;
+                produtoEditandoIndex = null;
+            } else {
+                carrinho.push({
+                    produto,
+                    sabores: saboresNovos,
+                    precoTotal: precoTotalNovos,
+                    imagemProduto
+                });
+            }
+
+            salvarCarrinho();
+            atualizarCarrinho();
+            atualizarContadorCarrinho();
+
+            document.getElementById('produtoSelecionado').classList.add('hidden');
+            document.getElementById('carrinho').classList.remove('hidden');
+
+            esconderHeaderCheckout();
+            esconderFooter();
+        }
+
+
+
+        /* =======================
+        ABRIR CARRINHO
+        ======================= */
+        function abrirCarrinho() {
+
+
+            document.querySelector(".header-container")
+                .classList.add("header-carrinho");
+
+            // Esconder telas não relacionadas
+            document.getElementById('produtoSelecionado').classList.add('hidden');
+            document.getElementById('checkout').classList.add('hidden');
+            document.getElementById('confirmacaoPedido').classList.add('hidden');
+
+            // Esconder home
+            document.querySelector('.container-cards').style.display = 'none';
+            document.querySelector('.banner-container.desktop').style.display = 'none';
+            document.querySelector('.banner-container.mobile').style.display = 'none';
+            document.querySelector('.menu-carousel').style.display = 'none';
+
+            // Mostrar carrinho
+            document.getElementById('carrinho').classList.remove('hidden');
+
+            // Ocultar header do carrinho
+            const header = document.querySelector(".header-container");
+            if (header) header.classList.add("hidden");
+
+            esconderFooter();
+
+            atualizarCarrinho();
+        }
+
+
+        /* =======================
+        ATUALIZAR CARRINHO
+        ======================= */
+        function atualizarCarrinho() {
+            let lista = document.getElementById("itensCarrinho");
+            let total = document.getElementById("totalCarrinho");
+            lista.innerHTML = "";
+            totalPedido = 0;
+
+            carrinho.forEach((item, index) => {
+                let quantidadeProduto = item.sabores.reduce((t, s) => t + s.quantidade, 0);
+                let maxMatch = item.produto.match(/\d+/);
+                let quantidadeMax = maxMatch ? parseInt(maxMatch[0]) : 0;
+
+                totalPedido += item.precoTotal;
+
+                lista.innerHTML += `
+            <div class="itemCarrinho">
+                <div class="imagemProduto">
+                    <img src="${item.imagemProduto}">
+                </div>
+
+                <div class="detalhesProduto">
+                    <div class="produtoNomeEtrash">
+                        <span>${item.produto}</span>
+                        <button onclick="removerDoCarrinho(${index})"style="background: none; border: none; padding: 0; cursor: pointer;"><i class="fas fa-trash"></i></button>
+                    </div>
+
+    ${item.sabores.map((s, i) => `
+        <div class="saborItem">
+            ${s.nome}${s.especial ? ' <i class="fas fa-star especial"></i>' : ''}
+
+
+                            <div class="seletorQuantidade">
+                                <button onclick="ajustarQuantidadeSabor(${index},${i},-1)"
+                                    ${s.quantidade === 1 ? "disabled" : ""}>-</button>
+
+                                <span>${s.quantidade}</span>
+
+                                <button onclick="ajustarQuantidadeSabor(${index},${i},1)"
+                                    ${quantidadeProduto >= quantidadeMax ? "disabled" : ""}>+</button>
+                            </div>
+
+                            <button onclick="removerSabor(${index},${i})"style="background: none; border: none;color: red;cursor: pointer;font-size: 1.2em;vertical-align: middle;margin-left: 5px;padding:0;">✖</button>
+
+                        </div>
+                    `).join("")}
+
+                    <button class="btnAdicionarSabor" onclick="abrirAdicionarSabor(${index})">
+                        + Adicionar mais sabores
+                    </button>
+
+                    <div class="quantidadeEValor">
+                        <span class="badge">${quantidadeProduto} / ${quantidadeMax}</span>
+                        <strong>R$ ${item.precoTotal.toFixed(2)}</strong>
+                    </div>
+                </div>
+            </div>
+            `;
+            });
+
+            if (entregaSelecionada === "entrega") {
+                totalPedido += taxaEntrega;
+            }
+
+            total.innerText = totalPedido.toFixed(2);
+        }
+
+        /* =======================
+        AJUSTAR / REMOVER ITENS
+        ======================= */
+        function ajustarQuantidadeSabor(produtoIndex, saborIndex, delta) {
+            let produto = carrinho[produtoIndex];
+            let sabor = produto.sabores[saborIndex];
+
+            let atual = produto.sabores.reduce((t, s) => t + s.quantidade, 0);
+            let maxMatch = produto.produto.match(/\d+/);
+            let max = maxMatch ? parseInt(maxMatch[0]) : 0;
+
+            if (delta > 0 && atual >= max) return;
+            if (delta < 0 && sabor.quantidade === 1) return;
+
+            sabor.quantidade += delta;
+            sabor.precoTotal = sabor.quantidade * sabor.preco;
+
+            produto.precoTotal = produto.sabores.reduce((t, s) => t + s.precoTotal, 0);
+
+            salvarCarrinho();
+            atualizarCarrinho();
+        }
+
+        function removerSabor(produtoIndex, saborIndex) {
+            carrinho[produtoIndex].sabores.splice(saborIndex, 1);
+
+            if (carrinho[produtoIndex].sabores.length === 0) {
+                carrinho.splice(produtoIndex, 1);
+            }
+
+            salvarCarrinho();
+            atualizarCarrinho();
+            atualizarContadorCarrinho();
+        }
+
+        function removerDoCarrinho(index) {
+            carrinho.splice(index, 1);
+            salvarCarrinho();
+            atualizarCarrinho();
+            atualizarContadorCarrinho();
+        }
+
+        /* =======================
+        ATUALIZAR CONTADOR CARRINHO
+        ======================= */
+        function atualizarContadorCarrinho() {
+            document.getElementById("cart-count").innerText = carrinho.length;
+        }
+
+        /* =======================
+        ENTREGA / CHECKOUT
+        ======================= */
+        function selecionarEntrega(tipo) {
+            entregaSelecionada = tipo;
+            document.getElementById("enderecoEntrega").classList.toggle("hidden", tipo !== "entrega");
+            atualizarCarrinho();
+        }
+
+        function mostrarCheckout() {
+            if (carrinho.length === 0) {
+                alert("Carrinho vazio");
+                return;
+            }
+            document.getElementById("checkout").classList.remove("hidden");
+            document.getElementById("carrinho").classList.add("hidden");
+
+            // ESCONDE ELEMENTOS DO HEADER
+            esconderHeaderCheckout();
+        }
+
+        /* =======================
+        HABILITAR FINALIZAR (PIX)
+        ======================= */
+        function habilitarFinalizar() {
+            const pixCheckbox = document.querySelector('input[name="pagamento"][value="Pix"]');
+            const comprovanteContainer = document.getElementById("comprovantePixContainer");
+            const finalizarBtn = document.getElementById("finalizarPedidoBtn");
+
+            if (pixCheckbox.checked) {
+                comprovanteContainer.classList.remove("hidden");
+            } else {
+                comprovanteContainer.classList.add("hidden");
+            }
+
+            finalizarBtn.disabled = false;
+        }
+
+        /* =======================
+        PREVIEW COMPROVANTE PIX
+        ======================= */
+        const comprovanteInput = document.getElementById("comprovantePix");
+        comprovanteInput.addEventListener("change", function () {
+            const preview = document.getElementById("previewComprovante");
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        /* =======================
+        FINALIZAR PEDIDO
+        ======================= */
+        async function enviarPedidoWhatsApp() {
+            if (carrinho.length === 0) {
+                alert("Carrinho vazio");
+                return;
+            }
+
+            const entrega = entregaSelecionada;
+            const rua = document.getElementById("rua").value || "";
+            const numero = document.getElementById("numero").value || "";
+            const bairro = document.getElementById("bairro").value || "";
+
+            const horarioRetiradaSelect = document.getElementById("horarioRetirada");
+            const horarioValor = horarioRetiradaSelect ? horarioRetiradaSelect.value : "";
+
+            const nomeInput = document.getElementById("nomeCliente");
+            const telefoneInput = document.getElementById("telefoneCliente");
+
+            if (nomeInput && telefoneInput) {
+                if (!nomeInput.value.trim() || !telefoneInput.value.trim()) {
+                    alert("Por favor, informe seu nome e telefone.");
+                    nomeInput.focus();
+                    return;
+                }
+            }
+
+            const nomeCliente = nomeInput.value.trim();
+            const telefoneCliente = telefoneInput.value.trim();
+
+            if (!horarioValor) {
+                alert("Por favor, selecione data e horário.");
+                if (horarioRetiradaSelect) horarioRetiradaSelect.focus();
+                return;
+            }
+
+            const [data, hora] = horarioValor.split(" ");
+            const partes = data.split("-");
+            const dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+
+            let totalProdutos = carrinho.reduce((t, item) => t + item.precoTotal, 0);
+            let totalPedidoFinal = totalProdutos;
+            if (entrega === "entrega") totalPedidoFinal += taxaEntrega;
+
+            let mensagem =
+                `Pedido *#${pedidoNumero}*
+
+    *Cliente*
+    Nome: ${nomeCliente}
+    Telefone: wa.me/${telefoneCliente.replace(/\D/g, "")}
+    `;
+
+            if (entrega === "entrega") {
+                mensagem += `\n*Endereço de entrega*\nRua: ${rua}\nNúmero: ${numero}\nBairro: ${bairro}\n\n`;
+            }
+
+            mensagem += `*Data:* ${data} *Horário:* ${hora}\n\n`;
+
+            carrinho.forEach(item => {
+                mensagem += `*${item.produto}*\n`;
+                item.sabores.forEach(sabor => {
+                    mensagem += `- ${sabor.nome}: ${sabor.quantidade}\n`;
+                });
+                mensagem += `R$ ${item.precoTotal.toFixed(2)}\n\n`;
+            });
+
+            mensagem += `Total produtos: R$ ${totalProdutos.toFixed(2)}\n`;
+            if (entrega === "entrega") mensagem += `Taxa de entrega: R$ ${taxaEntrega.toFixed(2)}\n`;
+            mensagem += `Total geral: R$ ${totalPedidoFinal.toFixed(2)}\n\n`;
+
+            const pixCheckbox = document.querySelector('input[name="pagamento"][value="Pix"]');
+            if (pixCheckbox && pixCheckbox.checked && comprovanteInput.files[0]) {
+                mensagem += "Comprovante de pagamento:\n";
+
+                const formData = new FormData();
+                formData.append("file", comprovanteInput.files[0]);
+                formData.append("upload_preset", "comprovante_pix");
+
+                try {
+                    const res = await fetch("https://api.cloudinary.com/v1_1/di1s0bmow/image/upload", {
+                        method: "POST",
+                        body: formData
+                    });
+                    const data = await res.json();
+                    mensagem += `${data.secure_url}\n\n`;
+                } catch (error) {
+                    alert("Erro ao enviar comprovante: " + error);
+                    return;
+                }
+            }
+
+            const url = `https://wa.me/5535997378247?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, "_blank");
+
+            carrinho = [];
+            salvarCarrinho();
+            atualizarCarrinho();
+            atualizarContadorCarrinho();
+            pedidoNumero++;
+            localStorage.setItem("pedidoNumero", pedidoNumero);
+            limparFormularioCheckout();
+
+
+            const popup = document.createElement("div");
+            popup.style.position = "fixed";
+            popup.style.top = "0";
+            popup.style.left = "0";
+            popup.style.width = "100vw";
+            popup.style.height = "100vh";
+            popup.style.backgroundColor = "rgba(0,0,0,0.5)";
+            popup.style.display = "flex";
+            popup.style.justifyContent = "center";
+            popup.style.alignItems = "center";
+            popup.style.zIndex = "9999";
+
+            const popupContent = document.createElement("div");
+            popupContent.style.background = "#fff";
+            popupContent.style.padding = "20px 40px";
+            popupContent.style.borderRadius = "8px";
+            popupContent.style.boxShadow = "0 0 15px rgba(0,0,0,0.3)";
+            popupContent.style.fontSize = "1.3rem";
+            popupContent.style.fontWeight = "bold";
+            popupContent.innerText = "Pedido enviado!";
+
+            popup.appendChild(popupContent);
+            document.body.appendChild(popup);
+
+            setTimeout(() => {
+                document.body.removeChild(popup);
+                voltarHome();
+            }, 2000);
+        }
+
+
+        // =======================
+        // INICIALIZAÇÃO DOS BANNERS (Swiper)
+        // =======================
+
+        // Inicializar Swiper do menu/carrossel de categorias
+        if (document.querySelector('.menu-carousel .swiper-wrapper')) {
+            new Swiper('.menu-carousel', {
+                slidesPerView: 3, // quantos slides aparecem
+                spaceBetween: 10,
+                loop: true,
+                navigation: {
+                    nextEl: '.menu-carousel .swiper-button-next',
+                    prevEl: '.menu-carousel .swiper-button-prev',
+                },
+                breakpoints: {
+                    768: { slidesPerView: 4 },
+                    1024: { slidesPerView: 6 }
+                }
+            });
+        }
+
+        // Inicializar Swiper dos banners Desktop
+        if (document.querySelector('.banner-container.desktop .swiper-wrapper')) {
+            new Swiper('.banner-container.desktop', {
+                loop: true,
+                navigation: {
+                    nextEl: '.banner-container.desktop .swiper-button-next',
+                    prevEl: '.banner-container.desktop .swiper-button-prev',
+                },
+                autoplay: { delay: 3000 },
+            });
+        }
+
+
+        // Banner Mobile
+        const swiperMobile = new Swiper('.banner-container.mobile', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        });
+
+
+        // Abrir popup
+        document.getElementById("abrirCardapioBtn").addEventListener("click", () => {
+            document.getElementById("cardapioPopup").classList.remove("hidden");
+        });
+
+        // Fechar popup
+        document.getElementById("fecharCardapio").addEventListener("click", () => {
+            document.getElementById("cardapioPopup").classList.add("hidden");
+        });
+
+
+        // Popup horario
+        const horarioPopup = document.getElementById('horarioPopup');
+        const fecharHorario = document.getElementById('fecharHorario');
+
+        function abrirHorario() {
+            horarioPopup.classList.remove('hidden');
+        }
+
+        fecharHorario.addEventListener('click', () => {
+            horarioPopup.classList.add('hidden');
+        });
+
+
+
+        /* =======================
+        HORÁRIO DE FUNCIONAMENTO
+        ======================= */
+        const horariosFunc = {
+            0: { aberto: true, inicio: "09:00", fim: "23:55" }, // Domingo
+            1: { aberto: true, inicio: "09:00", fim: "23:55" },// Segunda
+            2: { aberto: true, inicio: "09:00", fim: "23:55" }, // Terça
+            3: { aberto: true, inicio: "09:00", fim: "23:55" },// Quarta
+            4: { aberto: true, inicio: "09:00", fim: "23:55" }, // Quinta
+            5: { aberto: true, inicio: "09:00", fim: "23:55" }, // Sexta
+            6: { aberto: true, inicio: "09:00", fim: "23:55" }  // Sábado
+        };
+
+        function gerarIntervalos(inicio, fim, intervalo = 20) {
+            const horarios = [];
+            let [hi, mi] = inicio.split(":").map(Number);
+            let [hf, mf] = fim.split(":").map(Number);
+
+            let atual = new Date();
+            atual.setHours(hi, mi, 0, 0);
+
+            let limite = new Date();
+            limite.setHours(hf, mf, 0, 0);
+
+            while (atual < limite) {
+                horarios.push(atual.toTimeString().slice(0, 5)); // HH:MM
+                atual.setMinutes(atual.getMinutes() + intervalo);
+            }
+            return horarios;
+        }
+
+        function preencherHorarioRetirada() {
+            const select = document.getElementById("horarioRetirada");
+            select.innerHTML = `<option value="">Escolha o horário de agendamento</option>`;
+
+            const agora = new Date();
+
+            // ⏰ soma 2 horas
+            let limite = new Date(agora.getTime() + 2 * 60 * 60 * 1000);
+
+            // 🔄 arredonda para o próximo intervalo de 20 minutos
+            const intervalo = 20;
+            const resto = limite.getMinutes() % intervalo;
+            if (resto !== 0) {
+                limite.setMinutes(limite.getMinutes() + (intervalo - resto));
+            }
+            limite.setSeconds(0, 0);
+
+            const diasSemana = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+
+            for (let i = 0; i < 60; i++) {
+
+                const dia = new Date(
+                    agora.getFullYear(),
+                    agora.getMonth(),
+                    agora.getDate() + i,
+                    0, 0, 0, 0
+                );
+
+                const config = horariosFunc[dia.getDay()];
+                if (!config || !config.aberto) continue;
+
+                const diaNum = dia.getDate().toString().padStart(2, "0");
+                const mesNum = (dia.getMonth() + 1).toString().padStart(2, "0");
+                const anoNum = dia.getFullYear();
+
+                const dataTexto = `${diasSemana[dia.getDay()]} ${diaNum}/${mesNum}`;
+                const horarios = gerarIntervalos(config.inicio, config.fim);
+
+                horarios.forEach(hora => {
+                    const [h, m] = hora.split(":").map(Number);
+
+                    const horarioOpcao = new Date(
+                        dia.getFullYear(),
+                        dia.getMonth(),
+                        dia.getDate(),
+                        h, m, 0, 0
+                    );
+
+                    // ⛔ BLOQUEIA QUALQUER HORÁRIO ANTES DO LIMITE (mesmo se virar o dia)
+                    if (horarioOpcao < limite) return;
+
+                    const option = document.createElement("option");
+                    option.value = `${diaNum}/${mesNum}/${anoNum} ${hora}`;
+                    option.textContent = `${dataTexto} • ${hora}`;
+
+                    select.appendChild(option);
+                });
             }
         }
 
-        saboresNovos.push({
-            nome: sabor.value,
-            preco,
-            quantidade: quantidade,
-            precoTotal: preco * quantidade,
-            especial: sabor.dataset.especial === "true"
+
+
+
+
+
+        document.getElementById("btnCompartilhar").addEventListener("click", () => {
+            const url = window.location.href;
+
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Confira este pedido',
+                    text: 'Olá! Estou compartilhando com você o cardápio da Bom doce (para fazer pedido online)\n' + url
+                })
+                    .then(() => console.log('Compartilhado com sucesso!'))
+                    .catch((err) => console.log('Erro ao compartilhar:', err));
+            } else {
+                navigator.clipboard.writeText(
+                    'Olá! Estou compartilhando com você o cardápio Bom doce (para fazer pedido online):\n' + url
+                ).then(() => {
+                    alert("Link copiado para a área de transferência!");
+                });
+            }
         });
 
-        precoTotalNovos += preco * quantidade;
-        sabor.checked = false;
-    });
 
-    if (produtoEditandoIndex !== null) {
-        carrinho[produtoEditandoIndex].sabores = saboresNovos;
-        carrinho[produtoEditandoIndex].precoTotal = precoTotalNovos;
-        produtoEditandoIndex = null;
-    } else {
-        carrinho.push({
-            produto,
-            sabores: saboresNovos,
-            precoTotal: precoTotalNovos,
-            imagemProduto
-        });
-    }
+        // mascara telefone COM 55
+        const telefoneInput = document.getElementById("telefoneCliente");
 
-    salvarCarrinho();
-    atualizarCarrinho();
-    atualizarContadorCarrinho();
+        if (telefoneInput) {
+            telefoneInput.addEventListener("input", function () {
+                let valor = this.value.replace(/\D/g, "");
 
-    document.getElementById('produtoSelecionado').classList.add('hidden');
-    document.getElementById('carrinho').classList.remove('hidden');
+                // garante o 55 no começo
+                if (!valor.startsWith("55")) {
+                    valor = "55" + valor;
+                }
 
-    esconderHeaderCheckout();
-    esconderFooter();
-}
+                // limita tamanho (55 + DDD + 9 dígitos)
+                valor = valor.slice(0, 13);
 
+                // aplica máscara visual
+                valor = valor
+                    .replace(/^(\d{2})(\d{2})(\d)/, "+$1 ($2) $3")
+                    .replace(/(\d{5})(\d)/, "$1-$2");
 
-
-/* =======================
-   ABRIR CARRINHO
-======================= */
-function abrirCarrinho() {
-
-
-    document.querySelector(".header-container")
-    .classList.add("header-carrinho");
-
-    // Esconder telas não relacionadas
-    document.getElementById('produtoSelecionado').classList.add('hidden');
-    document.getElementById('checkout').classList.add('hidden');
-    document.getElementById('confirmacaoPedido').classList.add('hidden');
-
-    // Esconder home
-    document.querySelector('.container-cards').style.display = 'none';
-    document.querySelector('.banner-container.desktop').style.display = 'none';
-    document.querySelector('.banner-container.mobile').style.display = 'none';
-    document.querySelector('.menu-carousel').style.display = 'none';
-
-    // Mostrar carrinho
-    document.getElementById('carrinho').classList.remove('hidden');
-
-    // Ocultar header do carrinho
-    const header = document.querySelector(".header-container");
-    if (header) header.classList.add("hidden");
-
-    esconderFooter();
-
-    atualizarCarrinho();
-}
-
-
-/* =======================
-   ATUALIZAR CARRINHO
-======================= */
-function atualizarCarrinho() {
-    let lista = document.getElementById("itensCarrinho");
-    let total = document.getElementById("totalCarrinho");
-    lista.innerHTML = "";
-    totalPedido = 0;
-
-    carrinho.forEach((item, index) => {
-        let quantidadeProduto = item.sabores.reduce((t, s) => t + s.quantidade, 0);
-        let maxMatch = item.produto.match(/\d+/);
-        let quantidadeMax = maxMatch ? parseInt(maxMatch[0]) : 0;
-
-        totalPedido += item.precoTotal;
-
-        lista.innerHTML += `
-        <div class="itemCarrinho">
-            <div class="imagemProduto">
-                <img src="${item.imagemProduto}">
-            </div>
-
-            <div class="detalhesProduto">
-                <div class="produtoNomeEtrash">
-                    <span>${item.produto}</span>
-                    <button onclick="removerDoCarrinho(${index})"style="background: none; border: none; padding: 0; cursor: pointer;"><i class="fas fa-trash"></i></button>
-                </div>
-
-${item.sabores.map((s, i) => `
-    <div class="saborItem">
-        ${s.nome}${s.especial ? ' <i class="fas fa-star especial"></i>' : ''}
-
-
-                        <div class="seletorQuantidade">
-                            <button onclick="ajustarQuantidadeSabor(${index},${i},-1)"
-                                ${s.quantidade === 1 ? "disabled" : ""}>-</button>
-
-                            <span>${s.quantidade}</span>
-
-                            <button onclick="ajustarQuantidadeSabor(${index},${i},1)"
-                                ${quantidadeProduto >= quantidadeMax ? "disabled" : ""}>+</button>
-                        </div>
-
-                        <button onclick="removerSabor(${index},${i})"style="background: none; border: none;color: red;cursor: pointer;font-size: 1.2em;vertical-align: middle;margin-left: 5px;padding:0;">✖</button>
-
-                    </div>
-                `).join("")}
-
-                <button class="btnAdicionarSabor" onclick="abrirAdicionarSabor(${index})">
-                    + Adicionar mais sabores
-                </button>
-
-                <div class="quantidadeEValor">
-                    <span class="badge">${quantidadeProduto} / ${quantidadeMax}</span>
-                    <strong>R$ ${item.precoTotal.toFixed(2)}</strong>
-                </div>
-            </div>
-        </div>
-        `;
-    });
-
-    if (entregaSelecionada === "entrega") {
-        totalPedido += taxaEntrega;
-    }
-
-    total.innerText = totalPedido.toFixed(2);
-}
-
-/* =======================
-   AJUSTAR / REMOVER ITENS
-======================= */
-function ajustarQuantidadeSabor(produtoIndex, saborIndex, delta) {
-    let produto = carrinho[produtoIndex];
-    let sabor = produto.sabores[saborIndex];
-
-    let atual = produto.sabores.reduce((t, s) => t + s.quantidade, 0);
-    let maxMatch = produto.produto.match(/\d+/);
-    let max = maxMatch ? parseInt(maxMatch[0]) : 0;
-
-    if (delta > 0 && atual >= max) return;
-    if (delta < 0 && sabor.quantidade === 1) return;
-
-    sabor.quantidade += delta;
-    sabor.precoTotal = sabor.quantidade * sabor.preco;
-
-    produto.precoTotal = produto.sabores.reduce((t, s) => t + s.precoTotal, 0);
-
-    salvarCarrinho();
-    atualizarCarrinho();
-}
-
-function removerSabor(produtoIndex, saborIndex) {
-    carrinho[produtoIndex].sabores.splice(saborIndex, 1);
-
-    if (carrinho[produtoIndex].sabores.length === 0) {
-        carrinho.splice(produtoIndex, 1);
-    }
-
-    salvarCarrinho();
-    atualizarCarrinho();
-    atualizarContadorCarrinho();
-}
-
-function removerDoCarrinho(index) {
-    carrinho.splice(index, 1);
-    salvarCarrinho();
-    atualizarCarrinho();
-    atualizarContadorCarrinho();
-}
-
-/* =======================
-   ATUALIZAR CONTADOR CARRINHO
-======================= */
-function atualizarContadorCarrinho() {
-    document.getElementById("cart-count").innerText = carrinho.length;
-}
-
-/* =======================
-   ENTREGA / CHECKOUT
-======================= */
-function selecionarEntrega(tipo) {
-    entregaSelecionada = tipo;
-    document.getElementById("enderecoEntrega").classList.toggle("hidden", tipo !== "entrega");
-    atualizarCarrinho();
-}
-
-function mostrarCheckout() {
-    if (carrinho.length === 0) {
-        alert("Carrinho vazio");
-        return;
-    }
-    document.getElementById("checkout").classList.remove("hidden");
-    document.getElementById("carrinho").classList.add("hidden");
-
-    // ESCONDE ELEMENTOS DO HEADER
-    esconderHeaderCheckout();
-}
-
-/* =======================
-   HABILITAR FINALIZAR (PIX)
-======================= */
-function habilitarFinalizar() {
-    const pixCheckbox = document.querySelector('input[name="pagamento"][value="Pix"]');
-    const comprovanteContainer = document.getElementById("comprovantePixContainer");
-    const finalizarBtn = document.getElementById("finalizarPedidoBtn");
-
-    if (pixCheckbox.checked) {
-        comprovanteContainer.classList.remove("hidden");
-    } else {
-        comprovanteContainer.classList.add("hidden");
-    }
-
-    finalizarBtn.disabled = false;
-}
-
-/* =======================
-   PREVIEW COMPROVANTE PIX
-======================= */
-const comprovanteInput = document.getElementById("comprovantePix");
-comprovanteInput.addEventListener("change", function() {
-    const preview = document.getElementById("previewComprovante");
-    if (this.files && this.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            preview.src = e.target.result;
-            preview.style.display = "block";
-        }
-        reader.readAsDataURL(this.files[0]);
-    }
-});
-
-/* =======================
-   FINALIZAR PEDIDO
-======================= */
-async function enviarPedidoWhatsApp() {
-    if (carrinho.length === 0) {
-        alert("Carrinho vazio");
-        return;
-    }
-
-    const entrega = entregaSelecionada;
-    const rua = document.getElementById("rua").value || "";
-    const numero = document.getElementById("numero").value || "";
-    const bairro = document.getElementById("bairro").value || "";
-
-    const horarioRetiradaSelect = document.getElementById("horarioRetirada");
-    const horarioValor = horarioRetiradaSelect ? horarioRetiradaSelect.value : "";
-
-    const nomeInput = document.getElementById("nomeCliente");
-    const telefoneInput = document.getElementById("telefoneCliente");
-
-    if (nomeInput && telefoneInput) {
-        if (!nomeInput.value.trim() || !telefoneInput.value.trim()) {
-            alert("Por favor, informe seu nome e telefone.");
-            nomeInput.focus();
-            return;
-        }
-    }
-
-    const nomeCliente = nomeInput.value.trim();
-    const telefoneCliente = telefoneInput.value.trim();
-
-    if (!horarioValor) {
-        alert("Por favor, selecione data e horário.");
-        if (horarioRetiradaSelect) horarioRetiradaSelect.focus();
-        return;
-    }
-
-    const [data, hora] = horarioValor.split(" ");
-    const partes = data.split("-");
-    const dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
-
-    let totalProdutos = carrinho.reduce((t, item) => t + item.precoTotal, 0);
-    let totalPedidoFinal = totalProdutos;
-    if (entrega === "entrega") totalPedidoFinal += taxaEntrega;
-
-    let mensagem = 
-`Pedido *#${pedidoNumero}*
-
-*Cliente*
-Nome: ${nomeCliente}
-Telefone: wa.me/${telefoneCliente.replace(/\D/g, "")}
-`;
-
-    if (entrega === "entrega") {
-        mensagem += `\n*Endereço de entrega*\nRua: ${rua}\nNúmero: ${numero}\nBairro: ${bairro}\n\n`;
-    }
-
-    mensagem += `*Data:* ${data} *Horário:* ${hora}\n\n`;
-
-    carrinho.forEach(item => {
-        mensagem += `*${item.produto}*\n`;
-        item.sabores.forEach(sabor => {
-            mensagem += `- ${sabor.nome}: ${sabor.quantidade}\n`;
-        });
-        mensagem += `R$ ${item.precoTotal.toFixed(2)}\n\n`;
-    });
-
-    mensagem += `Total produtos: R$ ${totalProdutos.toFixed(2)}\n`;
-    if (entrega === "entrega") mensagem += `Taxa de entrega: R$ ${taxaEntrega.toFixed(2)}\n`;
-    mensagem += `Total geral: R$ ${totalPedidoFinal.toFixed(2)}\n\n`;
-
-    const pixCheckbox = document.querySelector('input[name="pagamento"][value="Pix"]');
-    if (pixCheckbox && pixCheckbox.checked && comprovanteInput.files[0]) {
-        mensagem += "Comprovante de pagamento:\n";
-        
-        const formData = new FormData();
-        formData.append("file", comprovanteInput.files[0]);
-        formData.append("upload_preset", "comprovante_pix");
-
-        try {
-            const res = await fetch("https://api.cloudinary.com/v1_1/di1s0bmow/image/upload", {
-                method: "POST",
-                body: formData
+                this.value = valor;
             });
-            const data = await res.json();
-            mensagem += `${data.secure_url}\n\n`;
-        } catch (error) {
-            alert("Erro ao enviar comprovante: " + error);
-            return;
-        }
-    }
-
-    const url = `https://wa.me/5535997378247?text=${encodeURIComponent(mensagem)}`;
-    window.open(url, "_blank");
-
-    carrinho = [];
-    salvarCarrinho();
-    atualizarCarrinho();
-    atualizarContadorCarrinho();
-    pedidoNumero++;
-    localStorage.setItem("pedidoNumero", pedidoNumero);
-    limparFormularioCheckout();
-
-
-    const popup = document.createElement("div");
-    popup.style.position = "fixed";
-    popup.style.top = "0";
-    popup.style.left = "0";
-    popup.style.width = "100vw";
-    popup.style.height = "100vh";
-    popup.style.backgroundColor = "rgba(0,0,0,0.5)";
-    popup.style.display = "flex";
-    popup.style.justifyContent = "center";
-    popup.style.alignItems = "center";
-    popup.style.zIndex = "9999";
-
-    const popupContent = document.createElement("div");
-    popupContent.style.background = "#fff";
-    popupContent.style.padding = "20px 40px";
-    popupContent.style.borderRadius = "8px";
-    popupContent.style.boxShadow = "0 0 15px rgba(0,0,0,0.3)";
-    popupContent.style.fontSize = "1.3rem";
-    popupContent.style.fontWeight = "bold";
-    popupContent.innerText = "Pedido enviado!";
-
-    popup.appendChild(popupContent);
-    document.body.appendChild(popup);
-
-    setTimeout(() => {
-        document.body.removeChild(popup);
-        voltarHome();
-    }, 2000);
-}
-
-
-// =======================
-  // INICIALIZAÇÃO DOS BANNERS (Swiper)
-  // =======================
-  
-// Inicializar Swiper do menu/carrossel de categorias
-if (document.querySelector('.menu-carousel .swiper-wrapper')) {
-    new Swiper('.menu-carousel', {
-        slidesPerView: 3, // quantos slides aparecem
-        spaceBetween: 10,
-        loop: true,
-        navigation: {
-            nextEl: '.menu-carousel .swiper-button-next',
-            prevEl: '.menu-carousel .swiper-button-prev',
-        },
-        breakpoints: {
-            768: { slidesPerView: 4 },
-            1024: { slidesPerView: 6 }
-        }
-    });
-}
-
-// Inicializar Swiper dos banners Desktop
-if (document.querySelector('.banner-container.desktop .swiper-wrapper')) {
-    new Swiper('.banner-container.desktop', {
-        loop: true,
-        navigation: {
-            nextEl: '.banner-container.desktop .swiper-button-next',
-            prevEl: '.banner-container.desktop .swiper-button-prev',
-        },
-        autoplay: { delay: 3000 },
-    });
-}
-
-
-// Banner Mobile
-const swiperMobile = new Swiper('.banner-container.mobile', {
-    loop: true,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-    },
-});
-
-
-// Abrir popup
-document.getElementById("abrirCardapioBtn").addEventListener("click", () => {
-    document.getElementById("cardapioPopup").classList.remove("hidden");
-});
-
-// Fechar popup
-document.getElementById("fecharCardapio").addEventListener("click", () => {
-    document.getElementById("cardapioPopup").classList.add("hidden");
-});
-
-
-// Popup horario
-const horarioPopup = document.getElementById('horarioPopup');
-const fecharHorario = document.getElementById('fecharHorario');
-
-function abrirHorario() {
-    horarioPopup.classList.remove('hidden');
-}
-
-fecharHorario.addEventListener('click', () => {
-    horarioPopup.classList.add('hidden');
-});
-
-
-
-/* =======================
-   HORÁRIO DE FUNCIONAMENTO
-======================= */
-const horariosFunc = {
-  0: { aberto: true, inicio: "09:00", fim: "23:55" }, // Domingo
-  1: { aberto: true, inicio: "09:00", fim: "23:55" },// Segunda
-  2: { aberto: true, inicio: "09:00", fim: "23:55" }, // Terça
-  3: { aberto: true, inicio: "09:00", fim: "23:55" },// Quarta
-  4: { aberto: true, inicio: "09:00", fim: "23:55" }, // Quinta
-  5: { aberto: true, inicio: "09:00", fim: "23:55" }, // Sexta
-  6: { aberto: true, inicio: "09:00", fim: "23:55" }  // Sábado
-};
-
-function gerarIntervalos(inicio, fim, intervalo = 20) {
-  const horarios = [];
-  let [hi, mi] = inicio.split(":").map(Number);
-  let [hf, mf] = fim.split(":").map(Number);
-
-  let atual = new Date();
-  atual.setHours(hi, mi, 0, 0);
-
-  let limite = new Date();
-  limite.setHours(hf, mf, 0, 0);
-
-  while (atual < limite) {
-    horarios.push(atual.toTimeString().slice(0,5)); // HH:MM
-    atual.setMinutes(atual.getMinutes() + intervalo);
-  }
-  return horarios;
-}
-
-function preencherHorarioRetirada() {
-  const select = document.getElementById("horarioRetirada");
-  select.innerHTML = `<option value="">Escolha o horário de agendamento</option>`;
-
-  const agora = new Date();
-
-  // ⏰ soma 2 horas
-  let limite = new Date(agora.getTime() + 2 * 60 * 60 * 1000);
-
-  // 🔄 arredonda para o próximo intervalo de 20 minutos
-  const intervalo = 20;
-  const resto = limite.getMinutes() % intervalo;
-  if (resto !== 0) {
-    limite.setMinutes(limite.getMinutes() + (intervalo - resto));
-  }
-  limite.setSeconds(0, 0);
-
-  const diasSemana = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
-
-  for (let i = 0; i < 60; i++) {
-
-    const dia = new Date(
-      agora.getFullYear(),
-      agora.getMonth(),
-      agora.getDate() + i,
-      0, 0, 0, 0
-    );
-
-    const config = horariosFunc[dia.getDay()];
-    if (!config || !config.aberto) continue;
-
-    const diaNum = dia.getDate().toString().padStart(2, "0");
-    const mesNum = (dia.getMonth() + 1).toString().padStart(2, "0");
-    const anoNum = dia.getFullYear();
-
-    const dataTexto = `${diasSemana[dia.getDay()]} ${diaNum}/${mesNum}`;
-    const horarios = gerarIntervalos(config.inicio, config.fim);
-
-    horarios.forEach(hora => {
-      const [h, m] = hora.split(":").map(Number);
-
-      const horarioOpcao = new Date(
-        dia.getFullYear(),
-        dia.getMonth(),
-        dia.getDate(),
-        h, m, 0, 0
-      );
-
-      // ⛔ BLOQUEIA QUALQUER HORÁRIO ANTES DO LIMITE (mesmo se virar o dia)
-      if (horarioOpcao < limite) return;
-
-      const option = document.createElement("option");
-      option.value = `${diaNum}/${mesNum}/${anoNum} ${hora}`;
-      option.textContent = `${dataTexto} • ${hora}`;
-
-      select.appendChild(option);
-    });
-  }
-}
-
-
-
-
-
-
-document.getElementById("btnCompartilhar").addEventListener("click", () => {
-  const url = window.location.href;
-
-  if (navigator.share) {
-    navigator.share({
-      title: 'Confira este pedido',
-      text: 'Olá! Estou compartilhando com você o cardápio da Bom doce (para fazer pedido online)\n' + url
-    })
-    .then(() => console.log('Compartilhado com sucesso!'))
-    .catch((err) => console.log('Erro ao compartilhar:', err));
-  } else {
-    navigator.clipboard.writeText(
-      'Olá! Estou compartilhando com você o cardápio Bom doce (para fazer pedido online):\n' + url
-    ).then(() => {
-      alert("Link copiado para a área de transferência!");
-    });
-  }
-});
-
-
-// mascara telefone COM 55
-const telefoneInput = document.getElementById("telefoneCliente");
-
-if (telefoneInput) {
-    telefoneInput.addEventListener("input", function () {
-        let valor = this.value.replace(/\D/g, "");
-
-        // garante o 55 no começo
-        if (!valor.startsWith("55")) {
-            valor = "55" + valor;
         }
 
-        // limita tamanho (55 + DDD + 9 dígitos)
-        valor = valor.slice(0, 13);
 
-        // aplica máscara visual
-        valor = valor
-            .replace(/^(\d{2})(\d{2})(\d)/, "+$1 ($2) $3")
-            .replace(/(\d{5})(\d)/, "$1-$2");
+        //Copiar chave pix
+        function copiarChavePix() {
+            const chavePix = document.getElementById("chavePix").innerText;
 
-        this.value = valor;
-    });
-}
+            navigator.clipboard.writeText(chavePix).then(() => {
+                const copyText = document.querySelector(".copy-text");
+                copyText.innerText = "Copiado";
 
-
-//Copiar chave pix
-function copiarChavePix() {
-    const chavePix = document.getElementById("chavePix").innerText;
-
-    navigator.clipboard.writeText(chavePix).then(() => {
-        const copyText = document.querySelector(".copy-text");
-        copyText.innerText = "Copiado";
-
-        setTimeout(() => {
-            copyText.innerText = "Copiar";
-        }, 2000);
-    }).catch(err => {
-        alert("Erro ao copiar a chave Pix");
-        console.error(err);
-    });
-}
+                setTimeout(() => {
+                    copyText.innerText = "Copiar";
+                }, 2000);
+            }).catch(err => {
+                alert("Erro ao copiar a chave Pix");
+                console.error(err);
+            });
+        }
 
 
-// limpar Formulario Checkout
-function limparFormularioCheckout() {
-    // cliente
-    const nome = document.getElementById("nomeCliente");
-    const telefone = document.getElementById("telefoneCliente");
+        // limpar Formulario Checkout
+        function limparFormularioCheckout() {
+            // cliente
+            const nome = document.getElementById("nomeCliente");
+            const telefone = document.getElementById("telefoneCliente");
 
-    if (nome) nome.value = "";
-    if (telefone) telefone.value = "";
+            if (nome) nome.value = "";
+            if (telefone) telefone.value = "";
 
-    // endereço
-    ["rua", "numero", "bairro"].forEach(id => {
-        const campo = document.getElementById(id);
-        if (campo) campo.value = "";
-    });
+            // endereço
+            ["rua", "numero", "bairro"].forEach(id => {
+                const campo = document.getElementById(id);
+                if (campo) campo.value = "";
+            });
 
-    // horário
-    const horario = document.getElementById("horarioRetirada");
-    if (horario) horario.selectedIndex = 0;
+            // horário
+            const horario = document.getElementById("horarioRetirada");
+            if (horario) horario.selectedIndex = 0;
 
-    // pagamento
-    document
-        .querySelectorAll('input[name="pagamento"]')
-        .forEach(r => r.checked = false);
+            // pagamento
+            document
+                .querySelectorAll('input[name="pagamento"]')
+                .forEach(r => r.checked = false);
 
-    // comprovante pix
-    const comprovante = document.getElementById("comprovantePix");
-    const preview = document.getElementById("previewComprovante");
+            // comprovante pix
+            const comprovante = document.getElementById("comprovantePix");
+            const preview = document.getElementById("previewComprovante");
 
-    if (comprovante) comprovante.value = "";
-    if (preview) {
-        preview.src = "";
-        preview.style.display = "none";
-    }
+            if (comprovante) comprovante.value = "";
+            if (preview) {
+                preview.src = "";
+                preview.style.display = "none";
+            }
 
-    // esconde container do pix
-    const comprovanteContainer = document.getElementById("comprovantePixContainer");
-    if (comprovanteContainer) {
-        comprovanteContainer.classList.add("hidden");
-    }
-}
-
-
-//status abert/fechado
-
-function verificarAbertoFechado() {
-    const statusDiv = document.getElementById("statusAbertoFechado");
-    const agora = new Date();
-    const dia = agora.getDay();
-
-    const config = horariosFunc[dia];
-
-    if (!config || !config.aberto) {
-        statusDiv.textContent = "Fechado";
-        statusDiv.style.color = "red";
-        return;
-    }
-
-    // Pega horário atual em minutos desde meia-noite para facilitar comparação
-    const minutosAgora = agora.getHours() * 60 + agora.getMinutes();
-
-    // Transforma horários de abertura e fechamento em minutos
-    const [hi, mi] = config.inicio.split(":").map(Number);
-    const [hf, mf] = config.fim.split(":").map(Number);
-    const minutosInicio = hi * 60 + mi;
-    const minutosFim = hf * 60 + mf;
-
-    if (minutosAgora >= minutosInicio && minutosAgora <= minutosFim) {
-        statusDiv.textContent = "Aberto";
-        statusDiv.style.color = "green";
-    } else {
-        statusDiv.textContent = "Fechado";
-        statusDiv.style.color = "red";
-    }
-}
-
-// Chama a função ao carregar a página para já mostrar o status
-document.addEventListener("DOMContentLoaded", () => {
-    verificarAbertoFechado();
-});
+            // esconde container do pix
+            const comprovanteContainer = document.getElementById("comprovantePixContainer");
+            if (comprovanteContainer) {
+                comprovanteContainer.classList.add("hidden");
+            }
+        }
 
 
-//compartilhar endereço
+        //status abert/fechado
 
-function compartilharLocalizacao() {
-  const urlMaps = "https://maps.app.goo.gl/zeXNEQfvKMCJwLbo9";
+        function verificarAbertoFechado() {
+            const statusDiv = document.getElementById("statusAbertoFechado");
+            const agora = new Date();
+            const dia = agora.getDay();
 
-  if (navigator.share) {
-    navigator.share({
-      title: "Localização",
-      text: "Confira nossa localização:",
-      url: urlMaps
-    });
-  } else {
-    window.open(urlMaps, "_blank");
-  }
-}
+            const config = horariosFunc[dia];
 
+            if (!config || !config.aberto) {
+                statusDiv.textContent = "Fechado";
+                statusDiv.style.color = "red";
+                return;
+            }
 
+            // Pega horário atual em minutos desde meia-noite para facilitar comparação
+            const minutosAgora = agora.getHours() * 60 + agora.getMinutes();
 
-// ===== LIMITADOR DE SABORES POR CAIXA =====
-let limiteSabores = 0;
+            // Transforma horários de abertura e fechamento em minutos
+            const [hi, mi] = config.inicio.split(":").map(Number);
+            const [hf, mf] = config.fim.split(":").map(Number);
+            const minutosInicio = hi * 60 + mi;
+            const minutosFim = hf * 60 + mf;
 
-function definirLimitePorProduto(nomeProduto) {
-    if (nomeProduto.includes("08")) limiteSabores = 2;
-    else if (nomeProduto.includes("12")) limiteSabores = 3;
-    else if (nomeProduto.includes("15")) limiteSabores = 4;
-    else if (nomeProduto.includes("30")) limiteSabores = 5;
-    else if (nomeProduto.includes("50")) limiteSabores = 7;
-    else if (nomeProduto.includes("100")) limiteSabores = 10;
-    else limiteSabores = 0;
+            if (minutosAgora >= minutosInicio && minutosAgora <= minutosFim) {
+                statusDiv.textContent = "Aberto";
+                statusDiv.style.color = "green";
+            } else {
+                statusDiv.textContent = "Fechado";
+                statusDiv.style.color = "red";
+            }
+        }
 
-    const contador = document.getElementById("contadorSabores");
-    if (contador) contador.innerText = `0 / ${limiteSabores}`;
-}
-
-// Intercepta sua função original sem quebrar
-const selecionarProdutoOriginal = selecionarProduto;
-selecionarProduto = function(nomeProduto) {
-    selecionarProdutoOriginal(nomeProduto);
-    definirLimitePorProduto(nomeProduto);
-
-    const checkboxes = document.querySelectorAll("#sabores input[type=checkbox]");
-    checkboxes.forEach(cb => {
-        cb.checked = false;
-        cb.disabled = false;
-    });
-};
-
-document.addEventListener("change", function(e) {
-    if (!e.target.matches("#sabores input[type=checkbox]")) return;
-
-    const checkboxes = document.querySelectorAll("#sabores input[type=checkbox]");
-    const selecionados = Array.from(checkboxes).filter(cb => cb.checked);
-
-    if (selecionados.length > limiteSabores) {
-        e.target.checked = false;
-        alert(`Você pode escolher no máximo ${limiteSabores} sabores.`);
-        return;
-    }
-
-    const contador = document.getElementById("contadorSabores");
-    if (contador) contador.innerText = `${selecionados.length} / ${limiteSabores}`;
-
-    if (selecionados.length === limiteSabores) {
-        checkboxes.forEach(cb => {
-            if (!cb.checked) cb.disabled = true;
+        // Chama a função ao carregar a página para já mostrar o status
+        document.addEventListener("DOMContentLoaded", () => {
+            verificarAbertoFechado();
         });
-    } else {
-        checkboxes.forEach(cb => cb.disabled = false);
-    }
-});
 
 
+        //compartilhar endereço
 
-//*slide de fotos produtos
-document.querySelectorAll(".produtoSwiper").forEach(swiper => {
-    new Swiper(swiper, {
-        slidesPerView: 1,
-        loop: true,
-        pagination: {
-            el: swiper.querySelector(".swiper-pagination"),
-            clickable: true
+        function compartilharLocalizacao() {
+            const urlMaps = "https://maps.app.goo.gl/zeXNEQfvKMCJwLbo9";
+
+            if (navigator.share) {
+                navigator.share({
+                    title: "Localização",
+                    text: "Confira nossa localização:",
+                    url: urlMaps
+                });
+            } else {
+                window.open(urlMaps, "_blank");
+            }
         }
-    });
-});
 
 
 
-//video home
-const popup = document.getElementById("popupVideoHome");
+        // ===== LIMITADOR DE SABORES POR CAIXA =====
+        let limiteSabores = 0;
 
-let popupFechado = false;
+        function definirLimitePorProduto(nomeProduto) {
+            if (nomeProduto.includes("08")) limiteSabores = 2;
+            else if (nomeProduto.includes("12")) limiteSabores = 3;
+            else if (nomeProduto.includes("15")) limiteSabores = 4;
+            else if (nomeProduto.includes("30")) limiteSabores = 5;
+            else if (nomeProduto.includes("50")) limiteSabores = 7;
+            else if (nomeProduto.includes("100")) limiteSabores = 10;
+            else limiteSabores = 0;
 
-function fecharPopup() {
-    popup.style.display = "none";
-    popupFechado = true; // impede reabrir
-}
+            const contador = document.getElementById("contadorSabores");
+            if (contador) contador.innerText = `0 / ${limiteSabores}`;
+        }
 
-function verificarPopup() {
+        // Intercepta sua função original sem quebrar
+        const selecionarProdutoOriginal = selecionarProduto;
+        selecionarProduto = function (nomeProduto) {
+            selecionarProdutoOriginal(nomeProduto);
+            definirLimitePorProduto(nomeProduto);
 
-    const produto = document.getElementById("produtoSelecionado");
-    const carrinho = document.getElementById("carrinho");
-    const checkout = document.getElementById("checkout");
+            const checkboxes = document.querySelectorAll("#sabores input[type=checkbox]");
+            checkboxes.forEach(cb => {
+                cb.checked = false;
+                cb.disabled = false;
+            });
+        };
 
-    const estaNaHome =
-        produto.classList.contains("hidden") &&
-        carrinho.classList.contains("hidden") &&
-        checkout.classList.contains("hidden");
+        document.addEventListener("change", function (e) {
+            if (!e.target.matches("#sabores input[type=checkbox]")) return;
 
-    if (estaNaHome && !popupFechado) {
-        popup.style.display = "block";
-    } else {
-        popup.style.display = "none";
-    }
-}
+            const checkboxes = document.querySelectorAll("#sabores input[type=checkbox]");
+            const selecionados = Array.from(checkboxes).filter(cb => cb.checked);
 
-setInterval(verificarPopup, 300);
+            if (selecionados.length > limiteSabores) {
+                e.target.checked = false;
+                alert(`Você pode escolher no máximo ${limiteSabores} sabores.`);
+                return;
+            }
 
+            const contador = document.getElementById("contadorSabores");
+            if (contador) contador.innerText = `${selecionados.length} / ${limiteSabores}`;
 
-
-
-
-
-
-/* =======================
-   INICIALIZAÇÃO
-======================= */
-document.addEventListener("DOMContentLoaded", () => {
-    carregarCarrinho();
-    preencherHorarioRetirada();
-});
-</script>
+            if (selecionados.length === limiteSabores) {
+                checkboxes.forEach(cb => {
+                    if (!cb.checked) cb.disabled = true;
+                });
+            } else {
+                checkboxes.forEach(cb => cb.disabled = false);
+            }
+        });
 
 
-    
-    
+
+        //*slide de fotos produtos
+        document.querySelectorAll(".produtoSwiper").forEach(swiper => {
+            new Swiper(swiper, {
+                slidesPerView: 1,
+                loop: true,
+                pagination: {
+                    el: swiper.querySelector(".swiper-pagination"),
+                    clickable: true
+                }
+            });
+        });
+
+
+
+        //video home
+        const popup = document.getElementById("popupVideoHome");
+
+        let popupFechado = false;
+
+        function fecharPopup() {
+            popup.style.display = "none";
+            popupFechado = true; // impede reabrir
+        }
+
+        function verificarPopup() {
+
+            const produto = document.getElementById("produtoSelecionado");
+            const carrinho = document.getElementById("carrinho");
+            const checkout = document.getElementById("checkout");
+
+            const estaNaHome =
+                produto.classList.contains("hidden") &&
+                carrinho.classList.contains("hidden") &&
+                checkout.classList.contains("hidden");
+
+            if (estaNaHome && !popupFechado) {
+                popup.style.display = "block";
+            } else {
+                popup.style.display = "none";
+            }
+        }
+
+        setInterval(verificarPopup, 300);
+
+
+
+
+
+
+
+        /* =======================
+        INICIALIZAÇÃO
+        ======================= */
+        document.addEventListener("DOMContentLoaded", () => {
+            carregarCarrinho();
+            preencherHorarioRetirada();
+        });
+    </script>
+
+
+
+
 </body>
 
 </html>
